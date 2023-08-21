@@ -1,0 +1,40 @@
+<app-section>
+    <app-container size="narrow">
+        <form>
+            <app-section>
+                <h2 class="title">Event Info</h2>
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">                    
+                        <st-editor [(ngModel)]="content" [config]="{ placeholder: 'Type something', buttons: config.buttons }"></st-editor>
+                    </div>
+                </div>    
+            </app-section>
+            <app-section>
+                <h2 class="title">Date and Time</h2>
+                <div class="field">
+                    <label class="label">Event starts</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Event ends</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" placeholder="Text input">
+                    </div>
+                </div>
+            </app-section>
+            <app-section>
+                <h2 class="title">Location</h2>
+                <app-address-autocomplete></app-address-autocomplete>
+            </app-section>
+        </form>
+    </app-container>
+</app-section>

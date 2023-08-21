@@ -1,23 +1,42 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./login/login.component";
-import { SignupComponent } from "./signup/signup.component";
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { DonationsComponent } from "./pages/donations/donations.component";
+import { GetInvolvedComponent } from "./pages/get-involved/get-involved.component";
+import { EventsComponent } from "./pages/events/events.component";
+import { SectionComponent } from "./shared/section/section.component";
+import { ContainerComponent } from "./shared/container/container.component";
+import { NavigationComponent } from "./layout/navigation/navigation.component";
+import { SubmitEventComponent } from "./pages/submit-event/submit-event.component";
+import { NgxSimpleTextEditorModule } from "ngx-simple-text-editor";
+import { AddressAutocompleteComponent } from "./shared/address-autocomplete/address-autocomplete.component";
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
-        SignupComponent,
-        HomeComponent
+        HomeComponent,
+        DonationsComponent,
+        GetInvolvedComponent,
+        EventsComponent,
+        SectionComponent,
+        ContainerComponent,
+        NavigationComponent,
+        SubmitEventComponent,
+        AddressAutocompleteComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgxSimpleTextEditorModule
     ],
     providers: [],
     bootstrap: [AppComponent]
