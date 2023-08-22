@@ -1,4 +1,4 @@
-import { Place } from "src/app/shared/address-autocomplete/place";
+import { Place } from "src/app/entities/place";
 
 export class Event {
     title?: string;

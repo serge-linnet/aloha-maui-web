@@ -1,12 +1,11 @@
 /// <reference types="@types/googlemaps" />
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
-import { Place } from "./place";
+import { Place } from "../../entities/place";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
     selector: "app-address-autocomplete",
     templateUrl: "./address-autocomplete.component.html",
-    styleUrls: ["./address-autocomplete.component.less"],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -17,9 +16,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 })
 export class AddressAutocompleteComponent implements OnInit, AfterViewInit, ControlValueAccessor {
     @ViewChild("input")
-    inputElement?: ElementRef<HTMLInputElement>;
+        inputElement?: ElementRef<HTMLInputElement>;
 
-    query: string = "";
+    query = "";
     onChange = (_: Place) => { };
     onTouched = () => { };
 
@@ -48,7 +47,7 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
 
     private getPlaceAutocomplete() {
         const autocomplete = new google.maps.places.Autocomplete(this.inputElement!.nativeElement);
-        google.maps.event.addListener(autocomplete, 'place_changed', () => {
+        google.maps.event.addListener(autocomplete, "place_changed", () => {
             const place = autocomplete.getPlace();
 
             const result = new Place();

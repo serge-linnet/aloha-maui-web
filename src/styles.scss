@@ -1,0 +1,10 @@
+@import "styles/reset.scss";
+@import "../node_modules/bulma/bulma.sass";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+$family-serif: "Open Sans", serif;
+$family-primary: $family-serif;
+
+@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "../node_modules/bulma/sass/utilities/functions.sass";

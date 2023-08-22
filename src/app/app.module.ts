@@ -15,6 +15,7 @@ import { NavigationComponent } from "./layout/navigation/navigation.component";
 import { SubmitEventComponent } from "./pages/submit-event/submit-event.component";
 import { NgxSimpleTextEditorModule } from "ngx-simple-text-editor";
 import { AddressAutocompleteComponent } from "./shared/address-autocomplete/address-autocomplete.component";
+import { SubmitEventFormComponent } from "./features/events/submit-event-form/submit-event-form.component";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AddressAutocompleteComponent } from "./shared/address-autocomplete/addr
         ContainerComponent,
         NavigationComponent,
         SubmitEventComponent,
-        AddressAutocompleteComponent
+        AddressAutocompleteComponent,
+        SubmitEventFormComponent
     ],
     imports: [
         BrowserModule,
