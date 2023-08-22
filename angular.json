@@ -27,6 +27,7 @@
             "inlineStyleLanguage": "less",
             "assets": [
               "src/favicon.ico",
+              "src/appsettings.json",
               "src/assets"
             ],
             "styles": [
