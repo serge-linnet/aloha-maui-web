@@ -10,11 +10,13 @@ import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
 import { LoginComponent } from "./login/login.component";
 import { LogoutComponent } from "./logout/logout.component";
+import { NewsMediaComponent } from "./pages/news-media/news-media.component";
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "donations", component: DonationsComponent },
     { path: "get-involved", component: GetInvolvedComponent },
+    { path: "news-and-media", component: NewsMediaComponent },
 
     { path: "events", component: EventsComponent },
     { path: "events/:id", component: EventDetailsComponent },

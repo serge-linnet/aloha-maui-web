@@ -24,6 +24,8 @@ import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/
 import { LoginComponent } from "./login/login.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { AuthInterceptor } from "./auth.interceptor";
+import { NewsMediaComponent } from './pages/news-media/news-media.component';
+import { NewsCardComponent } from './features/news/news-card/news-card.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +46,9 @@ import { AuthInterceptor } from "./auth.interceptor";
         ManageEventsComponent,
         ManageEventDetailsComponent,
         LoginComponent,
-        LogoutComponent
+        LogoutComponent,
+        NewsMediaComponent,
+        NewsCardComponent
     ],
     imports: [
         BrowserModule,
