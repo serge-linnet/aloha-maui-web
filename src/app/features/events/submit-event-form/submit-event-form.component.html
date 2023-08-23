@@ -4,7 +4,7 @@
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
-                <input class="input" type="text" formControlName="title">
+                <input class="input" type="text" formControlName="title" [ngClass]="displayError('title')">
             </div>
         </div>
         <div class="field">

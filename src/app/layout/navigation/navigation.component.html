@@ -21,21 +21,10 @@
                 <a class="navbar-item" routerLink="/submit-event">Submit Event</a>
             </div>
             <div class="navbar-end">
-                <!-- <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                            Log in
-                        </a>
-                    </div>
-                </div> -->
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated">
                     <a class="navbar-link">
-                        Hi, Serge
+                        <i class="fa-solid fa-user-astronaut"></i>
                     </a>
-
                     <div class="navbar-dropdown">
                         <a class="navbar-item">
                             Account
@@ -44,7 +33,7 @@
                             Manage Events
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
+                        <a class="navbar-item" (click)="signOut()">
                             Sign Out
                         </a>
                     </div>

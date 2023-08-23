@@ -8,9 +8,9 @@ import { SubmitEventComponent } from "./pages/submit-event/submit-event.componen
 import { EventDetailsComponent } from "./pages/event-details/event-details.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
-import { LoginComponent } from "./login/login.component";
-import { LogoutComponent } from "./logout/logout.component";
 import { NewsMediaComponent } from "./pages/news-media/news-media.component";
+
+const ADMIN = "Admin";
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -22,15 +22,12 @@ const routes: Routes = [
     { path: "events/:id", component: EventDetailsComponent },
     { path: "submit-event", component: SubmitEventComponent },
 
-    { path: "admin/manage-events", component: ManageEventsComponent },
-    { path: "admin/manage-events/:id", component: ManageEventDetailsComponent },
-
-    { path: "login", component: LoginComponent },
-    { path: "logout", component: LogoutComponent}
+    { path: "admin/manage-events", component: ManageEventsComponent, data: { role: ADMIN } },
+    { path: "admin/manage-events/:id", component: ManageEventDetailsComponent, data: { role: ADMIN } },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

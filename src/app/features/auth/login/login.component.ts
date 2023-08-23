@@ -1,7 +1,9 @@
-import { Component, NgZone, OnInit } from "@angular/core";
+
+import { Component, Input, NgZone, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../services/auth.service";
 import { CredentialResponse } from "google-one-tap";
+import { AuthService } from "src/app/services/auth.service";
+import { ConfigService } from "src/app/services/config.service";
 
 @Component({
     selector: "app-login",
@@ -9,23 +11,25 @@ import { CredentialResponse } from "google-one-tap";
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+    @Input() redirectUrl: string | string[] | undefined;
 
     constructor(private router: Router,
         private authService: AuthService,
-        private ngZone: NgZone) { }
+        private ngZone: NgZone,
+        private configService: ConfigService) { }
 
-    private clientId = "993656706207-srhdeubn204t2scrdio4t2s7jbcg74co.apps.googleusercontent.com";
 
     ngOnInit() {
         this.initGoogleOneTap();
     }
 
     initGoogleOneTap() {
+        const config = this.configService.getConfig();
         // @ts-ignore
         window.onGoogleLibraryLoad = () => {
             // @ts-ignore
             google.accounts.id.initialize({
-                client_id: this.clientId,
+                client_id: config.googleOAuthClientId,
                 callback: this.handleCredentialResponse.bind(this),
                 auto_select: false,
                 cancel_on_tap_outside: true
@@ -44,10 +48,14 @@ export class LoginComponent implements OnInit {
     async handleCredentialResponse(response: CredentialResponse) {
         console.log("handleCredentialResponse");
         await this.authService.loginWithGoogle(response.credential).subscribe(
-            (x: any) => {
-                localStorage.setItem("token", x.token);
+            () => {
                 this.ngZone.run(() => {
-                    this.router.navigate(['/logout']);
+                    if (this.redirectUrl) { 
+                        this.router.navigate(this.redirectUrl as any[]);
+                        
+                    } else {
+                        this.router.navigate(['/']);
+                    }
                 })
             },
             (error: any) => {

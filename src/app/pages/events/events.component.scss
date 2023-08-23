@@ -2,3 +2,23 @@
     background: url("/assets/images/events-hero.jpg") center center;
     background-size: cover;
 }
+
+.card.no-shadow {
+    cursor: pointer;    
+    &:not(:hover) {
+        box-shadow: none;
+    }
+}
+
+p + p {
+    margin-top: .5rem;
+}
+
+.get-started {
+    margin-top: 2rem;
+    text-align: center;
+
+    &>button {
+        width: 100%;
+    }
+}

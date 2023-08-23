@@ -21,11 +21,10 @@ import { SearchEventFormComponent } from "./features/events/search-event-form/se
 import { EventDetailsComponent } from "./pages/event-details/event-details.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
-import { LoginComponent } from "./login/login.component";
-import { LogoutComponent } from "./logout/logout.component";
 import { AuthInterceptor } from "./auth.interceptor";
 import { NewsMediaComponent } from './pages/news-media/news-media.component';
 import { NewsCardComponent } from './features/news/news-card/news-card.component';
+import { LoginComponent } from "./features/auth/login/login.component";
 
 @NgModule({
     declarations: [
@@ -45,10 +44,9 @@ import { NewsCardComponent } from './features/news/news-card/news-card.component
         EventDetailsComponent,
         ManageEventsComponent,
         ManageEventDetailsComponent,
-        LoginComponent,
-        LogoutComponent,
         NewsMediaComponent,
-        NewsCardComponent
+        NewsCardComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

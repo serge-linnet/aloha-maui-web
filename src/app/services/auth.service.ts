@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ConfigService } from './config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/user.model';
+
+const STORAGE_KEY = 'user';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    constructor(private configService: ConfigService, private http: HttpClient) {
+    }
 
-    constructor(private configService: ConfigService, private http: HttpClient) { }
-
-    loginWithGoogle(credentials: string): Observable<any> {
-        console.debug("loginWithGoogle");
+    loginWithGoogle(credentials: string): Observable<User> {
         const config = this.configService.getConfig();
 
         const header = new HttpHeaders().set('Content-type', 'application/json');
@@ -20,11 +22,29 @@ export class AuthService {
             {
                 headers: header,
                 withCredentials: true
-            });
+            }).pipe(
+                tap((response: User) => {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(response));
+                })
+            );
+    }
+
+    isAuthenticated(): boolean {
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (data) {
+            const user = JSON.parse(data) as User;
+            return !!(user && user.tokenExpires && new Date(user.tokenExpires) > new Date());
+        }
+        return false;
+    }
+
+    getRole(): string | undefined {
+        const data = localStorage.getItem(STORAGE_KEY);
+        const user = JSON.parse(data ?? "") as User;
+        return user?.role;
     }
 
     signOutExternal() {
-        localStorage.removeItem("token");
-        console.log("token deleted")
+        localStorage.removeItem(STORAGE_KEY);
     }
 }

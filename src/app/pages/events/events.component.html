@@ -9,11 +9,87 @@
 </section>
 <app-section>
     <app-container size="medium">
-        <app-search-event-form></app-search-event-form>
+        <div class="columns">
+            <div class="column">
+                <div class="card no-shadow">
+                    <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img src="assets/images/pass-along-card.jpg">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-6">Pledge a Moment & Pass it Forward</p>
+                        <p class="text">
+                            Make plans to meet up with friends or catch up with family online or in person anytime over
+                            the weekend to Pledge a Moment & Pass it Forward
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card no-shadow">
+                    <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img src="assets/images/dress-up-card.jpg">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-6">Beach Life is Best! Dress up & Donate</p>
+                        <p class="text">
+                            Enjoy Freestyle Friday & Beach Vibes all weekend!
+                        </p>
+                        <p class="text">
+                            Come to work, school, college or club meet-up this weekend dressed up Hawaiian Island style
+                            & feel tropical pacific island vibes all weekend!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card no-shadow" (click)="submitEvent()">
+                    <div class="card-image">
+                        <figure class="image is-3by2">
+                            <img [src]="'assets/images/submit-event-card.jpg'">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-6">Submit a Community Event</p>
+                        <p class="text">Create, sponsor, join, attend &/or participate in a community led
+                            fundraising event.
+                        </p>
+                        <p class="text">Join your local surf & wellness community event in person or online.</p>
+
+                        <div class="get-started" *ngIf="showSignInModal">
+                            <button class="button">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </app-container>
 </app-section>
 <app-section size="none">
     <app-container size="medium">
+        <app-search-event-form></app-search-event-form>
+    </app-container>
+</app-section>
+<app-section>
+    <app-container size="medium">
         <app-event-list [events]="(events$ | async) ?? []"></app-event-list>
     </app-container>
 </app-section>
+
+<div class="modal" [ngClass]="showSignInModal ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Sign In</p>
+        </header>
+        <section class="modal-card-body">
+            <app-login [redirectUrl]="['submit-event']"></app-login>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button" (click)="closeSignInModal()">Go Back</button>
+        </footer>
+    </div>
+</div>
