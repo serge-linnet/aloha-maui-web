@@ -1,0 +1,12 @@
+.event-cover-photo {
+    display: flex;
+    justify-content: center;
+    &>img {
+        max-height: 400px;
+        width: auto;
+    }
+}
+
+.card.is-minimal {
+    box-shadow: none;
+}

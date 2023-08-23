@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
-import { Place } from "../../entities/place";
+import { Place } from "../../models/place.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({

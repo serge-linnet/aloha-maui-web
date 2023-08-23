@@ -18,12 +18,12 @@
                 <a class="navbar-item" routerLink="/">Home</a>
                 <a class="navbar-item" routerLink="/donations">Donations</a>
                 <a class="navbar-item" routerLink="/get-involved">Get Involved</a>
-                <a class="navbar-item" routerLink="/events">Events</a>
+                <a class="navbar-item" routerLink="/events">Community Events</a>
                 <a class="navbar-item" routerLink="/submit-event">Submit Event</a>
             </div>
 
-            <!-- <div class="navbar-end">
-                <div class="navbar-item">
+            <div class="navbar-end">
+                <!-- <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
                             <strong>Sign up</strong>
@@ -32,8 +32,26 @@
                             Log in
                         </a>
                     </div>
+                </div> -->
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Hi, Serge
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Account
+                        </a>
+                        <a class="navbar-item" routerLink="admin/manage-events">
+                            Manage Events
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Sign Out
+                        </a>
+                    </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </nav>
 </app-container>

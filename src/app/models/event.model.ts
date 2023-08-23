@@ -1,6 +1,10 @@
-import { Place } from "src/app/entities/place";
+import { Place } from "src/app/models/place.model";
+
+export const EVENT_STATUS_PENDING = 0;
+export const EVENT_STATUS_APPROVED = 1;
 
 export class Event {
+    id!: string;
     title?: string;
     description?: string;
     category?: string;
@@ -10,4 +14,5 @@ export class Event {
     startsAt?: Date;
     endsAt?: Date;
     place?: Place;
+    status?: number;
 }

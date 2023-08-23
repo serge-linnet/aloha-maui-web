@@ -16,7 +16,11 @@ import { SubmitEventComponent } from "./pages/submit-event/submit-event.componen
 import { NgxSimpleTextEditorModule } from "ngx-simple-text-editor";
 import { AddressAutocompleteComponent } from "./shared/address-autocomplete/address-autocomplete.component";
 import { SubmitEventFormComponent } from "./features/events/submit-event-form/submit-event-form.component";
-
+import { EventListComponent } from "./features/events/event-list/event-list.component";
+import { SearchEventFormComponent } from "./features/events/search-event-form/search-event-form.component";
+import { EventDetailsComponent } from "./pages/event-details/event-details.component";
+import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
+import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
 
 @NgModule({
     declarations: [
@@ -30,7 +34,12 @@ import { SubmitEventFormComponent } from "./features/events/submit-event-form/su
         NavigationComponent,
         SubmitEventComponent,
         AddressAutocompleteComponent,
-        SubmitEventFormComponent
+        SubmitEventFormComponent,
+        EventListComponent,
+        SearchEventFormComponent,
+        EventDetailsComponent,
+        ManageEventsComponent,
+        ManageEventDetailsComponent
     ],
     imports: [
         BrowserModule,

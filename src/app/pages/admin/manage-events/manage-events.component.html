@@ -1,0 +1,32 @@
+<app-section>
+    <app-container>
+        <p class="title">Manage Events</p>
+    </app-container>
+</app-section>
+<app-section size="none">
+    <app-container>
+        <div class="columns">
+            <div class="column is-one-fifth">
+                <form>
+                    <div class="field">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Include Past Events
+                        </label>
+                    </div>
+                    <div class="field">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Include Approved Events
+                        </label>
+                    </div>
+                    <div class="field">
+                        <button class="button is-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="column"><app-event-list [showStatus]="true" [events]="(events$ | async) ?? []"></app-event-list>
+            </div>
+        </div>
+    </app-container>
+</app-section>

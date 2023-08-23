@@ -1,0 +1,49 @@
+<ng-container *ngIf="event">
+    <app-section>
+        <app-container size="medium">
+            <p class="title">{{ event.title }}</p>
+            <p class="subtitle">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
+        </app-container>
+    </app-section>
+
+    <app-section size="none">
+        <div class="container">
+            <div class="image event-cover-photo">
+                <img src="/assets/images/event-details-sample.jpg" alt="{{ event.title }}">
+            </div>
+        </div>
+    </app-section>
+
+    <app-section>
+        <app-container size="medium">
+            <p class="tag is-primary is-medium">
+                ${{ event.price }}
+            </p>
+            <p class="text">
+                {{ event.description }}
+            </p>
+        </app-container>
+    </app-section>
+
+    <app-section size="none">
+        <app-container size="medium">
+            <div class="columns">
+                <div class="column">
+                    <p class="title is-5">Location</p>
+                    <p class="subtitle" *ngIf="event.place!.name">{{ event.place!.name }}</p>
+                    <p class="text">
+                        {{ event.place!.address }}<br>
+                        {{ event.place!.locality }},
+                        {{ event.place!.region }}<br>
+                        {{ event.place!.country }} {{ event.place!.postcode }}
+                    </p>
+                </div>
+                <div class="column">
+                    <p class="title is-5">Date & Time</p>
+                    <p class="text">{{ event.startsAt | date:'medium' }}</p>
+                    <p class="text">{{ event.endsAt | date:'medium' }}</p>
+                </div>
+            </div>
+        </app-container>
+    </app-section>
+</ng-container>

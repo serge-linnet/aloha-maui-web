@@ -4,17 +4,19 @@ import { EventService } from "src/app/services/event.service";
 import { Event } from "src/app/models/event.model";
 
 @Component({
-    selector: "app-events",
-    templateUrl: "./events.component.html",
-    styleUrls: ["./events.component.scss"]
+    selector: "app-manage-events",
+    templateUrl: "./manage-events.component.html",
+    styleUrls: ["./manage-events.component.scss"]
 })
-export class EventsComponent implements OnInit {
+export class ManageEventsComponent implements OnInit {
     
     events$!: Observable<Event[]>
 
     constructor(private eventService: EventService) { }
 
     ngOnInit() {
-        this.events$ = this.eventService.findEvents();
+        this.events$ = this.eventService.findPendingEvents();
     }
+
+    
 }
