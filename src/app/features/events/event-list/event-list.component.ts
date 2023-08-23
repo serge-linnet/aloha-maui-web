@@ -8,7 +8,7 @@ import { EVENT_STATUS_PENDING, Event } from "src/app/models/event.model";
 })
 export class EventListComponent {
     @Input() events: Event[] = [];
-    @Input() showStatus: boolean = false;
+    @Input() showStatus = false;
 
     getStatus(status: number) {
         return status === EVENT_STATUS_PENDING ? "Pending" : "Approved";

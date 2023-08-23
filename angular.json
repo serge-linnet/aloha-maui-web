@@ -73,7 +73,8 @@
               "browserTarget": "maui-ui:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -115,6 +116,14 @@
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"
+    },
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      },
+      "service": {
+        "spec": false
+      }
     }
   },
   "cli": {

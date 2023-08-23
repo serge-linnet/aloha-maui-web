@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -21,6 +21,9 @@ import { SearchEventFormComponent } from "./features/events/search-event-form/se
 import { EventDetailsComponent } from "./pages/event-details/event-details.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
+import { LoginComponent } from "./login/login.component";
+import { LogoutComponent } from "./logout/logout.component";
+import { AuthInterceptor } from "./auth.interceptor";
 
 @NgModule({
     declarations: [
@@ -39,7 +42,9 @@ import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/
         SearchEventFormComponent,
         EventDetailsComponent,
         ManageEventsComponent,
-        ManageEventDetailsComponent
+        ManageEventDetailsComponent,
+        LoginComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +54,11 @@ import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/
         ReactiveFormsModule,
         NgxSimpleTextEditorModule
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS, 
+        useClass: AuthInterceptor, 
+        multi: true
+      }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

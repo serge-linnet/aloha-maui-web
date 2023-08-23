@@ -8,6 +8,8 @@ import { SubmitEventComponent } from "./pages/submit-event/submit-event.componen
 import { EventDetailsComponent } from "./pages/event-details/event-details.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
+import { LoginComponent } from "./login/login.component";
+import { LogoutComponent } from "./logout/logout.component";
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -19,7 +21,10 @@ const routes: Routes = [
     { path: "submit-event", component: SubmitEventComponent },
 
     { path: "admin/manage-events", component: ManageEventsComponent },
-    { path: "admin/manage-events/:id", component: ManageEventDetailsComponent }
+    { path: "admin/manage-events/:id", component: ManageEventDetailsComponent },
+
+    { path: "login", component: LoginComponent },
+    { path: "logout", component: LogoutComponent}
 ];
 
 @NgModule({

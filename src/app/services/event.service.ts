@@ -9,22 +9,22 @@ import { Event } from "src/app/models/event.model";
 })
 export class EventService {
 
-    constructor(private configService: ConfigService, private http: HttpClient) { 
+    constructor(private configService: ConfigService, private http: HttpClient) {
 
     }
 
     findEvents(): Observable<Event[]> {
         const config = this.configService.getConfig();
-        return this.http.get<Event[]>(`${config.apiEndpointUrl}/events`, {params: {query: ""}});
+        return this.http.get<Event[]>(`${config.apiUrl}/events`, { params: { query: "" } });
     }
 
     findPendingEvents(): Observable<Event[]> {
         const config = this.configService.getConfig();
-        return this.http.get<Event[]>(`${config.apiEndpointUrl}/events/pending`);
+        return this.http.get<Event[]>(`${config.apiUrl}/events/pending`, { withCredentials: true });
     }
 
     getEvent(id: string): Observable<Event> {
         const config = this.configService.getConfig();
-        return this.http.get<Event>(`${config.apiEndpointUrl}/events/${id}/details`);
+        return this.http.get<Event>(`${config.apiUrl}/events/${id}/details`);
     }
 }
