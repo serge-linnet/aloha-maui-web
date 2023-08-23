@@ -16,11 +16,23 @@
         </div>
         <div class="field">
             <label class="label">Event category</label>
-            <div class="select" formControlName="category">
-                <select>
-                    <option>Select category</option>
+            <div class="select">
+                <select formControlName="category">
+                    <option value="">Select category</option>
                 </select>
             </div>
+        </div>
+        <div class="field">
+            <label class="checkbox">
+                <input type="checkbox">
+                Family friendly
+            </label>
+        </div>
+        <div class="field">
+            <label class="checkbox">
+                <input type="checkbox">
+                Dog friendly <i class="fa-solid fa-dog"></i>
+            </label>
         </div>
         <div class="field">
             <label class="label">Recommended donation</label>
@@ -33,7 +45,7 @@
         </div>
         <div class="field">
             <label class="label">Cover photo</label>
-            <div class="control has-icons-left">
+            <div class="control">
                 <input class="input" type="file" formControlName="photoUrl">
             </div>
         </div>
@@ -55,7 +67,28 @@
     </app-section>
     <app-section>
         <h2 class="title">Location</h2>
+
         <div class="field">
+            <div class="control">
+                <label class="radio">
+                    <input type="radio" formControlName="type" name="type" value="offline" />
+                    Offline
+                </label>
+                <label class="radio">
+                    <input type="radio" formControlName="type" name="type" value="online" />
+                    Online
+                </label>
+            </div>
+        </div>
+
+        <div class="field" *ngIf="eventType == 'online'">
+            <label class="label">Online Event Details</label>
+            <div class="control has-icons-left">
+                <textarea class="textarea" formControlName="onlineDetails"></textarea>
+            </div>
+        </div>
+
+        <div class="field" *ngIf="eventType != 'online'">
             <label class="label">Address</label>
             <div class="control has-icons-left">
                 <app-address-autocomplete formControlName="place"></app-address-autocomplete>
@@ -67,6 +100,15 @@
     </app-section>
     <app-section>
         <h2 class="title">Contacts & Social</h2>
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left">
+                <input class="input" type="email">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-at"></i>
+                </span>
+            </div>
+        </div>
         <div class="field">
             <label class="label">Phone Number (optional)</label>
             <div class="control has-icons-left">
@@ -81,16 +123,7 @@
             <div class="control has-icons-left">
                 <input class="input" type="text">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-browser"></i>
-                </span>
-            </div>
-        </div>
-        <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left">
-                <input class="input" type="email">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-email"></i>
+                    <i class="fas fa-globe"></i>
                 </span>
             </div>
         </div>
@@ -99,7 +132,7 @@
             <div class="control has-icons-left">
                 <input class="input" type="text">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-instagram"></i>
+                    <i class="fas fa-brands fa-instagram"></i>
                 </span>
             </div>
         </div>
@@ -108,7 +141,7 @@
             <div class="control has-icons-left">
                 <input class="input" type="text">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-facebook"></i>
+                    <i class="fas fa-brands fa-facebook"></i>
                 </span>
             </div>
         </div>
@@ -120,5 +153,4 @@
             </div>
         </div>
     </app-section>
-    family friednly<br>
 </form>

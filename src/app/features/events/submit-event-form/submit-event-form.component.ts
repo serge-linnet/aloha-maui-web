@@ -11,9 +11,10 @@ import {
     templateUrl: "./submit-event-form.component.html",
     styleUrls: ["./submit-event-form.component.scss"]
 })
+
 export class SubmitEventFormComponent {
     eventForm: FormGroup;
-
+    
     editorButtons = [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, SEPARATOR,
         ORDERED_LIST_BUTTON, UNORDERED_LIST_BUTTON, SEPARATOR,
         SUBSCRIPT_BUTTON, SUPERSCRIPT_BUTTON];
@@ -28,10 +29,15 @@ export class SubmitEventFormComponent {
             photoUrl: [""],
             startsAt: [""],
             endsAt: [""],
-            place: [""]
+            place: [""],
+            type: ["offline"],
+            onlineDetails: [""]
         });
     }
 
+    get eventType() {
+        return this.eventForm.get("type")?.value ?? "offline";
+    }
 
     displayError(formControlName: string) {
         const control = this.eventForm.get(formControlName);
@@ -47,6 +53,6 @@ export class SubmitEventFormComponent {
 
     onSubmit() {
         console.log(this.eventForm.valid);
-        console.log(this.eventForm.value)
+        console.log(this.eventForm.value);
     }
 }
