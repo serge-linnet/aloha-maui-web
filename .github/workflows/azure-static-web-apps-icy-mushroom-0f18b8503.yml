@@ -21,7 +21,7 @@ jobs:
       - name: Replace Tokens (Variables)
         env:
           API_URL: $API_URL
-          run: echo $API_URL
+        run: echo $API_URL
       - name: Replace Tokens (Secrets)
         run: | 
           echo $API_URL "$API_URL"
