@@ -24,4 +24,8 @@ export class EventService {
     getEvent(id: string): Observable<Event> {
         return this.http.get<Event>(`${environment.apiUrl}/events/${id}/details`);
     }
+
+    create(event: Event): Observable<Event> {
+        return this.http.post<Event>(`${environment.apiUrl}/events`, event, { withCredentials: true });
+    }
 }

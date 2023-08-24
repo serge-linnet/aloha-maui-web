@@ -25,6 +25,10 @@ import { AuthInterceptor } from "./auth.interceptor";
 import { NewsMediaComponent } from './pages/news-media/news-media.component';
 import { NewsCardComponent } from './features/news/news-card/news-card.component';
 import { LoginComponent } from "./features/auth/login/login.component";
+import { MyEventsComponent } from './pages/my-events/my-events.component';
+import { ValidationErrorsComponent } from './shared/validation-errors/validation-errors.component';
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -46,7 +50,9 @@ import { LoginComponent } from "./features/auth/login/login.component";
         ManageEventDetailsComponent,
         NewsMediaComponent,
         NewsCardComponent,
-        LoginComponent
+        LoginComponent,
+        MyEventsComponent,
+        ValidationErrorsComponent
     ],
     imports: [
         BrowserModule,
@@ -54,7 +60,9 @@ import { LoginComponent } from "./features/auth/login/login.component";
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
-        NgxSimpleTextEditorModule
+        NgxSimpleTextEditorModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS, 

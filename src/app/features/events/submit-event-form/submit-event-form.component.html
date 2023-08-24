@@ -3,50 +3,61 @@
         <h2 class="title">Event Info</h2>
         <div class="field">
             <label class="label">Title</label>
+            <app-validation-errors [control]="eventForm.get('title')"></app-validation-errors>
             <div class="control">
-                <input class="input" type="text" formControlName="title" [ngClass]="displayError('title')">
+                <input class="input" type="text" formControlName="title">
             </div>
         </div>
         <div class="field">
             <label class="label">Description</label>
+            <app-validation-errors [control]="eventForm.get('description')"></app-validation-errors>
             <div class="control">
                 <st-editor formControlName="description" [config]="{ buttons: editorButtons }">
                 </st-editor>
             </div>
         </div>
-        <div class="field">
+        <!-- <div class="field">
             <label class="label">Event category</label>
             <div class="select">
                 <select formControlName="category">
                     <option value="">Select category</option>
                 </select>
             </div>
-        </div>
+        </div> -->
         <div class="field">
             <label class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" formControlName="familyFriendly">
                 Family friendly
             </label>
         </div>
         <div class="field">
             <label class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" formControlName="dogFriendly">
                 Dog friendly <i class="fa-solid fa-dog"></i>
             </label>
         </div>
-        <div class="field">
-            <label class="label">Recommended donation</label>
-            <div class="control has-icons-left">
-                <input class="input" type="number" formControlName="price">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-coins"></i>
+
+        <label class="label">Recommended donation</label>
+        <app-validation-errors [control]="eventForm.get('currency')"></app-validation-errors>
+        <app-validation-errors [control]="eventForm.get('price')"></app-validation-errors>
+        <div class="field has-addons">            
+            <p class="control">
+                <span class="select">
+                  <select formControlName="currency">
+                    <option value="EUR">€</option>
+                    <option value="USD">$</option>
+                    <option value="GBP">£</option>                    
+                  </select>
                 </span>
+              </p>
+            <div class="control">
+                <input class="input" type="number" formControlName="price">
             </div>
         </div>
         <div class="field">
             <label class="label">Cover photo</label>
             <div class="control">
-                <input class="input" type="file" formControlName="photoUrl">
+                <input class="input" type="file" #filePicker (change)="imagePicked($event)">
             </div>
         </div>
     </app-section>
@@ -54,12 +65,14 @@
         <h2 class="title">Date and Time</h2>
         <div class="field">
             <label class="label">Event starts</label>
+            <app-validation-errors [control]="eventForm.get('startsAt')"></app-validation-errors>
             <div class="control">
                 <input class="input" type="datetime-local" formControlName="startsAt">
             </div>
         </div>
         <div class="field">
             <label class="label">Event ends</label>
+            <app-validation-errors [control]="eventForm.get('endsAt')"></app-validation-errors>
             <div class="control">
                 <input class="input" type="datetime-local" formControlName="endsAt">
             </div>
@@ -67,7 +80,6 @@
     </app-section>
     <app-section>
         <h2 class="title">Location</h2>
-
         <div class="field">
             <div class="control">
                 <label class="radio">
@@ -83,6 +95,7 @@
 
         <div class="field" *ngIf="eventType == 'online'">
             <label class="label">Online Event Details</label>
+            <app-validation-errors [control]="eventForm.get('onlineDetails')"></app-validation-errors>
             <div class="control has-icons-left">
                 <textarea class="textarea" formControlName="onlineDetails"></textarea>
             </div>
@@ -90,6 +103,7 @@
 
         <div class="field" *ngIf="eventType != 'online'">
             <label class="label">Address</label>
+            <app-validation-errors [control]="eventForm.get('place')"></app-validation-errors>
             <div class="control has-icons-left">
                 <app-address-autocomplete formControlName="place"></app-address-autocomplete>
                 <span class="icon is-small is-left">
@@ -102,8 +116,9 @@
         <h2 class="title">Contacts & Social</h2>
         <div class="field">
             <label class="label">Email</label>
+            <app-validation-errors [control]="eventForm.get('contactEmail')"></app-validation-errors>
             <div class="control has-icons-left">
-                <input class="input" type="email">
+                <input class="input" type="email" formControlName="contactEmail">
                 <span class="icon is-small is-left">
                     <i class="fas fa-at"></i>
                 </span>
@@ -112,7 +127,7 @@
         <div class="field">
             <label class="label">Phone Number (optional)</label>
             <div class="control has-icons-left">
-                <input class="input" type="text">
+                <input class="input" type="text" formControlName="contactPhone">
                 <span class="icon is-small is-left">
                     <i class="fas fa-phone"></i>
                 </span>
@@ -121,7 +136,7 @@
         <div class="field">
             <label class="label">Website (optional)</label>
             <div class="control has-icons-left">
-                <input class="input" type="text">
+                <input class="input" type="text" formControlName="website">
                 <span class="icon is-small is-left">
                     <i class="fas fa-globe"></i>
                 </span>
@@ -130,7 +145,7 @@
         <div class="field">
             <label class="label">Instagram (optional)</label>
             <div class="control has-icons-left">
-                <input class="input" type="text">
+                <input class="input" type="text" formControlName="instagram">
                 <span class="icon is-small is-left">
                     <i class="fas fa-brands fa-instagram"></i>
                 </span>
@@ -139,7 +154,7 @@
         <div class="field">
             <label class="label">Facebook (optional)</label>
             <div class="control has-icons-left">
-                <input class="input" type="text">
+                <input class="input" type="text" formControlName="facebook">
                 <span class="icon is-small is-left">
                     <i class="fas fa-brands fa-facebook"></i>
                 </span>
@@ -149,7 +164,7 @@
     <app-section>
         <div class="field is-grouped">
             <div class="control">
-                <button type="submit" class="button is-link">Submit Community Event</button>
+                <button type="submit" class="button is-link" [disabled]="!this.eventForm.valid">Submit Community Event</button>
             </div>
         </div>
     </app-section>

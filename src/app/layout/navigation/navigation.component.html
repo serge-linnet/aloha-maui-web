@@ -1,8 +1,8 @@
-<app-container>
+<app-container size="medium">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" routerLink="/">
-                <b>HelpHawaii.org</b>
+                HelpHawaii.org
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar"
@@ -21,7 +21,7 @@
                 <a class="navbar-item" routerLink="/submit-event">Submit Event</a>
             </div>
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated">
+                <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated; else signIn">
                     <a class="navbar-link">
                         <i class="fa-solid fa-user-astronaut"></i>
                     </a>
@@ -38,6 +38,11 @@
                         </a>
                     </div>
                 </div>
+                <ng-template #signIn>
+                    <a class="navbar-item" routerLink="/login">
+                        Sign In
+                    </a>
+                </ng-template>
             </div>
         </div>
     </nav>
