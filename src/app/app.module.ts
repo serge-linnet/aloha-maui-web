@@ -8,7 +8,7 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { DonationsComponent } from "./pages/donations/donations.component";
 import { GetInvolvedComponent } from "./pages/get-involved/get-involved.component";
-import { EventsComponent } from "./pages/events/events.component";
+import { EventsPageComponent } from "./pages/events/events-page/events-page.component";
 import { SectionComponent } from "./shared/section/section.component";
 import { ContainerComponent } from "./shared/container/container.component";
 import { NavigationComponent } from "./layout/navigation/navigation.component";
@@ -18,7 +18,7 @@ import { AddressAutocompleteComponent } from "./shared/address-autocomplete/addr
 import { SubmitEventFormComponent } from "./features/events/submit-event-form/submit-event-form.component";
 import { EventListComponent } from "./features/events/event-list/event-list.component";
 import { SearchEventFormComponent } from "./features/events/search-event-form/search-event-form.component";
-import { EventDetailsComponent } from "./pages/event-details/event-details.component";
+import { EventDetailsPageComponent } from "./pages/events/event-details-page/event-details-page.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
 import { AuthInterceptor } from "./auth.interceptor";
@@ -29,6 +29,9 @@ import { MyEventsComponent } from './pages/my-events/my-events.component';
 import { ValidationErrorsComponent } from './shared/validation-errors/validation-errors.component';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventFullDetailsComponent } from './features/events/event-full-details/event-full-details.component';
+import { MyEventDetailsPageComponent } from './pages/events/my-event-details-page/my-event-details-page.component';
+import { EventStatusFormComponent } from './features/events/event-status-form/event-status-form.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         HomeComponent,
         DonationsComponent,
         GetInvolvedComponent,
-        EventsComponent,
+        EventsPageComponent,
         SectionComponent,
         ContainerComponent,
         NavigationComponent,
@@ -45,14 +48,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         SubmitEventFormComponent,
         EventListComponent,
         SearchEventFormComponent,
-        EventDetailsComponent,
+        EventDetailsPageComponent,
         ManageEventsComponent,
         ManageEventDetailsComponent,
         NewsMediaComponent,
         NewsCardComponent,
         LoginComponent,
         MyEventsComponent,
-        ValidationErrorsComponent
+        ValidationErrorsComponent,
+        EventFullDetailsComponent,
+        MyEventDetailsPageComponent,
+        EventStatusFormComponent
     ],
     imports: [
         BrowserModule,

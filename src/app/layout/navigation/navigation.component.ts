@@ -9,15 +9,19 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class NavigationComponent {
 
-    get isAuthenticated(): boolean {
-        return this.authService.isAuthenticated();
-    }
+    public isMenuActive = false;
 
     constructor(private authService: AuthService, private router: Router) {
     }
 
-    public isMenuActive = false;
-
+    get isAuthenticated(): boolean {
+        return this.authService.isAuthenticated();
+    }
+    
+    get isAdmin(): boolean {
+        return this.authService.getRole() === "Admin";        
+    }
+    
     toggleMenu() {
         this.isMenuActive = !this.isMenuActive;
     }
@@ -26,4 +30,6 @@ export class NavigationComponent {
         this.authService.signOutExternal();
         this.router.navigate(["/"]);
     }
+
+    
 }

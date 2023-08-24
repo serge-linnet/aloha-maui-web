@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
 
 
     ngOnInit() {
-        this.initGoogleOneTap();
+        this.ngZone.run(() => {
+            this.initGoogleOneTap();
+        });        
     }
 
     initGoogleOneTap() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
-import { Event } from "src/app/models/event.model";
+import { CommunityEvent } from "src/app/models/event.model";
 import { EventService } from "src/app/services/event.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { EventService } from "src/app/services/event.service";
     styleUrls: ["./manage-event-details.component.scss"]
 })
 export class ManageEventDetailsComponent implements OnInit {
-    event: Event = new Event();
+    event?: CommunityEvent;
 
     constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
@@ -17,7 +17,7 @@ export class ManageEventDetailsComponent implements OnInit {
         this.route.params.subscribe((params: Params) => {
             const id = params["id"];
 
-            this.eventService.getEvent(id).subscribe((event: Event) => {
+            this.eventService.getEvent(id).subscribe((event: CommunityEvent) => {
                 this.event = event;
             });
         });

@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Event } from "src/app/models/event.model";
+import { CommunityEvent } from "src/app/models/event.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -13,19 +13,27 @@ export class EventService {
 
     }
 
-    findEvents(): Observable<Event[]> {
-        return this.http.get<Event[]>(`${environment.apiUrl}/events`, { params: { query: "" } });
+    findEvents(): Observable<CommunityEvent[]> {
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events`, { params: { query: "" } });
     }
 
-    findPendingEvents(): Observable<Event[]> {
-        return this.http.get<Event[]>(`${environment.apiUrl}/events/pending`, { withCredentials: true });
+    findPendingEvents(): Observable<CommunityEvent[]> {
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/pending`, { withCredentials: true });
     }
 
-    getEvent(id: string): Observable<Event> {
-        return this.http.get<Event>(`${environment.apiUrl}/events/${id}/details`);
+    getEvent(id: string): Observable<CommunityEvent> {
+        return this.http.get<CommunityEvent>(`${environment.apiUrl}/events/${id}/details`);
     }
 
-    create(event: Event): Observable<Event> {
-        return this.http.post<Event>(`${environment.apiUrl}/events`, event, { withCredentials: true });
+    create(event: CommunityEvent): Observable<CommunityEvent> {
+        return this.http.post<CommunityEvent>(`${environment.apiUrl}/events`, event, { withCredentials: true });
+    }
+
+    findMyEvents(): Observable<CommunityEvent[]> {
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/my`, { withCredentials: true });
+    }
+
+    changeStatus(id: string, status: number): Observable<CommunityEvent> {
+        return this.http.put<CommunityEvent>(`${environment.apiUrl}/events/${id}/status`, { status }, { withCredentials: true });
     }
 }

@@ -2,8 +2,9 @@ import { Place } from "src/app/models/place.model";
 
 export const EVENT_STATUS_PENDING = 0;
 export const EVENT_STATUS_APPROVED = 1;
+export const EVENT_STATUS_REJECTED = 2;
 
-export class Event {
+export class CommunityEvent {
     id!: string;
     title?: string;
     description?: string;
@@ -15,4 +16,10 @@ export class Event {
     endsAt?: Date;
     place?: Place;
     status?: number;
+    assets?: EventAssets;
+}
+
+export class EventAssets {
+    coverPhoto?: string;
+    thumbnail?: string;
 }

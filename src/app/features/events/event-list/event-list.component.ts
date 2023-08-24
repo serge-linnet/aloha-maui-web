@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { EVENT_STATUS_PENDING, Event } from "src/app/models/event.model";
+import { EVENT_STATUS_PENDING, CommunityEvent } from "src/app/models/event.model";
 
 @Component({
     selector: "app-event-list",
@@ -7,7 +7,7 @@ import { EVENT_STATUS_PENDING, Event } from "src/app/models/event.model";
     styleUrls: ["./event-list.component.scss"]
 })
 export class EventListComponent {
-    @Input() events: Event[] = [];
+    @Input() events: CommunityEvent[] = [];
     @Input() showStatus = false;
 
     getStatus(status: number) {

@@ -14,7 +14,6 @@ export class AuthService {
     }
 
     loginWithGoogle(credentials: string): Observable<User> {
-
         const header = new HttpHeaders().set('Content-type', 'application/json');
         return this.http.post(`${environment.apiUrl}/Auth/LoginWithGoogle`,
             JSON.stringify(credentials),
@@ -26,6 +25,10 @@ export class AuthService {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(response));
                 })
             );
+    }
+
+    refreshToken(): Observable<any> {
+        return this.http.get(`${environment.apiUrl}/Auth/RefreshToken`, { withCredentials: true });
     }
 
     isAuthenticated(): boolean {

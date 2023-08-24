@@ -18,7 +18,6 @@
                 <a class="navbar-item" routerLink="/">Home</a>
                 <a class="navbar-item" routerLink="/news-and-media">News & Media</a>
                 <a class="navbar-item" routerLink="/events">Community Events</a>
-                <a class="navbar-item" routerLink="/submit-event">Submit Event</a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated; else signIn">
@@ -29,8 +28,11 @@
                         <a class="navbar-item">
                             Account
                         </a>
-                        <a class="navbar-item" routerLink="admin/manage-events">
+                        <a class="navbar-item" routerLink="admin/manage-events" *ngIf="isAdmin">
                             Manage Events
+                        </a>
+                        <a class="navbar-item" routerLink="user/my-events" *ngIf="isAdmin">
+                            My Events
                         </a>
                         <hr class="navbar-divider">
                         <a class="navbar-item" (click)="signOut()">

@@ -1,1 +1,10 @@
-<p>my-events works!</p>
+<section class="hero is-link">
+    <div class="hero-body">
+        <p class="title has-text-centered">My Submitted Events</p>
+    </div>
+</section>
+<app-section>
+    <app-container size="medium">
+        <app-event-list [events]="(events$ | async) ?? []" [showStatus]="true"></app-event-list>
+    </app-container>
+</app-section>
