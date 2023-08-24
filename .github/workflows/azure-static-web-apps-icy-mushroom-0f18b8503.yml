@@ -18,7 +18,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Replace Tokens
+      - name: Replace Tokens (Variables)
+        env:
+          API_URL: $API_URL
+          run: echo $API_URL
+      - name: Replace Tokens (Secrets)
         run: | 
           echo $API_URL "$API_URL"
           sh deploy/replace-token.sh {{API_URL}} "$API_URL" /src/environments/environment.ts
