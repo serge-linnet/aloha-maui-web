@@ -3,7 +3,7 @@ import { Component, Input, NgZone, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CredentialResponse } from "google-one-tap";
 import { AuthService } from "src/app/services/auth.service";
-import { ConfigService } from "src/app/services/config.service";
+import { environment } from "src/environments/environment";
 
 @Component({
     selector: "app-login",
@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private router: Router,
         private authService: AuthService,
-        private ngZone: NgZone,
-        private configService: ConfigService) { }
+        private ngZone: NgZone) { }
 
 
     ngOnInit() {
@@ -24,12 +23,11 @@ export class LoginComponent implements OnInit {
     }
 
     initGoogleOneTap() {
-        const config = this.configService.getConfig();
         // @ts-ignore
         window.onGoogleLibraryLoad = () => {
             // @ts-ignore
             google.accounts.id.initialize({
-                client_id: config.googleOAuthClientId,
+                client_id: environment.googleOAuthClientId,
                 callback: this.handleCredentialResponse.bind(this),
                 auto_select: false,
                 cancel_on_tap_outside: true

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { ConfigService } from './config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { environment } from 'src/environments/environment';
 
 const STORAGE_KEY = 'user';
 
@@ -10,14 +10,13 @@ const STORAGE_KEY = 'user';
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private configService: ConfigService, private http: HttpClient) {
+    constructor(private http: HttpClient) {
     }
 
     loginWithGoogle(credentials: string): Observable<User> {
-        const config = this.configService.getConfig();
 
         const header = new HttpHeaders().set('Content-type', 'application/json');
-        return this.http.post(`${config.apiUrl}/Auth/LoginWithGoogle`,
+        return this.http.post(`${environment.apiUrl}/Auth/LoginWithGoogle`,
             JSON.stringify(credentials),
             {
                 headers: header,

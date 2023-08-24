@@ -27,7 +27,6 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/appsettings.json",
               "src/assets"
             ],
             "styles": [
@@ -50,7 +49,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "index": "src/index.html"
             },
             "development": {
               "buildOptimizer": false,
@@ -58,7 +58,14 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "index": "src/index.development.html"
             }
           },
           "defaultConfiguration": "production"
