@@ -11,7 +11,6 @@ import {
     templateUrl: "./submit-event-form.component.html",
     styleUrls: ["./submit-event-form.component.scss"]
 })
-
 export class SubmitEventFormComponent {
     eventForm: FormGroup;
     

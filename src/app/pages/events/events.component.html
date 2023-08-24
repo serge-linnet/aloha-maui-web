@@ -46,24 +46,26 @@
                 </div>
             </div>
             <div class="column">
-                <div class="card no-shadow" (click)="submitEvent()">
-                    <div class="card-image">
-                        <figure class="image is-3by2">
-                            <img [src]="'assets/images/submit-event-card.jpg'">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <p class="title is-6">Submit a Community Event</p>
-                        <p class="text">Create, sponsor, join, attend &/or participate in a community led
-                            fundraising event.
-                        </p>
-                        <p class="text">Join your local surf & wellness community event in person or online.</p>
+                <a routerLink="/submit-event">
+                    <div class="card no-shadow" (click)="submitEvent()">
+                        <div class="card-image">
+                            <figure class="image is-3by2">
+                                <img [src]="'assets/images/submit-event-card.jpg'">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title is-6">Submit a Community Event</p>
+                            <p class="text">Create, sponsor, join, attend &/or participate in a community led
+                                fundraising event.
+                            </p>
+                            <p class="text">Join your local surf & wellness community event in person or online.</p>
 
-                        <div class="get-started" *ngIf="showSignInModal">
-                            <button class="button">Get Started</button>
+                            <div class="get-started" *ngIf="showSignInModal">
+                                <button class="button">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </app-container>
@@ -79,7 +81,7 @@
     </app-container>
 </app-section>
 
-<div class="modal" [ngClass]="showSignInModal ? 'is-active' : ''">
+<!-- <div class="modal" [ngClass]="showSignInModal ? 'is-active' : ''">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -92,4 +94,4 @@
             <button class="button" (click)="closeSignInModal()">Go Back</button>
         </footer>
     </div>
-</div>
+</div> -->
