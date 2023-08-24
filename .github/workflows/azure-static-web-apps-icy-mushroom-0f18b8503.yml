@@ -20,8 +20,8 @@ jobs:
           submodules: true
       - name: Replace Tokens
         run: | 
-          echo $API_URL
-          sh deploy/replace-token.sh {{API_URL}} $API_URL /src/environments/environment.ts
+          echo $API_URL "$API_URL"
+          sh deploy/replace-token.sh {{API_URL}} "$API_URL" /src/environments/environment.ts
           sh deploy/replace-token.sh {{AUTH_GOOGLE_CLIENT_ID}} ${{ secrets.AUTH_GOOGLE_CLIENT_ID }} /src/environments/environment.ts
           sh deploy/replace-token.sh {{GOOGLE_PLACES_KEY}} ${{ secrets.GOOGLE_PLACES_KEY }} /src/index.html
           sh deploy/replace-token.sh {{COMMIT}} ${{ github.sha }} /src/index.html
