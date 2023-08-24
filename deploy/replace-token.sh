@@ -1,5 +1,5 @@
 # $1 - token
 # $2 - value
 # $3 - file
-
-sed -i -e "s/$1/$2/g" $3
+echo "Replacing $1 with $2 in $3"
+sed -i -e "s/'$1'/'$2'/g" $3
