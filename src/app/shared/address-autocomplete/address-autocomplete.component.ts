@@ -15,8 +15,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
     ]
 })
 export class AddressAutocompleteComponent implements OnInit, AfterViewInit, ControlValueAccessor {
-    @ViewChild("input")
-        inputElement?: ElementRef<HTMLInputElement>;
+    @ViewChild("input") inputElement?: ElementRef<HTMLInputElement>;
+    @Output() placeChanged = new EventEmitter<Place>();
 
     query = "";
     onChange = (_: Place) => { };
@@ -33,7 +33,7 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
         // no-op, control does not support writing
     }
 
-    registerOnChange(onChange: any): void {
+    registerOnChange(onChange: any): void {        
         this.onChange = onChange;
     }
 
@@ -58,8 +58,8 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
                 googleFormattedAddress: place.formatted_address
             };
 
-            if ((place as any).business_status) {
-                result.name = place.name
+            if ((place as any).types.includes("establishment")) {
+                result.placeName = place.name
             }
 
             place.address_components?.forEach(component => {
@@ -91,12 +91,13 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
                         break;
                     }
                     case "country": {
-                        result.country = component.long_name;
+                        result.country = component.short_name;
                         break;
                     }
                 }
             });
-
+            
+            this.placeChanged.next(result);
             this.onChange(result);
         });
     }

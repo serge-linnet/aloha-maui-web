@@ -1,5 +1,5 @@
 export class Place {
-    name?: string;
+    placeName?: string;
     address?: string;
     postcode?: string;
     locality?: string;
