@@ -16,7 +16,7 @@ const ADMIN = "Admin";
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
-    { path: "donations", component: DonationsComponent },
+    { path: "donate", component: DonationsComponent },
     { path: "get-involved", component: GetInvolvedComponent },
     { path: "news-and-media", component: NewsMediaComponent },
 

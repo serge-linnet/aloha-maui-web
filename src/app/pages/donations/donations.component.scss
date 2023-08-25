@@ -1,0 +1,17 @@
+blockquote {
+    border-left: 3px solid grey;
+    padding-left: 2rem;
+}
+
+
+.charities {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & > * {
+        flex: 1 0 30%;
+        max-width: 30%;
+    }
+}

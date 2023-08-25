@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-image">
+        <figure class="image charity-logo">
+            <img [src]="imageUrl">
+        </figure>
+    </div>
+    <div class="card-content">
+        <p class="title is-5">
+            {{title}}
+        </p>
+        <p class="content">
+            {{description}}
+        </p>
+        <div class="level">
+            <div class="level-item">
+                <a target="_blank" [href]="charityUrl"
+                    class="button is-primary">Donate</a>
+            </div>
+        </div>
+    </div>
+</div>

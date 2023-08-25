@@ -33,6 +33,7 @@ import { EventFullDetailsComponent } from './features/events/event-full-details/
 import { MyEventDetailsPageComponent } from './pages/events/my-event-details-page/my-event-details-page.component';
 import { EventStatusFormComponent } from './features/events/event-status-form/event-status-form.component';
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { CharityCardComponent } from './features/donations/charity-card/charity-card.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +61,8 @@ import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component
         EventFullDetailsComponent,
         MyEventDetailsPageComponent,
         EventStatusFormComponent,
-        SignInPageComponent
+        SignInPageComponent,
+        CharityCardComponent
     ],
     imports: [
         BrowserModule,
