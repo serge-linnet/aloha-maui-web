@@ -18,7 +18,8 @@ export class AuthService {
         return this.http.post(`${environment.apiUrl}/Auth/LoginWithGoogle`,
             JSON.stringify(credentials),
             {
-                headers: header
+                headers: header,
+                withCredentials: true
             }).pipe(
                 tap((response: User) => {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(response));
