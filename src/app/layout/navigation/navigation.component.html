@@ -27,16 +27,12 @@
                         <i class="fa-solid fa-user-astronaut"></i>
                     </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Account
-                        </a>
                         <a class="navbar-item" routerLink="admin/manage-events" *ngIf="isAdmin">
                             Manage Events
                         </a>
-                        <a class="navbar-item" routerLink="user/my-events" *ngIf="isAdmin">
+                        <a class="navbar-item" routerLink="user/my-events" *ngIf="!isAdmin">
                             My Events
                         </a>
-                        <hr class="navbar-divider">
                         <a class="navbar-item" (click)="signOut()">
                             Sign Out
                         </a>

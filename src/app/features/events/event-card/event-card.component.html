@@ -1,0 +1,29 @@
+<div class="card mb-3">
+    <div class="card-content">
+        <div class="content">
+            <div class="level" *ngIf="showStatus">
+                <p>
+                    Status: <span class="tag is-medium" [ngClass]="getStatusClass(event.status!)" > {{ getStatus(event.status!)}}</span>
+                </p>
+            </div>
+            <div class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}
+                        </p>
+                        <p class="title is-4"><a [routerLink]="[event.id]">{{ event.title }}</a></p>
+                        <p>{{ descriptionText }}</p>
+                        <span class="tag is-primary is-medium">${{ event.price || 20 }}</span>
+                    </div>
+                </div>
+                <div class="media-right">
+                    <figure class="media-left">
+                        <p class="image">
+                            <img [src]="event.assets?.thumbnail">
+                        </p>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ export class EventFullDetailsComponent {
     get status() {
         return this.event.status === EVENT_STATUS_PENDING ? "Pending" : "Approved";
     }
-    
+
     get statusClass() {
         return this.event.status === EVENT_STATUS_PENDING ? "is-warning" : "is-primary";
     }
