@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventFullDetailsComponent } from './features/events/event-full-details/event-full-details.component';
 import { MyEventDetailsPageComponent } from './pages/events/my-event-details-page/my-event-details-page.component';
 import { EventStatusFormComponent } from './features/events/event-status-form/event-status-form.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import { EventStatusFormComponent } from './features/events/event-status-form/ev
         ValidationErrorsComponent,
         EventFullDetailsComponent,
         MyEventDetailsPageComponent,
-        EventStatusFormComponent
+        EventStatusFormComponent,
+        SignInPageComponent
     ],
     imports: [
         BrowserModule,

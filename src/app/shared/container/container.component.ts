@@ -7,7 +7,7 @@ import { Component, Input } from "@angular/core";
 })
 export class ContainerComponent {
     @Input()
-    public size: "narrow" | "medium" | undefined
+    public size: "narrow" | "medium" | "tiny" | undefined
 
     getClass() {
         switch (this.size) {
@@ -16,6 +16,9 @@ export class ContainerComponent {
             }
             case "medium": {
                 return "is-medium"
+            }
+            case "tiny": {
+                return "is-tiny"
             }
         }
         return "";

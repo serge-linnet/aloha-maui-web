@@ -4,16 +4,22 @@
     </div>
 </section>
 
-<app-section *ngIf="isLoggedIn; else logIn">
+<app-section *ngIf="isLoggedIn">
     <app-container size="narrow">
         <app-submit-event-form></app-submit-event-form>
     </app-container>
 </app-section>
 
-<ng-template #logIn>
+<div *ngIf="!isLoggedIn">
     <app-section>
-        <app-container size="narrow">
+        <app-container size="tiny">
+            <div class="title">Log in with your Google account</div>
+            <div class="subtitle">This way, you can easily add and see all your events</div>
+        </app-container>
+    </app-section>
+    <app-section>
+        <app-container size="tiny">
             <app-login [redirectUrl]="['/events/create']"></app-login>
         </app-container>
     </app-section>
-</ng-template>
+</div>

@@ -1,7 +1,9 @@
 
-import { Component, Input, NgZone, OnInit } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { Component, Inject, Input, NgZone, OnInit, Renderer2 } from "@angular/core";
 import { Router } from "@angular/router";
 import { CredentialResponse } from "google-one-tap";
+import { ToastrService } from "ngx-toastr";
 import { AuthService } from "src/app/services/auth.service";
 import { environment } from "src/environments/environment";
 
@@ -13,15 +15,24 @@ import { environment } from "src/environments/environment";
 export class LoginComponent implements OnInit {
     @Input() redirectUrl: string | string[] | undefined;
 
-    constructor(private router: Router,
-        private authService: AuthService,
-        private ngZone: NgZone) { }
+    loading: boolean = false;
 
+    constructor(private router: Router,
+        private ngZone: NgZone,
+        private renderer2: Renderer2,
+        @Inject(DOCUMENT) private _document: Document,
+        private authService: AuthService,
+        private toastr: ToastrService) { }
 
     ngOnInit() {
-        this.ngZone.run(() => {
-            this.initGoogleOneTap();
-        });        
+        this.initGoogleOneTap();
+    }
+    ngAfterViewInit() {
+        const script1 = this.renderer2.createElement('script');
+        script1.src = `https://accounts.google.com/gsi/client`;
+        script1.async = `true`;
+        script1.defer = `true`;
+        this.renderer2.appendChild(this._document.body, script1);
     }
 
     initGoogleOneTap() {
@@ -46,20 +57,28 @@ export class LoginComponent implements OnInit {
     }
 
     async handleCredentialResponse(response: CredentialResponse) {
-        console.log("handleCredentialResponse");
+        this.ngZone.run(() => {
+            this.loading = true;
+        });
+        
         await this.authService.loginWithGoogle(response.credential).subscribe(
             () => {
                 this.ngZone.run(() => {
-                    if (this.redirectUrl) { 
+
+                    if (this.redirectUrl) {
                         this.router.navigate(this.redirectUrl as any[]);
-                        
+
                     } else {
                         this.router.navigate(['/']);
                     }
                 })
             },
             (error: any) => {
-                console.log(error);
+                this.toastr.error("Please refresh the page and try again. Contact us if the issue persists.", "Login failed");
+                this.ngZone.run(() => {
+                    this.loading = false;
+                });
+                console.error(error);
             }
         );
     }
