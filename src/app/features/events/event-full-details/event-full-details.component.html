@@ -20,8 +20,7 @@
 
 <app-section>
     <app-container size="medium">
-        <p class="text">
-            {{ event.description }}
+        <p class="text" [innerHTML]="event.description">
         </p>
     </app-container>
 </app-section>
