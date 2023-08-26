@@ -13,7 +13,7 @@
                         </p>
                         <p class="title is-4"><a [routerLink]="[event.id]">{{ event.title }}</a></p>
                         <p>{{ descriptionText }}</p>
-                        <span class="tag is-primary is-medium">${{ event.price || 20 }}</span>
+                        <span class="tag is-primary is-medium" *ngIf="event.price">${{ event.price }}</span>
                     </div>
                 </div>
                 <div class="media-right">
