@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
         private toastr: ToastrService) { }
 
     ngOnInit() {
+        console.log(`${environment.apiUrl}/Auth/LogInWithGoogleRedirect`)
         this.initGoogleOneTap();
     }
     ngAfterViewInit() {
@@ -35,6 +36,8 @@ export class LoginComponent implements OnInit {
         this.renderer2.appendChild(this._document.body, script1);
     }
 
+    
+
     initGoogleOneTap() {
         // @ts-ignore
         window.onGoogleLibraryLoad = () => {
@@ -43,7 +46,9 @@ export class LoginComponent implements OnInit {
                 client_id: environment.googleOAuthClientId,
                 callback: this.handleCredentialResponse.bind(this),
                 auto_select: false,
-                cancel_on_tap_outside: true
+                cancel_on_tap_outside: true,
+                ux_mode: "redirect",
+                login_uri: `${environment.apiUrl}/Auth/LogInWithGoogleRedirect`,
             });
             // @ts-ignore
             google.accounts.id.renderButton(
