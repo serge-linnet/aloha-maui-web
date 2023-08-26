@@ -30,7 +30,7 @@
                         <a class="navbar-item" routerLink="admin/manage-events" *ngIf="isAdmin">
                             Manage Events
                         </a>
-                        <a class="navbar-item" routerLink="user/my-events" *ngIf="!isAdmin">
+                        <a class="navbar-item" routerLink="user/my-events">
                             My Events
                         </a>
                         <a class="navbar-item" (click)="signOut()">

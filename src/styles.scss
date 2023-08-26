@@ -12,5 +12,10 @@ $family-primary: $family-serif;
     font-family: 'Bitter', $family-primary
 }
 
+.is-wide {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 @import "../node_modules/bulma/sass/utilities/functions.sass";
