@@ -33,10 +33,8 @@ export class AuthService {
 
     isAuthenticated(): boolean {
         const data = localStorage.getItem(STORAGE_KEY);
-        if (data) {
-            
+        if (data) {            
             const user = JSON.parse(data) as User;
-            console.log(user, user.tokenExpires, new Date(user.tokenExpires!) > new Date());
             return !!(user && user.tokenExpires && new Date(user.tokenExpires) > new Date());
         }
         return false;
@@ -53,7 +51,6 @@ export class AuthService {
     }
 
     authorizeFromRedirect(usr: string) {
-        //parse the user from base 64
         const user = JSON.parse(atob(usr)) as User;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
     }

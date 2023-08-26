@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,15 +10,19 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AuthorizeRedirectPageComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
-    
+    constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router, private toastr: ToastrService) { }
+
     ngOnInit(): void {
-        const href = window.location.href;        
-        var token = href.substring(href.indexOf("?") + 1);
-        if (token.endsWith("=")) {
-            token = token.substring(0, token.length - 1);
-        }
-        this.authService.authorizeFromRedirect(token);
+        try {
+            const href = window.location.href;
+            var token = href.substring(href.indexOf("?") + 1);
+            if (token.endsWith("=")) {
+                token = token.substring(0, token.length - 1);
+            }
+            this.authService.authorizeFromRedirect(token);
+        } catch (error) {
+            this.toastr.error("Error while authorizing. Please try again later.");
+         }
         this.router.navigate(["/"]);
     }
 }
