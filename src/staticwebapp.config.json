@@ -1,4 +1,5 @@
 {
     "globalHeaders": {
+        "Cross-Origin-Opener-Policy": "same-origin same-origin-allow-popups"
     }
 }
