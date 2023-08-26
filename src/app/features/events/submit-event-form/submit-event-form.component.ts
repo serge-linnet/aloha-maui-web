@@ -35,8 +35,8 @@ export class SubmitEventFormComponent implements OnInit {
         this.eventForm = this.formBuilder.group({
             title: ["", Validators.required],
             description: ["", Validators.required],
-            price: ["", Validators.required],
-            currency: ["EUR", Validators.required],
+            price: [""],
+            currency: ["EUR"],
             photo: ["", Validators.required],
             startsAt: ["", this.requiredDateValidator],
             endsAt: ["", [this.requiredDateValidator, this.endsAfterStartDateValidator]],
