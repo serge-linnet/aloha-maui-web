@@ -11,7 +11,7 @@ import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/
 import { NewsMediaComponent } from "./pages/news-media/news-media.component";
 import { MyEventsComponent } from "./pages/my-events/my-events.component";
 import { SignInPageComponent } from "./pages/auth/sign-in-page/sign-in-page.component";
-import { AuthorizeRedirectPageComponent } from "./pages/auth/authorize-redirect-page/authorize-redirect-page.component";
+import { SignUpPageComponent } from "./pages/auth/sign-up-page/sign-up-page.component";
 
 const ADMIN = "Admin";
 
@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: "news-and-media", component: NewsMediaComponent },
 
     { path: "sign-in", component: SignInPageComponent },
-    { path: "authorize", component: AuthorizeRedirectPageComponent },
+    { path: "sign-up", component: SignUpPageComponent },
 
     { path: "events", component: EventsPageComponent },    
     { path: "events/create", component: SubmitEventComponent },

@@ -37,8 +37,8 @@ import { CharityCardComponent } from "./features/donations/charity-card/charity-
 import { EventCardComponent } from "./features/events/event-card/event-card.component";
 import { ModalComponent } from "./shared/modal/modal.component";
 import { SpinnerComponent } from "./shared/spinner/spinner.component";
-import { AuthorizeRedirectPageComponent } from "./pages/auth/authorize-redirect-page/authorize-redirect-page.component";
 import { GalleryModule } from "ng-gallery";
+import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.component';
 
 @NgModule({
     declarations: [
@@ -71,7 +71,7 @@ import { GalleryModule } from "ng-gallery";
         EventCardComponent,
         ModalComponent,
         SpinnerComponent,
-        AuthorizeRedirectPageComponent
+        SignUpPageComponent
     ],
     imports: [
         BrowserModule,
