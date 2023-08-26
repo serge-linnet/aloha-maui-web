@@ -111,7 +111,6 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     placeChanged(place: Place) {
-        console.log(place);
         this.addressPicked = true;
         this.eventForm.get("place")?.reset();
         this.eventForm.patchValue({ place: place });
@@ -124,7 +123,6 @@ export class SubmitEventFormComponent implements OnInit {
         }
 
         if (control.invalid && (control.dirty || control.touched)) {
-            console.log(control.errors);
             return "is-danger";
         }
         return "";
@@ -179,7 +177,6 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     requiredIfOffline(control: FormControl) {
-        console.log(control);
         const eventForm = control.parent;
         if (!eventForm) {
             return null;
