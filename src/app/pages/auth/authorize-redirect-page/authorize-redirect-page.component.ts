@@ -23,6 +23,10 @@ export class AuthorizeRedirectPageComponent implements OnInit {
         } catch (error) {
             this.toastr.error("Error while authorizing. Please try again later.");
         }
-        this.router.navigate(["/"]);
+
+        setTimeout(() => {
+
+            this.router.navigate(["/"]);
+        }, 3 * 1000);
     }
 }

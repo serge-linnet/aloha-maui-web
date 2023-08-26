@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
                 callback: this.handleCredentialResponse.bind(this),
                 auto_select: false,
                 cancel_on_tap_outside: true,
-                ux_mode: "redirect",
-                login_uri: `${environment.apiUrl}/Auth/LogInWithGoogleRedirect`,
+                //ux_mode: "redirect",
+                //login_uri: `${environment.apiUrl}/Auth/LogInWithGoogleRedirect`,
             });
             // @ts-ignore
             google.accounts.id.renderButton(
