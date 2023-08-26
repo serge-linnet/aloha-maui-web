@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'app-charity-card',
-    templateUrl: './charity-card.component.html',
-    styleUrls: ['./charity-card.component.scss']
+    selector: "app-charity-card",
+    templateUrl: "./charity-card.component.html",
+    styleUrls: ["./charity-card.component.scss"]
 })
 export class CharityCardComponent {
     @Input() description?: string;

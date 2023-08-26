@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { CommunityEvent, EVENT_STATUS_PENDING } from 'src/app/models/event.model';
+import { Component, Input } from "@angular/core";
+import { CommunityEvent, EVENT_STATUS_PENDING } from "src/app/models/event.model";
 
 @Component({
-    selector: 'app-event-full-details',
-    templateUrl: './event-full-details.component.html',
-    styleUrls: ['./event-full-details.component.scss']
+    selector: "app-event-full-details",
+    templateUrl: "./event-full-details.component.html",
+    styleUrls: ["./event-full-details.component.scss"]
 })
 export class EventFullDetailsComponent {
     @Input() showStatus = false;

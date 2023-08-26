@@ -17,5 +17,9 @@ $family-primary: $family-serif;
     padding-right: 2.5rem;
 }
 
+.has-backdrop {
+    backdrop-filter: blur(5px);
+}
+
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 @import "../node_modules/bulma/sass/utilities/functions.sass";

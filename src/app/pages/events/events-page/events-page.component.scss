@@ -1,5 +1,5 @@
 .has-bg-image {
-    background: url("/assets/images/events-hero.jpg") center center;
+    background: url("/assets/images/events-hero-alt.jpg") center center;
     background-size: cover;
 }
 
@@ -21,4 +21,8 @@ p + p {
     &>button {
         width: 100%;
     }
+}
+
+.has-text-shadow {
+    text-shadow: 1px 1px 5px rgba(0,0,0,.5);
 }

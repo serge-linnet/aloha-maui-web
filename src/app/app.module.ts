@@ -22,22 +22,23 @@ import { EventDetailsPageComponent } from "./pages/events/event-details-page/eve
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
 import { AuthInterceptor } from "./auth.interceptor";
-import { NewsMediaComponent } from './pages/news-media/news-media.component';
-import { NewsCardComponent } from './features/news/news-card/news-card.component';
+import { NewsMediaComponent } from "./pages/news-media/news-media.component";
+import { NewsCardComponent } from "./features/news/news-card/news-card.component";
 import { LoginComponent } from "./features/auth/login/login.component";
-import { MyEventsComponent } from './pages/my-events/my-events.component';
-import { ValidationErrorsComponent } from './shared/validation-errors/validation-errors.component';
+import { MyEventsComponent } from "./pages/my-events/my-events.component";
+import { ValidationErrorsComponent } from "./shared/validation-errors/validation-errors.component";
 import { ToastrModule } from "ngx-toastr";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventFullDetailsComponent } from './features/events/event-full-details/event-full-details.component';
-import { MyEventDetailsPageComponent } from './pages/events/my-event-details-page/my-event-details-page.component';
-import { EventStatusFormComponent } from './features/events/event-status-form/event-status-form.component';
-import { SignInPageComponent } from './pages/auth/sign-in-page/sign-in-page.component';
-import { CharityCardComponent } from './features/donations/charity-card/charity-card.component';
-import { EventCardComponent } from './features/events/event-card/event-card.component';
-import { ModalComponent } from './shared/modal/modal.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { AuthorizeRedirectPageComponent } from './pages/auth/authorize-redirect-page/authorize-redirect-page.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { EventFullDetailsComponent } from "./features/events/event-full-details/event-full-details.component";
+import { MyEventDetailsPageComponent } from "./pages/events/my-event-details-page/my-event-details-page.component";
+import { EventStatusFormComponent } from "./features/events/event-status-form/event-status-form.component";
+import { SignInPageComponent } from "./pages/auth/sign-in-page/sign-in-page.component";
+import { CharityCardComponent } from "./features/donations/charity-card/charity-card.component";
+import { EventCardComponent } from "./features/events/event-card/event-card.component";
+import { ModalComponent } from "./shared/modal/modal.component";
+import { SpinnerComponent } from "./shared/spinner/spinner.component";
+import { AuthorizeRedirectPageComponent } from "./pages/auth/authorize-redirect-page/authorize-redirect-page.component";
+import { GalleryModule } from "ng-gallery";
 
 @NgModule({
     declarations: [
@@ -80,13 +81,14 @@ import { AuthorizeRedirectPageComponent } from './pages/auth/authorize-redirect-
         ReactiveFormsModule,
         NgxSimpleTextEditorModule,
         BrowserAnimationsModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        GalleryModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS, 
         useClass: AuthInterceptor, 
         multi: true
-      }],
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

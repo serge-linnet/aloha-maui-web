@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { CommunityEvent, EVENT_STATUS_APPROVED, EVENT_STATUS_PENDING, EVENT_STATUS_REJECTED } from 'src/app/models/event.model';
-import { EventService } from 'src/app/services/event.service';
+import { Component, Input } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { CommunityEvent, EVENT_STATUS_APPROVED, EVENT_STATUS_PENDING, EVENT_STATUS_REJECTED } from "src/app/models/event.model";
+import { EventService } from "src/app/services/event.service";
 
 @Component({
-    selector: 'app-event-status-form',
-    templateUrl: './event-status-form.component.html',
-    styleUrls: ['./event-status-form.component.scss']
+    selector: "app-event-status-form",
+    templateUrl: "./event-status-form.component.html",
+    styleUrls: ["./event-status-form.component.scss"]
 })
 export class EventStatusFormComponent {
     @Input() event!: CommunityEvent;

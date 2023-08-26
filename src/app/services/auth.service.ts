@@ -1,30 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user.model';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { Observable, tap } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { User } from "../models/user.model";
+import { environment } from "src/environments/environment";
 
-const STORAGE_KEY = 'user';
+const STORAGE_KEY = "user";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
 export class AuthService {
     constructor(private http: HttpClient) {
     }
 
     loginWithGoogle(credentials: string): Observable<User> {
-        const header = new HttpHeaders().set('Content-type', 'application/json');
+        const header = new HttpHeaders().set("Content-type", "application/json");
         return this.http.post(`${environment.apiUrl}/Auth/LoginWithGoogle`,
             JSON.stringify(credentials),
             {
                 headers: header,
                 withCredentials: true
             }).pipe(
-                tap((response: User) => {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(response));
-                })
-            );
+            tap((response: User) => {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(response));
+            })
+        );
     }
 
     refreshToken(): Observable<any> {

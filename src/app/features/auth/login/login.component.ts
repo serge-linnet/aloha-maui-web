@@ -15,7 +15,7 @@ import { environment } from "src/environments/environment";
 export class LoginComponent implements OnInit {
     @Input() redirectUrl: string | string[] | undefined;
 
-    loading: boolean = false;
+    loading = false;
 
     constructor(private router: Router,
         private ngZone: NgZone,
@@ -28,15 +28,14 @@ export class LoginComponent implements OnInit {
         console.log(`${environment.apiUrl}/Auth/LogInWithGoogleRedirect`)
         this.initGoogleOneTap();
     }
+
     ngAfterViewInit() {
-        const script1 = this.renderer2.createElement('script');
-        script1.src = `https://accounts.google.com/gsi/client`;
-        script1.async = `true`;
-        script1.defer = `true`;
+        const script1 = this.renderer2.createElement("script");
+        script1.src = "https://accounts.google.com/gsi/client";
+        script1.async = "true";
+        script1.defer = "true";
         this.renderer2.appendChild(this._document.body, script1);
     }
-
-    
 
     initGoogleOneTap() {
         // @ts-ignore
@@ -74,7 +73,7 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(this.redirectUrl as any[]);
 
                     } else {
-                        this.router.navigate(['/']);
+                        this.router.navigate(["/"]);
                     }
                 })
             },
@@ -87,8 +86,4 @@ export class LoginComponent implements OnInit {
             }
         );
     }
-
 }
-
-
-

@@ -96,7 +96,7 @@ export class SubmitEventFormComponent implements OnInit {
     async imagePicked(event: Event) {
         const file = (event.target as HTMLInputElement).files![0];
 
-        var dataUrlReaderPromise = new Promise<string | ArrayBuffer | null>((resolve, reject) => {
+        const dataUrlReaderPromise = new Promise<string | ArrayBuffer | null>((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
@@ -120,14 +120,14 @@ export class SubmitEventFormComponent implements OnInit {
     displayError(formControlName: string) {
         const control = this.eventForm.get(formControlName);
         if (!control) {
-            return '';
+            return "";
         }
 
         if (control.invalid && (control.dirty || control.touched)) {
             console.log(control.errors);
-            return 'is-danger';
+            return "is-danger";
         }
-        return '';
+        return "";
     }
 
     async onSubmit() {
@@ -180,13 +180,13 @@ export class SubmitEventFormComponent implements OnInit {
 
     requiredIfOffline(control: FormControl) {
         console.log(control);
-        var eventForm = control.parent;
+        const eventForm = control.parent;
         if (!eventForm) {
             return null;
         }
 
-        var isOffline = eventForm.get("isOffline")?.value;
-        var value = control.value;
+        const isOffline = eventForm.get("isOffline")?.value;
+        const value = control.value;
         if (isOffline) {
             return (value && value !== "") ? null : { required: true };
         }
@@ -194,12 +194,12 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     requiredIfOnline(control: FormControl) {
-        var eventForm = control.parent;
+        const eventForm = control.parent;
         if (!eventForm) {
             return null;
         }
-        var isOffline = eventForm.get("isOffline")?.value;
-        var value = control.value;
+        const isOffline = eventForm.get("isOffline")?.value;
+        const value = control.value;
 
         if (!isOffline) {
             return (value && value !== "") ? null : { required: true };
@@ -208,17 +208,17 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     endsAfterStartDateValidator(control: FormControl) {
-        var eventForm = control.parent;
+        const eventForm = control.parent;
         if (!eventForm) {
             return null;
         }
-        var startValue = eventForm.get("startsAt")?.value;
+        const startValue = eventForm.get("startsAt")?.value;
         if (!startValue || startValue == "") {
             return null;
         }
 
-        var start = new Date(startValue);
-        var end = new Date(control.value);
+        const start = new Date(startValue);
+        const end = new Date(control.value);
         return (start < end) ? null : { endsAfterStartDate: true };
     }
 }

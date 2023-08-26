@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { Component, Input } from "@angular/core";
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 
 @Component({
-    selector: 'app-validation-errors',
-    templateUrl: './validation-errors.component.html',
-    styleUrls: ['./validation-errors.component.scss']
+    selector: "app-validation-errors",
+    templateUrl: "./validation-errors.component.html",
+    styleUrls: ["./validation-errors.component.scss"]
 })
 export class ValidationErrorsComponent {
     @Input() control?: AbstractControl<any, any> | null;

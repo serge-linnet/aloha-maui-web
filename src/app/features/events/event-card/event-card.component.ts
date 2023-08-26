@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { CommunityEvent, EVENT_STATUS_PENDING } from 'src/app/models/event.model';
+import { Component, Input } from "@angular/core";
+import { CommunityEvent, EVENT_STATUS_PENDING } from "src/app/models/event.model";
 
 @Component({
-    selector: 'app-event-card',
-    templateUrl: './event-card.component.html',
-    styleUrls: ['./event-card.component.scss']
+    selector: "app-event-card",
+    templateUrl: "./event-card.component.html",
+    styleUrls: ["./event-card.component.scss"]
 })
 export class EventCardComponent {
     @Input() event!: CommunityEvent;
@@ -22,7 +22,7 @@ export class EventCardComponent {
         if (!this.event.description) {
             return "";
         }
-        var content = new DOMParser()
+        const content = new DOMParser()
             .parseFromString(this.event.description, "text/html")
             .documentElement.textContent;
         if (!content) {
