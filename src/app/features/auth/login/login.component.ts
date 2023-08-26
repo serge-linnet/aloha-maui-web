@@ -30,10 +30,13 @@ export class LoginComponent implements OnInit {
     }
 
     ngAfterViewInit() {
+        const nonce = Math.floor(Math.random() * 1000000000);
+
         const script1 = this.renderer2.createElement("script");
         script1.src = "https://accounts.google.com/gsi/client";
         script1.async = "true";
         script1.defer = "true";
+        script1.nonce = nonce.toString();
         this.renderer2.appendChild(this._document.body, script1);
     }
 
