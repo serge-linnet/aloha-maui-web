@@ -32,11 +32,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventFullDetailsComponent } from './features/events/event-full-details/event-full-details.component';
 import { MyEventDetailsPageComponent } from './pages/events/my-event-details-page/my-event-details-page.component';
 import { EventStatusFormComponent } from './features/events/event-status-form/event-status-form.component';
-import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { SignInPageComponent } from './pages/auth/sign-in-page/sign-in-page.component';
 import { CharityCardComponent } from './features/donations/charity-card/charity-card.component';
 import { EventCardComponent } from './features/events/event-card/event-card.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AuthorizeRedirectPageComponent } from './pages/auth/authorize-redirect-page/authorize-redirect-page.component';
 
 @NgModule({
     declarations: [
@@ -68,7 +69,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
         CharityCardComponent,
         EventCardComponent,
         ModalComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        AuthorizeRedirectPageComponent
     ],
     imports: [
         BrowserModule,

@@ -49,4 +49,10 @@ export class AuthService {
     signOutExternal() {
         localStorage.removeItem(STORAGE_KEY);
     }
+
+    authorizeFromRedirect(usr: string) {
+        //parse the user from base 64
+        const user = JSON.parse(atob(usr)) as User;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    }
 }
