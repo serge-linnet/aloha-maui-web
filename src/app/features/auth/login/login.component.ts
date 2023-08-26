@@ -25,20 +25,19 @@ export class LoginComponent implements OnInit {
         private toastr: ToastrService) { }
 
     ngOnInit() {
-        console.log(`${environment.apiUrl}/Auth/LogInWithGoogleRedirect`)
         this.initGoogleOneTap();
     }
 
-    ngAfterViewInit() {
-        const nonce = Math.floor(Math.random() * 1000000000);
+    // ngAfterViewInit() {
+    //     const nonce = Math.floor(Math.random() * 1000000000);
 
-        const script1 = this.renderer2.createElement("script");
-        script1.src = "https://accounts.google.com/gsi/client";
-        script1.async = "true";
-        script1.defer = "true";
-        script1.nonce = nonce.toString();
-        this.renderer2.appendChild(this._document.body, script1);
-    }
+    //     const script1 = this.renderer2.createElement("script");
+    //     script1.src = "https://accounts.google.com/gsi/client";
+    //     script1.async = "true";
+    //     script1.defer = "true";
+    //     script1.nonce = nonce.toString();
+    //     this.renderer2.appendChild(this._document.body, script1);
+    // }
 
     initGoogleOneTap() {
         // @ts-ignore
@@ -49,8 +48,8 @@ export class LoginComponent implements OnInit {
                 callback: this.handleCredentialResponse.bind(this),
                 auto_select: false,
                 cancel_on_tap_outside: true,
-                //ux_mode: "redirect",
-                //login_uri: `${environment.apiUrl}/Auth/LogInWithGoogleRedirect`,
+                ux_mode: "redirect",
+                login_uri: `${environment.apiUrl}/Auth/LogInWithGoogleRedirect`,
             });
             // @ts-ignore
             google.accounts.id.renderButton(
