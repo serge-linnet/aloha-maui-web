@@ -1,0 +1,7 @@
+<div class="modal" [ngClass]="open ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <ng-content></ng-content>
+    </div>
+    <button class="modal-close is-large" *ngIf="options.hasCloseButton" aria-label="close" (click)="close()"></button>
+</div>

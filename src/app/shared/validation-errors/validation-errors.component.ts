@@ -8,9 +8,8 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 })
 export class ValidationErrorsComponent {
     @Input() control?: AbstractControl<any, any> | null;
-    @Input() errors?: ValidationErrors | null;
 
     get valid() {
-        return !(this.control!.invalid && (this.control!.dirty || this.control!.touched));
+        return !(this.control!.invalid && (this.control!.dirty || this.control!.touched))
     }
 }

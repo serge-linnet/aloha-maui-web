@@ -48,6 +48,7 @@
         </div>
         <div class="field">
             <label class="label">Cover photo</label>
+            <app-validation-errors [control]="eventForm.get('photo')"></app-validation-errors>
             <div class="control">
                 <input class="input" type="file" #filePicker (change)="imagePicked($event)">
             </div>
@@ -108,25 +109,25 @@
             <div class="field">
                 <label class="label">Location / Business Name</label>
                 <div class="control">
-                    <input class="input" type="text" formControlName="placeName">
+                    <input class="input" type="text" formControlName="placeName" autocomplete="off">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Address</label>
                 <div class="control">
-                    <input class="input" type="text" formControlName="address">
+                    <input class="input" type="text" formControlName="address" autocomplete="off">
                 </div>
             </div>
             <div class="field">
                 <label class="label">City / Town</label>
                 <div class="control">
-                    <input class="input" type="text" formControlName="locality">
+                    <input class="input" type="text" formControlName="locality" autocomplete="off">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Region / State</label>
                 <div class="control">
-                    <input class="input" type="text" formControlName="region">
+                    <input class="input" type="text" formControlName="region" autocomplete="off">
                 </div>
             </div>
             <div class="columns">
@@ -135,7 +136,7 @@
                         <label class="label">Country</label>
                         <div class="control">
                             <span class="select">
-                                <select formControlName="country">
+                                <select formControlName="country" autocomplete="off">
                                     <option value="IE">Ireland</option>
                                     <option value="FR">France</option>
                                     <option value="FR">Portugal</option>
@@ -151,7 +152,7 @@
                     <div class="field">
                         <label class="label">Post Code</label>
                         <div class="control">
-                            <input class="input" type="text" formControlName="postcode">
+                            <input class="input" type="text" formControlName="postcode" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -215,3 +216,25 @@
         </div>
     </app-section>
 </form>
+
+<app-modal [options]="{hasCloseButton: false}" [open]="submitting">
+    <div class="card">
+        <div class="card-content">
+            <div class="content" *ngIf="!eventSubmitted">
+                <p class="title has-text-centered">Please wait...</p>
+                <p class="has-text-centered">
+                    <app-spinner></app-spinner>
+                </p>
+            </div>
+            <div class="content" *ngIf="eventSubmitted">
+                <p class="title has-text-centered">Thank you for submitting your event!</p>
+                <p class="subtitle has-text-centered">
+                    You will be redirected to the event page in a few seconds.
+                </p>
+                <p class="has-text-centered">
+                    <i class="fa-solid fa-check fa-beat-fade fa-2xl has-text-success"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</app-modal>

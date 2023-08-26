@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, NgZone, OnInit } from "@angular/core";
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import {
     BOLD_BUTTON, ITALIC_BUTTON, ORDERED_LIST_BUTTON,
@@ -16,42 +16,42 @@ import { EventService } from "src/app/services/event.service";
     styleUrls: ["./submit-event-form.component.scss"]
 })
 export class SubmitEventFormComponent implements OnInit {
-    eventForm: FormGroup;
-
     countries = [
-        { name: "Ireland", code: "IE" }, 
-        { name: "Portugal", code: "PT" }, 
-        { name: "United Kingdom", code: "UK" }, 
-        { name: "United States", code: "US"}
+        { name: "Ireland", code: "IE" },
+        { name: "Portugal", code: "PT" },
+        { name: "United Kingdom", code: "UK" },
+        { name: "United States", code: "US" }
     ]
-
     editorButtons = [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, SEPARATOR,
         ORDERED_LIST_BUTTON, UNORDERED_LIST_BUTTON, SEPARATOR,
         SUBSCRIPT_BUTTON, SUPERSCRIPT_BUTTON];
-
     addressPicked = false;
+    submitting = false;
+    eventSubmitted = false;
+    eventForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private eventService: EventService, private toastr: ToastrService, private router: Router) {
+    constructor(private formBuilder: FormBuilder, private eventService: EventService, private toastr: ToastrService, 
+        private router: Router, private ngZone: NgZone) {
         this.eventForm = this.formBuilder.group({
             title: ["", Validators.required],
-            description: [""],
+            description: ["", Validators.required],
             price: ["", Validators.required],
             currency: ["EUR", Validators.required],
-            photo: [""],
-            startsAt: ["", Validators.required],
-            endsAt: ["", Validators.required],
+            photo: ["", Validators.required],
+            startsAt: ["", this.requiredDateValidator],
+            endsAt: ["", [this.requiredDateValidator, this.endsAfterStartDateValidator]],
             place: this.formBuilder.group({
-                placeName: [],
-                address: [],
-                postcode: [],
-                locality: [],
-                region: [],
-                country: [],
-                latitude: [],
-                longitude: []
+                placeName: [""],
+                address: ["", this.requiredIfOffline],
+                postcode: ["", this.requiredIfOffline],
+                locality: ["", this.requiredIfOffline],
+                region: ["", this.requiredIfOffline],
+                country: ["", this.requiredIfOffline],
+                latitude: ["", this.requiredIfOffline],
+                longitude: ["", this.requiredIfOffline]
             }),
             isOffline: [true],
-            onlineDetails: [""],
+            onlineDetails: ["", this.requiredIfOnline],
             familyFriendly: [false],
             dogFriendly: [false],
             instagram: [""],
@@ -131,19 +131,88 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     async onSubmit() {
-        console.log(this.eventForm.value);
-
         if (this.eventForm.invalid) {
+            this.markFormGroupTouched(this.eventForm);
+            if (this.isOffline) {
+                this.markFormGroupTouched(this.eventForm.get("place") as FormGroup);
+            }
             this.toastr.error("Please fill in all required fields.");
             return;
         }
 
-        this.eventService.create(this.eventForm.value).subscribe(x => {
-            this.toastr.success("Event created successfully!");
-            this.router.navigate(["/events", x.id]);
-        }, error => {
-            this.toastr.error("Something went wrong!");
-        });
+        const communityEvent = this.eventForm.value;
+        if (this.isOffline) {
+            communityEvent.onlineDetails = null;
+        } else {
+            communityEvent.place = null;
+        }
 
+        this.submitting = true;
+
+        this.eventService.create(communityEvent).subscribe(x => {
+            this.eventSubmitted = true;
+            
+            setTimeout(() => {
+                this.router.navigate(["/events", x.id]);
+            }, 2 * 1000);            
+        }, error => {
+            this.submitting = false;
+            console.log(error);
+            this.toastr.error("Something went wrong. If this persists, please contact us.");
+        });
+    }
+
+    markFormGroupTouched(formGroup: FormGroup) {
+        Object.values(formGroup.controls).forEach((control: AbstractControl<any, any>) => {
+            control.markAsTouched();
+        });
+    }
+
+    requiredDateValidator(control: FormControl) {
+        return (control.value && control.value !== "") ? null : { required: true };
+    }
+
+    requiredIfOffline(control: FormControl) {
+        console.log(control);
+        var eventForm = control.parent;
+        if (!eventForm) {
+            return null;
+        }
+
+        var isOffline = eventForm.get("isOffline")?.value;
+        var value = control.value;
+        if (isOffline) {
+            return (value && value !== "") ? null : { required: true };
+        }
+        return null;
+    }
+
+    requiredIfOnline(control: FormControl) {
+        var eventForm = control.parent;
+        if (!eventForm) {
+            return null;
+        }
+        var isOffline = eventForm.get("isOffline")?.value;
+        var value = control.value;
+
+        if (!isOffline) {
+            return (value && value !== "") ? null : { required: true };
+        }
+        return null;
+    }
+
+    endsAfterStartDateValidator(control: FormControl) {
+        var eventForm = control.parent;
+        if (!eventForm) {
+            return null;
+        }
+        var startValue = eventForm.get("startsAt")?.value;
+        if (!startValue || startValue == "") {
+            return null;
+        }
+
+        var start = new Date(startValue);
+        var end = new Date(control.value);
+        return (start < end) ? null : { endsAfterStartDate: true };
     }
 }

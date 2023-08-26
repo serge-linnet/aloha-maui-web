@@ -1,5 +1,5 @@
 /// <reference types="@types/googlemaps" />
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild } from "@angular/core";
 import { Place } from "../../models/place.model";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
@@ -18,6 +18,8 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
     @ViewChild("input") inputElement?: ElementRef<HTMLInputElement>;
     @Output() placeChanged = new EventEmitter<Place>();
 
+    constructor(private ngZone: NgZone) { }
+
     query = "";
     onChange = (_: Place) => { };
     onTouched = () => { };
@@ -33,7 +35,7 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
         // no-op, control does not support writing
     }
 
-    registerOnChange(onChange: any): void {        
+    registerOnChange(onChange: any): void {
         this.onChange = onChange;
     }
 
@@ -75,7 +77,7 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
                         }
                         else {
                             result.address = component.long_name;
-                        }                        
+                        }
                         break;
                     }
                     case "postal_code": {
@@ -96,9 +98,11 @@ export class AddressAutocompleteComponent implements OnInit, AfterViewInit, Cont
                     }
                 }
             });
-            
-            this.placeChanged.next(result);
-            this.onChange(result);
+
+            this.ngZone.run(() => {
+                this.placeChanged.next(result);
+                this.onChange(result);
+            });
         });
     }
 }

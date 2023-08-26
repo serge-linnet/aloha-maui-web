@@ -35,6 +35,8 @@ import { EventStatusFormComponent } from './features/events/event-status-form/ev
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { CharityCardComponent } from './features/donations/charity-card/charity-card.component';
 import { EventCardComponent } from './features/events/event-card/event-card.component';
+import { ModalComponent } from './shared/modal/modal.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
     declarations: [
@@ -64,7 +66,9 @@ import { EventCardComponent } from './features/events/event-card/event-card.comp
         EventStatusFormComponent,
         SignInPageComponent,
         CharityCardComponent,
-        EventCardComponent
+        EventCardComponent,
+        ModalComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,

@@ -1,1 +1,4 @@
-<p class="help is-danger" *ngIf="!valid">Field is required</p>
+<ul *ngIf="control && !valid">
+    <li class="help is-danger" *ngIf="!!control.hasError('required')">Field is required</li>
+    <li class="help is-danger" *ngIf="!!control.hasError('endsAfterStartDate')">End date cannot be less than the start date</li>    
+</ul>
