@@ -35,7 +35,7 @@ export class SubmitEventFormComponent implements OnInit {
         this.eventForm = this.formBuilder.group({
             title: ["", Validators.required],
             description: ["", Validators.required],
-            price: [""],
+            price: [null],
             currency: ["EUR"],
             photo: ["", Validators.required],
             startsAt: ["", this.requiredDateValidator],
@@ -145,6 +145,12 @@ export class SubmitEventFormComponent implements OnInit {
             communityEvent.onlineDetails = null;
         } else {
             communityEvent.place = null;
+        }
+
+        const hasPrice = !!this.eventForm.get("price")?.value;
+        if (!hasPrice) {
+            communityEvent.price = null;
+            communityEvent.currency = null;
         }
 
         this.submitting = true;
