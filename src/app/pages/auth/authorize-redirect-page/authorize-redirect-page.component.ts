@@ -11,10 +11,9 @@ export class AuthorizeRedirectPageComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
     ngOnInit(): void {
-        this.route.params.subscribe((params: Params) => {
-            const token = params["usr"];
-            this.authService.authorizeFromRedirect(token);
-            this.router.navigate(["/"]);
-        });
+        const href = window.location.href;
+        const token = href.substring(href.indexOf("usr=") + 4);
+        this.authService.authorizeFromRedirect(token);
+        this.router.navigate(["/"]);
     }
 }
