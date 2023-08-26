@@ -34,7 +34,9 @@ export class AuthService {
     isAuthenticated(): boolean {
         const data = localStorage.getItem(STORAGE_KEY);
         if (data) {
+            
             const user = JSON.parse(data) as User;
+            console.log(user, user.tokenExpires, new Date(user.tokenExpires!) > new Date());
             return !!(user && user.tokenExpires && new Date(user.tokenExpires) > new Date());
         }
         return false;
