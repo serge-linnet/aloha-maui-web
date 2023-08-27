@@ -12,6 +12,7 @@ import { NewsMediaComponent } from "./pages/news-media/news-media.component";
 import { MyEventsComponent } from "./pages/my-events/my-events.component";
 import { SignInPageComponent } from "./pages/auth/sign-in-page/sign-in-page.component";
 import { SignUpPageComponent } from "./pages/auth/sign-up-page/sign-up-page.component";
+import { CreateEventPageComponent } from "./pages/events/create-event-page/create-event-page.component";
 
 const ADMIN = "Admin";
 
@@ -25,7 +26,7 @@ const routes: Routes = [
     { path: "sign-up", component: SignUpPageComponent },
 
     { path: "events", component: EventsPageComponent },    
-    { path: "events/create", component: SubmitEventComponent },
+    { path: "events/create", component: CreateEventPageComponent },
     { path: "events/:id", component: EventDetailsPageComponent },
     { path: "user/my-events", component: MyEventsComponent },
     { path: "user/my-events/:id", component: EventDetailsPageComponent },
