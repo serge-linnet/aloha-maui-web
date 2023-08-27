@@ -28,7 +28,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/staticwebapp.config.json"              
+              "src/staticwebapp.config.json"
             ],
             "styles": [
               "src/styles.scss",
@@ -42,7 +42,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
