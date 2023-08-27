@@ -1,6 +1,5 @@
 {
     "globalHeaders": {
-        "X-Hello": "World"
     },
     "navigationFallback": {
         "rewrite": "/index.html",
