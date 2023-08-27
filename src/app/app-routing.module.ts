@@ -25,7 +25,8 @@ const routes: Routes = [
     { path: "sign-in", component: SignInPageComponent },
     { path: "sign-up", component: SignUpPageComponent },
 
-    { path: "events", component: EventsPageComponent },    
+    { path: "events", component: EventsPageComponent },
+    { path: "events/organize", component: SubmitEventComponent },
     { path: "events/create", component: CreateEventPageComponent },
     { path: "events/:id", component: EventDetailsPageComponent },
     { path: "user/my-events", component: MyEventsComponent },
