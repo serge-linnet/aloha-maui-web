@@ -29,15 +29,27 @@
                 </div>
             </div>
 
-            <p>
-                Alredy have an account? <a routerLink="/sign-in">Sign in here</a>
+            <p class="content">
+                Alredy have an account? <a routerLink="/sign-in" [queryParams]="{ redirect }">Sign in here</a>
             </p>
         </form>
+    </app-container>
+</app-section>
 
+<app-section>
+    <app-container size="tiny">
         <div *ngIf="loading">
             <p class="content has-text-centered mt-5">
                 Please wait while we are signing you up... <i class="fa-solid fa-circle-notch fa-spin"></i>
             </p>
+        </div>
+
+        <div class="notification is-warning" *ngIf="error.conflict">
+            Account with this email already exists. Please <a routerLink="/sign-in" [queryParams]="{ redirect }">sign
+                in</a> instead.
+        </div>
+        <div class="notification is-danger" *ngIf="error.unholy">
+            Something went wrong. We cannot sign you in right now, please try again later.
         </div>
     </app-container>
 </app-section>

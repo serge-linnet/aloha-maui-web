@@ -1,0 +1,56 @@
+<section class="hero is-info ">
+    <div class="hero-body">
+        <p class="title has-text-centered">Submit Community Event</p>
+    </div>
+</section>
+
+<app-section>
+    <app-container>
+        <div class="columns is-variable is-8-desktop">
+            <div class="column">
+                <p class="title">
+                    Community Event Ideas
+                </p>
+                <p-carousel [value]="ideas" [numVisible]="1" [circular]="true" autoPlayInterval="2000">
+                    <ng-template let-item pTemplate="item">
+                        <figure class="image is-small">
+                            <img [src]="item.image" [alt]="item.title">
+                        </figure>
+                        <p class="title is-5 has-text-centered has-text-weight-light is-uppercase">{{item.title}}</p>
+                        <ul>
+                            <li *ngFor="let line of item.lines">{{line}}</li>
+                        </ul>
+                    </ng-template>
+                </p-carousel>
+            </div>
+            <div class="column">
+                <p class="title">How to get started</p>
+                <ul class="get-started__list">
+                    <li>Register your community fundraising event at <a
+                            href="www.helphawaii.org/eventregister">www.helphawaii.org/eventregister</a></li>
+                    <li>Download & add details for your community event to the community event flyer <a
+                            href="www.helphawaii.org/event">www.helphawaii.org/event flyer</a></li>
+                    <li>Promote your event on your social media</li>
+                    <li>Link your community event at HelpHawaii_Instagram and HelpHawaii_Facebook</li>
+                    <li>Post images from your events on social media</li>
+                    <li>Donate the proceeds of your event directly <a
+                            href="www.helphawaii.org/donate">www.helphawaii.org/donate</a></li>
+                </ul>
+            </div>
+        </div>
+    </app-container>
+</app-section>
+
+<app-section>
+    <app-container size="narrow">
+        <div class="level">
+            <div class="level-item" *ngIf="!isLoggedIn">
+                <a class="button is-link is-medium" routerLink="/sign-up"
+                    [queryParams]="{ redirect: '/events/create' }">Create account to get started</a>
+            </div>
+            <div class="level-item" *ngIf="isLoggedIn">
+                <a class="button is-link is-medium" routerLink="/events/create">Get Started</a>
+            </div>
+        </div>
+    </app-container>
+</app-section>

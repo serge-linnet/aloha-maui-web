@@ -1,10 +1,55 @@
 <app-section>
     <app-container size="tiny">
-        <div class="title">Sign in with your account</div>
+        <div class="title">Sign in to your account</div>
     </app-container>
 </app-section>
 <app-section>
     <app-container size="tiny">
-        <app-login></app-login>
+        <form (submit)="login()" [formGroup]="loginForm">
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input formControlName="email" class="input" type="email" placeholder="Email" [(ngModel)]="email">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input formControlName="password" class="input" type="password" placeholder="Password"
+                        [(ngModel)]="password">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary" [disabled]="loading">Login</button>
+                </div>
+            </div>
+            <p class="content">
+                Don't have an account? <a routerLink="/sign-up" [queryParams]="{ redirect }">Sign up here</a>
+            </p>
+        </form>
+    </app-container>
+</app-section>
+<app-section>
+    <app-container size="tiny">
+        <div *ngIf="loading">
+            <p class="content has-text-centered mt-5">
+                Please wait while we are logging you in... <i class="fa-solid fa-circle-notch fa-spin"></i>
+            </p>
+        </div>
+        <div class="notification is-warning" *ngIf="error.invalid">
+            <p class="content">
+                Invalid email or password. Please try again.
+            </p>
+            <p class="content">
+                Don't have an account? <a routerLink="/sign-up" [queryParams]="{ redirect }">Sign up here</a>
+            </p>
+        </div>
+        <div class="notification is-danger" *ngIf="error.unholy">
+            <p class="content">Something went wrong. We cannot sign you in right now, please try again later.</p>
+        </div>
     </app-container>
 </app-section>

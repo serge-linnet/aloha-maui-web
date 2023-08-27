@@ -4,7 +4,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { DonationsComponent } from "./pages/donations/donations.component";
 import { GetInvolvedComponent } from "./pages/get-involved/get-involved.component";
 import { EventsPageComponent } from "./pages/events/events-page/events-page.component";
-import { SubmitEventComponent } from "./pages/submit-event/submit-event.component";
+import { SubmitEventComponent } from "./pages/submit-event-page/submit-event.component";
 import { EventDetailsPageComponent } from "./pages/events/event-details-page/event-details-page.component";
 import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events.component";
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
@@ -35,7 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true, scrollPositionRestoration: "enabled" })],
+    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled" })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

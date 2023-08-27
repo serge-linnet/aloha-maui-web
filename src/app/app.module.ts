@@ -12,7 +12,7 @@ import { EventsPageComponent } from "./pages/events/events-page/events-page.comp
 import { SectionComponent } from "./shared/section/section.component";
 import { ContainerComponent } from "./shared/container/container.component";
 import { NavigationComponent } from "./layout/navigation/navigation.component";
-import { SubmitEventComponent } from "./pages/submit-event/submit-event.component";
+import { SubmitEventComponent } from "./pages/submit-event-page/submit-event.component";
 import { NgxSimpleTextEditorModule } from "ngx-simple-text-editor";
 import { AddressAutocompleteComponent } from "./shared/address-autocomplete/address-autocomplete.component";
 import { SubmitEventFormComponent } from "./features/events/submit-event-form/submit-event-form.component";
@@ -24,7 +24,6 @@ import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/
 import { AuthInterceptor } from "./auth.interceptor";
 import { NewsMediaComponent } from "./pages/news-media/news-media.component";
 import { NewsCardComponent } from "./features/news/news-card/news-card.component";
-import { LoginComponent } from "./features/auth/login/login.component";
 import { MyEventsComponent } from "./pages/my-events/my-events.component";
 import { ValidationErrorsComponent } from "./shared/validation-errors/validation-errors.component";
 import { ToastrModule } from "ngx-toastr";
@@ -39,6 +38,8 @@ import { ModalComponent } from "./shared/modal/modal.component";
 import { SpinnerComponent } from "./shared/spinner/spinner.component";
 import { GalleryModule } from "ng-gallery";
 import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.component';
+import { CarouselModule } from 'primeng/carousel';
+import { CreateEventPageComponent } from './pages/events/create-event-page/create-event-page.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +61,6 @@ import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.comp
         ManageEventDetailsComponent,
         NewsMediaComponent,
         NewsCardComponent,
-        LoginComponent,
         MyEventsComponent,
         ValidationErrorsComponent,
         EventFullDetailsComponent,
@@ -71,7 +71,8 @@ import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.comp
         EventCardComponent,
         ModalComponent,
         SpinnerComponent,
-        SignUpPageComponent
+        SignUpPageComponent,
+        CreateEventPageComponent
     ],
     imports: [
         BrowserModule,
@@ -82,7 +83,8 @@ import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.comp
         NgxSimpleTextEditorModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
-        GalleryModule
+        GalleryModule,
+        CarouselModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS, 

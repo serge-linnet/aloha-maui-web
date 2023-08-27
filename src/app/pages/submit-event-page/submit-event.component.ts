@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
+import { ideas as CONTENT_IDEAS } from "./ideas.content"
 
 @Component({
     selector: "app-submit-event",
@@ -9,6 +10,10 @@ import { AuthService } from "src/app/services/auth.service";
 export class SubmitEventComponent {
     get isLoggedIn(): boolean {
         return this.authService.isAuthenticated();
+    }
+
+    get ideas() {
+        return CONTENT_IDEAS;
     }
 
     constructor(private authService: AuthService) {
