@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, UrlSegment } from "@angular/router";
 
 @Component({
     selector: "app-root",
@@ -6,9 +7,12 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-    constructor() {
+    hideAll = true;
+    constructor(private route : ActivatedRoute) {
+
     }
 
     async ngOnInit(): Promise<void> {
+        this.hideAll = window.location.pathname == "/" || window.location.pathname == "";
     }
 }

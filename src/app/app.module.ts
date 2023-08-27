@@ -40,6 +40,7 @@ import { GalleryModule } from "ng-gallery";
 import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CreateEventPageComponent } from './pages/events/create-event-page/create-event-page.component';
+import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 
 @NgModule({
     declarations: [
@@ -72,7 +73,8 @@ import { CreateEventPageComponent } from './pages/events/create-event-page/creat
         ModalComponent,
         SpinnerComponent,
         SignUpPageComponent,
-        CreateEventPageComponent
+        CreateEventPageComponent,
+        ComingSoonComponent
     ],
     imports: [
         BrowserModule,

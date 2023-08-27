@@ -13,11 +13,12 @@ import { MyEventsComponent } from "./pages/my-events/my-events.component";
 import { SignInPageComponent } from "./pages/auth/sign-in-page/sign-in-page.component";
 import { SignUpPageComponent } from "./pages/auth/sign-up-page/sign-up-page.component";
 import { CreateEventPageComponent } from "./pages/events/create-event-page/create-event-page.component";
+import { ComingSoonComponent } from "./pages/coming-soon/coming-soon.component";
 
 const ADMIN = "Admin";
 
 const routes: Routes = [
-    { path: "", component: HomeComponent },
+    { path: "", component: ComingSoonComponent },
     { path: "donate", component: DonationsComponent },
     { path: "get-involved", component: GetInvolvedComponent },
     { path: "news-and-media", component: NewsMediaComponent },
