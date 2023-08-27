@@ -10,6 +10,7 @@
 
             <div class="field">
                 <label class="label">Email</label>
+                <app-validation-errors [control]="signUpForm.get('email')"></app-validation-errors>
                 <div class="control">
                     <input formControlName="email" class="input" type="email" placeholder="Email" [(ngModel)]="email">
                 </div>
@@ -17,9 +18,19 @@
 
             <div class="field">
                 <label class="label">Password</label>
+                <app-validation-errors [control]="signUpForm.get('password')"></app-validation-errors>
                 <div class="control">
                     <input formControlName="password" class="input" type="password" placeholder="Password"
                         [(ngModel)]="password">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Confirm password</label>
+                <app-validation-errors [control]="signUpForm.get('confirmPassword')"></app-validation-errors>
+                <div class="control">
+                    <input formControlName="confirmPassword" class="input" type="password"
+                        placeholder="Confirm password" [(ngModel)]="confirmPassword">
                 </div>
             </div>
 

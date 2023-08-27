@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,10 +14,12 @@ export class SignUpPageComponent implements OnInit {
 
     email: string = "";
     password: string = "";
+    confirmPassword: string = "";
 
     signUpForm = this.formBuilder.group({
-        email: ["", Validators.required],
-        password: ["", Validators.required]
+        email: ["", [Validators.required, Validators.email]],
+        password: ["", [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ["", [Validators.required, this.confirmPasswordValidator]]
     });
 
     loading = false;
@@ -38,6 +40,7 @@ export class SignUpPageComponent implements OnInit {
 
     signUp() {
         if (this.signUpForm.invalid) {
+            this.markFormGroupTouched(this.signUpForm);
             return;
         }
 
@@ -62,5 +65,28 @@ export class SignUpPageComponent implements OnInit {
                 }
             }
         });
+    }
+
+    markFormGroupTouched(formGroup: FormGroup) {
+        Object.values(formGroup.controls).forEach((control: AbstractControl<any, any>) => {
+            control.markAsTouched();
+        });
+    }
+
+    confirmPasswordValidator(control: FormControl) {
+        const signUpForm = control.parent;
+        if (!signUpForm) {
+            return null;
+        }
+
+        const password = signUpForm.get("password")?.value;
+        const confirmPassword = signUpForm.get("confirmPassword")?.value;
+
+        if ((!password || password == "") && (!confirmPassword || confirmPassword == "")) {
+            return null;
+        }
+
+        
+        return (password == confirmPassword) ? null : { confirmPassword: true };
     }
 }

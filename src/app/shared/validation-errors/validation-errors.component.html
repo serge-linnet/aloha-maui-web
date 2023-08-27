@@ -1,4 +1,13 @@
 <ul *ngIf="control && !valid">
     <li class="help is-danger" *ngIf="!!control.hasError('required')">Field is required</li>
-    <li class="help is-danger" *ngIf="!!control.hasError('endsAfterStartDate')">End date cannot be less than the start date</li>    
+    <li class="help is-danger" *ngIf="!!control.hasError('endsAfterStartDate')">End date cannot be less than the start date</li>
+    <li class="help is-danger" *ngIf="!!control.hasError('confirmPassword')">
+        Passwords do not match
+    </li>
+    <li class="help is-danger" *ngIf="!!control.hasError('email')">
+        Email is invalid
+    </li>
+    <li class="help is-danger" *ngIf="!!control.hasError('minlength')">
+        Password must be at least 8 characters long
+    </li>
 </ul>
