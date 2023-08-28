@@ -26,7 +26,7 @@
     </app-container>
 </app-section>
 
-<app-section>
+<app-section *ngIf="event.price">
     <app-container size="medium">
         <p class="title">Donation</p>
         <div class="notification is-info">
@@ -43,7 +43,7 @@
 <app-section>
     <app-container size="medium">
         <div class="columns">
-            <div class="column">
+            <div class="column" *ngIf="event.place">
                 <p class="title is-5">Location</p>
                 <p class="subtitle" *ngIf="event.place!.placeName">{{ event.place!.placeName }}</p>
                 <p class="text">
@@ -59,6 +59,15 @@
                 <p class="text">{{ event.endsAt | date:'long' }}</p>
             </div>
         </div>
+    </app-container>
+</app-section>
+
+<app-section *ngIf="event.onlineDetails">
+    <app-container size="medium">
+        <p class="title is-5">Online Event Details</p>
+        <p class="content">
+            {{ event.onlineDetails }}
+        </p>
     </app-container>
 </app-section>
 
@@ -101,7 +110,8 @@
                         <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i
                                 class="fa-brands fa-instagram has-gap">{{
                                 event.contacts?.instagram}}</i></a><br>
-                        <a target="_blank" *ngIf="event.contacts?.facebook" [href]="event.contacts?.facebook"><i class="fa-brands fa-facebook has-gap">{{
+                        <a target="_blank" *ngIf="event.contacts?.facebook" [href]="event.contacts?.facebook"><i
+                                class="fa-brands fa-facebook has-gap">{{
                                 event.contacts?.facebook }}</i></a>
                     </p>
                 </div>

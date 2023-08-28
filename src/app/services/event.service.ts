@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { CommunityEvent } from "src/app/models/event.model";
 import { environment } from "src/environments/environment";
+import { ManageCommunityEventsFilter } from "../models/manage-community-events-filter";
 
 @Injectable({
     providedIn: "root"
@@ -17,8 +18,12 @@ export class EventService {
         return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events`, { params: { query: "" } });
     }
 
-    findPendingEvents(): Observable<CommunityEvent[]> {
-        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/pending`, { withCredentials: true });
+    findPendingEvents(filter: ManageCommunityEventsFilter): Observable<CommunityEvent[]> {
+        const params: any = {
+            includeApproved: filter.includeApproved,
+            includeRejected: filter.includeRejected
+        };
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/manage`, { params: params });
     }
 
     getEvent(id: string): Observable<CommunityEvent> {

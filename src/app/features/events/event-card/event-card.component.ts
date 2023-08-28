@@ -45,4 +45,14 @@ export class EventCardComponent {
     get countryName() {
         return COUNTRIES.find(c => c.code === this.event.place?.country)?.name ?? this.event.place?.country;
     }
+
+    get address() {
+        const country = this.countryName;
+        const region = this.event.place?.region;
+        const locality = this.event.place?.locality;
+        const place = this.event.place?.placeName;
+
+        const address = [place, locality ?? region, country].filter(a => a).join(", ");
+        return address;
+    }
 }

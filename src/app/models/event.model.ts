@@ -18,6 +18,7 @@ export class CommunityEvent {
     status?: number;
     assets?: EventAssets;
     contacts? : EventContacts;
+    onlineDetails?: string;
 }
 
 export class EventAssets {
