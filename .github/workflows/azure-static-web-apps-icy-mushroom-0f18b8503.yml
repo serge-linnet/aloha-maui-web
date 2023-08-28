@@ -22,7 +22,7 @@ jobs:
         shell: pwsh
         run: | 
           .\deploy\replace-token.ps1 -token "{{API_URL}}" -newValue "${{ secrets.API_URL }}" -file .\src\environments\environment.ts
-          .\deploy\replace-token.ps1 -token "{{AUTH_GOOGLE_CLIENT_ID}}" -newValue "${{ secrets.AUTH_GOOGLE_CLIENT_ID }}" -file .\src\environments\environment.ts
+          .\deploy\replace-token.ps1 -token "{{API_DOMAIN}}" -newValue "${{ secrets.API_DOMAIN }}" -file .\src\environments\environment.ts
           .\deploy\replace-token.ps1 -token "{{GOOGLE_PLACES_KEY}}" -newValue "${{ secrets.GOOGLE_PLACES_KEY }}" -file .\src\index.html
           .\deploy\replace-token.ps1 -token "{{COMMIT}}" -newValue "${{ github.sha }}" -file .\src\index.html
       - name: Build And Deploy

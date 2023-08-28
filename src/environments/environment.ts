@@ -1,4 +1,4 @@
 export const environment = {
-    apiUrl: "{{API_URL}}",
-    googleOAuthClientId: "{{AUTH_GOOGLE_CLIENT_ID}}"
+    apiDomain: "{{API_DOMAIN}}",
+    apiUrl: "{{API_URL}}"
 };

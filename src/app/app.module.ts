@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpRequest } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -41,6 +41,9 @@ import { SignUpPageComponent } from './pages/auth/sign-up-page/sign-up-page.comp
 import { CarouselModule } from 'primeng/carousel';
 import { CreateEventPageComponent } from './pages/events/create-event-page/create-event-page.component';
 import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
+import { JwtModule } from "@auth0/angular-jwt";
+import { environment } from "src/environments/environment";
+import { tokenGetter } from "./services/auth.service";
 
 @NgModule({
     declarations: [
@@ -77,10 +80,17 @@ import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
         ComingSoonComponent
     ],
     imports: [
+        HttpClientModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: [environment.apiDomain],
+                disallowedRoutes: []
+            }
+        }),
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule,
         ReactiveFormsModule,
         NgxSimpleTextEditorModule,
         BrowserAnimationsModule,
@@ -89,10 +99,12 @@ import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
         CarouselModule
     ],
     providers: [{
-        provide: HTTP_INTERCEPTORS, 
-        useClass: AuthInterceptor, 
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
         multi: true
     }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

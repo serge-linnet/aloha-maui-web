@@ -30,7 +30,7 @@ export class EventService {
     }
 
     findMyEvents(): Observable<CommunityEvent[]> {
-        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/my`, { withCredentials: true });
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/my`);
     }
 
     changeStatus(id: string, status: number): Observable<CommunityEvent> {
