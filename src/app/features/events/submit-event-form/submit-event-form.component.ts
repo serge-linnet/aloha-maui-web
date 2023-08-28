@@ -9,6 +9,7 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { Place } from "src/app/models/place.model";
 import { EventService } from "src/app/services/event.service";
+import { COUNTRIES } from "src/app/static/countries";
 
 @Component({
     selector: "app-submit-event-form",
@@ -16,12 +17,8 @@ import { EventService } from "src/app/services/event.service";
     styleUrls: ["./submit-event-form.component.scss"]
 })
 export class SubmitEventFormComponent implements OnInit {
-    countries = [
-        { name: "Ireland", code: "IE" },
-        { name: "Portugal", code: "PT" },
-        { name: "United Kingdom", code: "UK" },
-        { name: "United States", code: "US" }
-    ]
+    countries = COUNTRIES;
+    
     editorButtons = [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, SEPARATOR,
         ORDERED_LIST_BUTTON, UNORDERED_LIST_BUTTON, SEPARATOR,
         SUBSCRIPT_BUTTON, SUPERSCRIPT_BUTTON];

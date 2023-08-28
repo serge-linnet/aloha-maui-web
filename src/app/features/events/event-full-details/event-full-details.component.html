@@ -35,7 +35,7 @@
             Please visit our <a target="_blank" routerLink="/donate">donations page</a> for the list of recommended
             charities.
         </div>
-        <p class="content is-medium">Recommended donation <b>{{ event.currency }} {{ event.price | number:'.0-2' }}</b>
+        <p class="content is-medium">Recommended donation <b>{{ curencySymbol }}{{ event.price | number:'.0-2' }}</b>
         </p>
     </app-container>
 </app-section>
@@ -50,7 +50,7 @@
                     {{ event.place!.address }}<br>
                     {{ event.place!.locality }},
                     {{ event.place!.region }}<br>
-                    {{ event.place!.country }} {{ event.place!.postcode }}
+                    {{ countryName }} {{ event.place!.postcode }}
                 </p>
             </div>
             <div class="column">
