@@ -50,6 +50,7 @@ export class SignInPageComponent {
                 this.router.navigate([this.redirect ?? "/"]);
             });
         }, (err) => {
+            console.error(err);
             this.loading = false;
             if (err.status === 401) {
                 this.error = {

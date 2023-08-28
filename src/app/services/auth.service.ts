@@ -14,7 +14,10 @@ export type AuthInfo = {
 
 export const tokenGetter = (_?: HttpRequest<any> | undefined): string | Promise<string | null> | null => {
     const data = localStorage.getItem(STORAGE_KEY);
-    const info = JSON.parse(data ?? "") as AuthInfo;
+    if (data == null) {
+        return null;
+    }
+    const info = JSON.parse(data) as AuthInfo;
     if (!info?.accessToken || !info?.refreshToken) {
         return null;
     }
@@ -48,11 +51,17 @@ export class AuthService {
 
     isAuthenticated(): boolean {
         const info = this.getToken();
+        if (info == null) {
+            return false
+        }
         return !!(info?.accessToken && !this.jwtHelper.isTokenExpired(info?.accessToken));
     }
 
-    getToken(): AuthInfo {
+    getToken(): AuthInfo | null {
         const data = localStorage.getItem(STORAGE_KEY);
+        if (!data) {
+            return null;
+        }
         const info = JSON.parse(data ?? "") as AuthInfo;
         return info
     }
@@ -61,12 +70,13 @@ export class AuthService {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(token));
     }
 
-    getRole(): string | undefined {
+    getRole(): string | null {
         const info = this.getToken();
-
-        console.log(this.jwtHelper.decodeToken(info?.accessToken))
-
-        return "";// TODO: info?.user?.role;
+        if (info == null) {
+            return null
+        };
+        const user = this.jwtHelper.decodeToken<User>(info?.accessToken)
+        return user?.role ?? null;
     }
 
     signOutExternal() {
