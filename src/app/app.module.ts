@@ -44,6 +44,7 @@ import { ComingSoonComponent } from './pages/coming-soon/coming-soon.component';
 import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from "src/environments/environment";
 import { tokenGetter } from "./services/auth.service";
+import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
 
 @NgModule({
     declarations: [
@@ -77,7 +78,8 @@ import { tokenGetter } from "./services/auth.service";
         SpinnerComponent,
         SignUpPageComponent,
         CreateEventPageComponent,
-        ComingSoonComponent
+        ComingSoonComponent,
+        WhatsOnComponent
     ],
     imports: [
         HttpClientModule,
