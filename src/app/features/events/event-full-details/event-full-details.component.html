@@ -20,15 +20,22 @@
 
 <app-section>
     <app-container size="medium">
-        <p class="text" [innerHTML]="event.description">
+        <p class="title">About the event</p>
+        <p class="content" [innerHTML]="event.description" *ngIf="event.description">
         </p>
     </app-container>
 </app-section>
 
 <app-section>
     <app-container size="medium">
-        <p class="tag is-primary is-medium">
-            Recommended donation ${{ event.price }}
+        <p class="title">Donation</p>
+        <div class="notification is-info">
+            Organizer expects participants to donate at least {{ event.currency }} {{ event.price | number:'.0-2' }}.
+            Proof of donation is required to participate in this event.
+            Please visit our <a target="_blank" routerLink="/donate">donations page</a> for the list of recommended
+            charities.
+        </div>
+        <p class="content is-medium">Recommended donation <b>{{ event.currency }} {{ event.price | number:'.0-2' }}</b>
         </p>
     </app-container>
 </app-section>
@@ -48,8 +55,71 @@
             </div>
             <div class="column">
                 <p class="title is-5">Date & Time</p>
-                <p class="text">{{ event.startsAt | date:'medium' }}</p>
-                <p class="text">{{ event.endsAt | date:'medium' }}</p>
+                <p class="text">{{ event.startsAt | date:'long' }}</p>
+                <p class="text">{{ event.endsAt | date:'long' }}</p>
+            </div>
+        </div>
+    </app-container>
+</app-section>
+
+<app-section>
+    <app-container size="medium">
+        <p class="title">
+            Organizer Contacts
+        </p>
+
+        <div class="notification is-info">
+            Please contact the organizer to confirm your participation in this event.
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="block">
+                    <p class="title is-5">Email</p>
+                    <p class="subtitle">
+                        <a [href]="'mailto:'+event.contacts?.contactEmail">{{ event.contacts?.contactEmail }}</a>
+                    </p>
+                </div>
+
+                <div class="block" *ngIf="event.contacts?.contactPhone">
+                    <p class="title is-5">Phone</p>
+                    <p class="subtitle">
+                        {{ event.contacts?.contactPhone }}
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="block" *ngIf="event.contacts?.website">
+                    <p class="title is-5">Website</p>
+                    <p class="subtitle pb-4">
+                        <a target="_blank" [href]="event.contacts?.website">{{ event.contacts?.website }}</a>
+                    </p>
+                </div>
+                <div class="block" *ngIf="event.contacts?.instagram || event.contacts?.facebook">
+                    <p class="title is-5">Social</p>
+                    <p class="subtitle">
+                        <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i
+                                class="fa-brands fa-instagram has-gap">{{
+                                event.contacts?.instagram}}</i></a><br>
+                        <a target="_blank" *ngIf="event.contacts?.facebook" [href]="event.contacts?.facebook"><i class="fa-brands fa-facebook has-gap">{{
+                                event.contacts?.facebook }}</i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+
+        </div>
+        <div class="block">
+
+        </div>
+
+
+        <div class="columns">
+
+            <div class="column">
+
             </div>
         </div>
     </app-container>

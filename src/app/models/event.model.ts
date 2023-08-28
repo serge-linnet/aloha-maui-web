@@ -17,9 +17,18 @@ export class CommunityEvent {
     place?: Place;
     status?: number;
     assets?: EventAssets;
+    contacts? : EventContacts;
 }
 
 export class EventAssets {
     coverPhoto?: string;
     thumbnail?: string;
+}
+
+export class EventContacts {
+    contactEmail!: string;
+    contactPhone?: string;
+    instagram?: string;
+    facebook?: string;    
+    website?: string;
 }
