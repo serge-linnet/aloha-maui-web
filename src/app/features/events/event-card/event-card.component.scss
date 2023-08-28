@@ -1,0 +1,24 @@
+.event-card {
+    &__sections {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    &__thumbnail {
+        width: 20rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-height: 14rem;
+            max-width: 20rem;
+        }
+    }
+
+    &__about-section {
+        flex: 1;
+    }
+}

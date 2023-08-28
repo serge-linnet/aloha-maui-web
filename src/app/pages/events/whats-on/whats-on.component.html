@@ -1,1 +1,5 @@
-<p>whats-on works!</p>
+<app-section>
+    <app-container size="medium">
+        <app-event-list [events]="(events$ | async) ?? []"></app-event-list>
+    </app-container>
+</app-section>

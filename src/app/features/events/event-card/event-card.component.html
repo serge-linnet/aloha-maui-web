@@ -1,29 +1,49 @@
 <div class="card mb-3">
-    <div class="card-content">
+    <div class="card-content event-card">
         <div class="content">
             <div class="level" *ngIf="showStatus">
                 <p>
-                    Status: <span class="tag is-medium" [ngClass]="getStatusClass(event.status!)" > {{ getStatus(event.status!)}}</span>
+                    Status: <span class="tag is-medium" [ngClass]="getStatusClass(event.status!)"> {{
+                        getStatus(event.status!)}}</span>
                 </p>
             </div>
-            <div class="media">
+
+            <div class="event-card__sections">
+                <div class="event-card__thumbnail">
+                    <img [src]="event.assets?.thumbnail" />
+                </div>
+                <div class="event-card__about-section">
+                    <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
+                    <p *ngIf="event.place">{{event.place?.locality}}, {{countryName}}</p>
+                    <p *ngIf="!event.place">Online Event</p>
+
+                    <p class="title is-4"><a [routerLink]="[event.id]">{{ event.title }}</a></p>
+                    <p>{{ descriptionText }}</p>
+
+
+                    <div class="block">
+                        Recommended donation
+                        <span class="tag is-primary is-medium" *ngIf="event.price">{{curencySymbol}}{{ event.price | number:'.0-2' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="media">
                 <div class="media-content">
                     <div class="content">
-                        <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}
+                        
                         </p>
-                        <p class="title is-4"><a [routerLink]="[event.id]">{{ event.title }}</a></p>
-                        <p>{{ descriptionText }}</p>
-                        <span class="tag is-primary is-medium" *ngIf="event.price">${{ event.price }}</span>
+                        
                     </div>
                 </div>
                 <div class="media-right">
                     <figure class="media-left">
                         <p class="image">
-                            <img [src]="event.assets?.thumbnail">
+                            
                         </p>
                     </figure>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
