@@ -135,12 +135,9 @@
                         <div class="control">
                             <span class="select">
                                 <select formControlName="country" autocomplete="off">
-                                    <option value="IE">Ireland</option>
-                                    <option value="FR">France</option>
-                                    <option value="FR">Portugal</option>
-                                    <option value="ES">Spain</option>
-                                    <option value="GB">United Kingdom</option>
-                                    <option value="US">United States</option>
+                                    <option *ngFor="let country of countries" [value]="country.code">
+                                        {{country.name}}
+                                    </option>
                                 </select>
                             </span>
                         </div>
