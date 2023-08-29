@@ -1,0 +1,8 @@
+.event-cover-photo {
+    display: flex;
+    justify-content: center;
+    &>img {
+        max-height: 200px;
+        width: auto;
+    }
+}

@@ -12,6 +12,8 @@ export class EventCardComponent {
     @Input() event!: CommunityEvent;
     @Input() showStatus = false;
 
+    @Input() link: string[] = []
+
     getStatus(status: number) {
         return status === EVENT_STATUS_PENDING ? "Pending" : "Approved";
     }
@@ -54,5 +56,13 @@ export class EventCardComponent {
 
         const address = [place, locality ?? region, country].filter(a => a).join(", ");
         return address;
+    }
+
+    get routerLink() {
+        if (this.link && this.link.length > 0) {
+            return [...this.link, this.event.id]
+        } else {
+            return ["/events", this.event.id]
+        }
     }
 }

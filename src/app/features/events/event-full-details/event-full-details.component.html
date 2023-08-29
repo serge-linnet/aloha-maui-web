@@ -5,7 +5,9 @@
                 Status: <span class="tag is-medium" [ngClass]="statusClass"> {{ status }}</span>
             </p>
         </div>
-        <p class="title">{{ event.title }}</p>
+        <p class="title">{{ event.title }}
+            <button class="button is-info" (click)="onEdit()" *ngIf="canEdit">Edit Event</button>
+        </p>
         <p class="subtitle">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
     </app-container>
 </app-section>
@@ -107,12 +109,11 @@
                 <div class="block" *ngIf="event.contacts?.instagram || event.contacts?.facebook">
                     <p class="title is-5">Social</p>
                     <p class="subtitle">
-                        <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i
-                                class="fa-brands fa-instagram has-gap">{{
-                                event.contacts?.instagram}}</i></a><br>
+                        
+                        <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i class="fa-brands fa-instagram has-gap"></i> {{
+                            event.contacts?.instagram}}</a><br>
                         <a target="_blank" *ngIf="event.contacts?.facebook" [href]="event.contacts?.facebook"><i
-                                class="fa-brands fa-facebook has-gap">{{
-                                event.contacts?.facebook }}</i></a>
+                                class="fa-brands fa-facebook has-gap"></i> {{event.contacts?.facebook }}</a>
                     </p>
                 </div>
             </div>

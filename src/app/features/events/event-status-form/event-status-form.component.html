@@ -2,13 +2,16 @@
     <label class="label is-medium">Change event status</label>
     <div class="field is-grouped">
         <p class="control" *ngIf="!isApproved">
-            <button class="button is-primary" (click)="approve()">Approve</button>
+            <p-button label="Approve" styleClass="p-button-success" [loading]="loading && approving"
+                [disabled]="loading" (click)="onApprove()"></p-button>
         </p>
         <p class="control" *ngIf="!isPending">
-            <button class="button is-warning" (click)="pending()">Pending</button>
+            <p-button label="Pending" styleClass="p-button-warning" [loading]="loading && pending" [disabled]="loading"
+                (click)="onPending()"></p-button>
         </p>
         <p class="control" *ngIf="!isRejected">
-            <button class="button is-danger" (click)="reject()">Reject</button>
+            <p-button label="Reject" styleClass="p-button-danger" [loading]="loading && rejecting" [disabled]="loading"
+                (click)="onReject()"></p-button>
         </p>
     </div>
 </div>

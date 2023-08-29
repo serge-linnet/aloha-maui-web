@@ -79,6 +79,15 @@ export class AuthService {
         return user?.role ?? null;
     }
 
+    getUserId(): string | null {
+        const info = this.getToken();
+        if (info == null) {
+            return null
+        };
+        const user = this.jwtHelper.decodeToken<User>(info?.accessToken)
+        return user?.id ?? null;
+    }
+
     signOutExternal() {
         localStorage.removeItem(STORAGE_KEY);
     }

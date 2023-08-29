@@ -1,0 +1,250 @@
+<app-container size="medium" [hidden]="!event">
+    <form [formGroup]="eventForm" (submit)="onSubmit()">
+        <app-section>
+            <h2 class="title">Event Info</h2>
+            <div class="field">
+                <label class="label">Title</label>
+                <app-validation-errors [control]="eventForm.get('title')"></app-validation-errors>
+                <div class="control">
+                    <input class="input" type="text" formControlName="title">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <app-validation-errors [control]="eventForm.get('description')"></app-validation-errors>
+                <div class="control">
+                    <textarea formControlName="description" class="textarea"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" formControlName="familyFriendly">
+                    Family friendly
+                </label>
+            </div>
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" formControlName="dogFriendly">
+                    Dog friendly <i class="fa-solid fa-dog"></i>
+                </label>
+            </div>
+
+            <label class="label">Recommended donation (optional)</label>
+            <div class="field has-addons">
+                <p class="control">
+                    <span class="select">
+                        <select formControlName="currency">
+                            <option value="EUR">€</option>
+                            <option value="USD">$</option>
+                            <option value="GBP">£</option>
+                        </select>
+                    </span>
+                </p>
+                <div class="control">
+                    <input class="input" type="number" formControlName="price">
+                </div>
+            </div>
+
+        </app-section>
+
+        <app-section>
+            <p class="title">Cover Photo</p>
+            <div class="container">
+                <div class="image event-cover-photo">
+                    <img [src]="event?.assets?.coverPhoto">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Upload a new cover photo</label>
+                <app-validation-errors [control]="eventForm.get('photo')"></app-validation-errors>
+                <div class="control">
+                    <input class="input" type="file" #filePicker (change)="imagePicked($event)">
+                </div>
+            </div>
+        </app-section>
+
+        <app-section>
+            <h2 class="title">Date and Time</h2>
+            <div class="field">
+                <label class="label">Event starts</label>
+                <app-validation-errors [control]="eventForm.get('startsAt')"></app-validation-errors>
+                <div class="control">
+                    <input class="input" type="datetime-local" min="{{now | date:'y-MM-ddThh:mm'}}"
+                        formControlName="startsAt">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Event ends</label>
+                <app-validation-errors [control]="eventForm.get('endsAt')"></app-validation-errors>
+                <div class="control">
+                    <input class="input" type="datetime-local" min="{{minDate | date:'y-MM-ddT00:00'}}"
+                        formControlName="endsAt">
+                </div>
+            </div>
+        </app-section>
+        <app-section>
+            <h2 class="title">Location</h2>
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" formControlName="isOffline" [value]="true" />
+                        In Person
+                    </label>
+                    <label class="radio">
+                        <input type="radio" formControlName="isOffline" [value]="false" />
+                        Online
+                    </label>
+                </div>
+            </div>
+
+            <div class="field" *ngIf="!isOffline">
+                <label class="label">Online Event Details</label>
+                <app-validation-errors [control]="eventForm.get('onlineDetails')"></app-validation-errors>
+                <div class="control has-icons-left">
+                    <textarea class="textarea" formControlName="onlineDetails"></textarea>
+                </div>
+            </div>
+
+            <div class="field" *ngIf="isOffline">
+                <label class="label">Pick address from autocomplete below</label>
+                <div class="control has-icons-left">
+                    <app-address-autocomplete (placeChanged)="placeChanged($event)"></app-address-autocomplete>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-location-dot"></i>
+                    </span>
+                </div>
+            </div>
+            <div [hidden]="!(isOffline && addressPicked)" formGroupName="place">
+                <div class="field">
+                    <label class="label">Location / Business Name</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName="placeName" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Address</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName="address" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">City / Town</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName="locality" autocomplete="off">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Region / State</label>
+                    <div class="control">
+                        <input class="input" type="text" formControlName="region" autocomplete="off">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Country</label>
+                            <div class="control">
+                                <span class="select">
+                                    <select formControlName="country" autocomplete="off">
+                                        <option value="IE">Ireland</option>
+                                        <option value="FR">France</option>
+                                        <option value="FR">Portugal</option>
+                                        <option value="ES">Spain</option>
+                                        <option value="GB">United Kingdom</option>
+                                        <option value="US">United States</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Post Code</label>
+                            <div class="control">
+                                <input class="input" type="text" formControlName="postcode" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-section>
+        <app-section formGroupName="contacts">
+            <h2 class="title">Contacts & Social</h2>
+            <div class="field">
+                <label class="label">Email</label>
+                <app-validation-errors [control]="eventForm.get('contactEmail')"></app-validation-errors>
+                <div class="control has-icons-left">
+                    <input class="input" type="email" formControlName="contactEmail">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-at"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Phone Number (optional)</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" formControlName="contactPhone">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Website (optional)</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" formControlName="website">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-globe"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Instagram (optional)</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" formControlName="instagram">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-brands fa-instagram"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Facebook (optional)</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" formControlName="facebook">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-brands fa-facebook"></i>
+                    </span>
+                </div>
+            </div>
+        </app-section>
+        <app-section>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" class="button is-link">Save Changes</button>
+                </div>
+            </div>
+        </app-section>
+    </form>
+</app-container>
+
+<app-modal [options]="{hasCloseButton: false}" [open]="submitting">
+    <div class="card">
+        <div class="card-content">
+            <div class="content" *ngIf="!eventSubmitted">
+                <p class="title has-text-centered">Saving changes...</p>
+                <p class="has-text-centered">
+                    <app-spinner></app-spinner>
+                </p>
+            </div>
+            <div class="content" *ngIf="eventSubmitted">
+                <p class="title has-text-centered">Changes saved!</p>
+                <p class="subtitle has-text-centered">
+                    You will be redirected to the event page in a few seconds.
+                </p>
+                <p class="has-text-centered">
+                    <i class="fa-solid fa-check fa-beat-fade fa-2xl has-text-success"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</app-modal>

@@ -17,7 +17,7 @@
                     <p *ngIf="event.place">{{address}}</p>
                     <p *ngIf="!event.place">Online Event</p>
 
-                    <p class="title is-4"><a [routerLink]="[event.id]">{{ event.title }}</a></p>
+                    <p class="title is-4"><a [routerLink]="routerLink">{{ event.title }}</a></p>
                     <p>{{ descriptionText }}</p>
 
 

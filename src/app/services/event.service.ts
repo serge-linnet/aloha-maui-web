@@ -34,6 +34,10 @@ export class EventService {
         return this.http.post<CommunityEvent>(`${environment.apiUrl}/events`, event, { withCredentials: true });
     }
 
+    update(event: CommunityEvent): Observable<CommunityEvent> {
+        return this.http.put<CommunityEvent>(`${environment.apiUrl}/events`, event, { withCredentials: true });
+    }
+
     findMyEvents(): Observable<CommunityEvent[]> {
         return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/my`);
     }

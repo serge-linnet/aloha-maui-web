@@ -9,6 +9,8 @@ import { EVENT_STATUS_PENDING, CommunityEvent } from "src/app/models/event.model
 export class EventListComponent {
     @Input() events: CommunityEvent[] = [];
     @Input() showStatus = false;
+    @Input() link: string[] = [];
+    @Input() redirectLink: string[] = []
 
     getStatus(status: number) {
         return status === EVENT_STATUS_PENDING ? "Pending" : "Approved";

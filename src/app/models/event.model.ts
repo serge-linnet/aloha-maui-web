@@ -6,6 +6,7 @@ export const EVENT_STATUS_REJECTED = 2;
 
 export class CommunityEvent {
     id!: string;
+    userId?: string;
     title?: string;
     description?: string;
     category?: string;
@@ -18,7 +19,11 @@ export class CommunityEvent {
     status?: number;
     assets?: EventAssets;
     contacts? : EventContacts;
+    
     onlineDetails?: string;
+    isOffline?: boolean;
+    familyFriendly?: boolean;
+    dogFriendly?: boolean;
 }
 
 export class EventAssets {

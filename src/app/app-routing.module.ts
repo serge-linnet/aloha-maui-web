@@ -15,6 +15,7 @@ import { SignUpPageComponent } from "./pages/auth/sign-up-page/sign-up-page.comp
 import { CreateEventPageComponent } from "./pages/events/create-event-page/create-event-page.component";
 import { ComingSoonComponent } from "./pages/coming-soon/coming-soon.component";
 import { WhatsOnComponent } from "./pages/events/whats-on/whats-on.component";
+import { EditEventPageComponent } from "./pages/events/edit-event-page/edit-event-page.component";
 
 const ADMIN = "Admin";
 
@@ -33,6 +34,8 @@ const routes: Routes = [
     { path: "events/organize", component: SubmitEventComponent },
     { path: "events/create", component: CreateEventPageComponent },
     { path: "events/:id", component: EventDetailsPageComponent },
+    { path: "events/:id/edit", component: EditEventPageComponent },
+    
     { path: "user/my-events", component: MyEventsComponent },
     { path: "user/my-events/:id", component: EventDetailsPageComponent },
 

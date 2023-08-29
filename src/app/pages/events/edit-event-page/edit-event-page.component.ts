@@ -1,26 +1,27 @@
 import { Component, Input, NgZone, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import {
     BOLD_BUTTON, ITALIC_BUTTON, ORDERED_LIST_BUTTON,
     SEPARATOR, SUBSCRIPT_BUTTON, SUPERSCRIPT_BUTTON,
     UNDERLINE_BUTTON, UNORDERED_LIST_BUTTON
 } from "ngx-simple-text-editor";
 import { ToastrService } from "ngx-toastr";
+import { CommunityEvent } from "src/app/models/event.model";
 import { Place } from "src/app/models/place.model";
 import { EventService } from "src/app/services/event.service";
 import { COUNTRIES } from "src/app/static/countries";
 
 @Component({
-    selector: "app-submit-event-form",
-    templateUrl: "./submit-event-form.component.html",
-    styleUrls: ["./submit-event-form.component.scss"]
+    selector: 'app-edit-event-page',
+    templateUrl: './edit-event-page.component.html',
+    styleUrls: ['./edit-event-page.component.scss']
 })
-export class SubmitEventFormComponent implements OnInit {
+export class EditEventPageComponent implements OnInit {
     @Input() redirectLink = ["/events"];
-    
+
     countries = COUNTRIES;
-    
+    event?: CommunityEvent;
     editorButtons = [BOLD_BUTTON, ITALIC_BUTTON, UNDERLINE_BUTTON, SEPARATOR,
         ORDERED_LIST_BUTTON, UNORDERED_LIST_BUTTON, SEPARATOR,
         SUBSCRIPT_BUTTON, SUPERSCRIPT_BUTTON];
@@ -29,35 +30,38 @@ export class SubmitEventFormComponent implements OnInit {
     eventSubmitted = false;
     eventForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private eventService: EventService, private toastr: ToastrService, 
-        private router: Router, private ngZone: NgZone) {
+    constructor(private formBuilder: FormBuilder, private eventService: EventService, private toastr: ToastrService,
+        private router: Router, private route: ActivatedRoute) {
         this.eventForm = this.formBuilder.group({
-            title: ["", Validators.required],
-            description: ["", Validators.required],
-            price: [null],
-            currency: ["EUR"],
-            photo: ["", Validators.required],
-            startsAt: ["", this.requiredDateValidator],
-            endsAt: ["", [this.requiredDateValidator, this.endsAfterStartDateValidator]],
+            title: [this.event?.title, Validators.required],
+            description: [this.event?.description, Validators.required],
+            price: [this.event?.price],
+            currency: [this.event?.currency],
+            photo: [""],
+            startsAt: [this.event?.startsAt, this.requiredDateValidator],
+            endsAt: [this.event?.endsAt, [this.requiredDateValidator, this.endsAfterStartDateValidator]],
             place: this.formBuilder.group({
-                placeName: [""],
-                address: ["", this.requiredIfOffline],
-                postcode: ["", this.requiredIfOffline],
-                locality: ["", this.requiredIfOffline],
-                region: ["", this.requiredIfOffline],
-                country: ["", this.requiredIfOffline],
-                latitude: ["", this.requiredIfOffline],
-                longitude: ["", this.requiredIfOffline]
+                placeName: [this.event?.place?.placeName],
+                address: [this.event?.place?.address, this.requiredIfOffline],
+                postcode: [this.event?.place?.postcode, this.requiredIfOffline],
+                locality: [this.event?.place?.locality, this.requiredIfOffline],
+                region: [this.event?.place?.region, this.requiredIfOffline],
+                country: [this.event?.place?.country, this.requiredIfOffline],
+                latitude: [this.event?.place?.latitude, this.requiredIfOffline],
+                longitude: [this.event?.place?.longitude, this.requiredIfOffline]
             }),
-            isOffline: [true],
-            onlineDetails: ["", this.requiredIfOnline],
-            familyFriendly: [false],
-            dogFriendly: [false],
-            instagram: [""],
-            facebook: [""],
-            contactEmail: ["", Validators.required],
-            contactPhone: [""],
-            website: [""]
+            contacts: this.formBuilder.group({
+                instagram: [this.event?.contacts?.instagram],
+                facebook: [this.event?.contacts?.facebook],
+                contactEmail: [this.event?.contacts?.contactEmail, Validators.required],
+                contactPhone: [this.event?.contacts?.contactPhone],
+                website: [this.event?.contacts?.website],
+            }),
+            isOffline: [this.event?.isOffline],
+            onlineDetails: [this.event?.onlineDetails, this.requiredIfOnline],
+            familyFriendly: [this.event?.familyFriendly],
+            dogFriendly: [this.event?.dogFriendly],
+
         });
     }
 
@@ -78,6 +82,16 @@ export class SubmitEventFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.route.params.subscribe((params: Params) => {
+            const id = params["id"];
+
+            this.eventService.getEvent(id).subscribe((event: CommunityEvent) => {
+                this.event = event;
+                this.eventForm.patchValue(event);
+            });
+        });
+
+
         if (this.eventForm.get("startsAt")) {
             this.eventForm.get("startsAt")?.valueChanges.subscribe(x => {
                 const startsAt = this.eventForm.get("startsAt")
@@ -138,6 +152,7 @@ export class SubmitEventFormComponent implements OnInit {
         }
 
         const communityEvent = this.eventForm.value;
+        communityEvent.id = this.event?.id;
         if (this.isOffline) {
             communityEvent.onlineDetails = null;
         } else {
@@ -152,12 +167,12 @@ export class SubmitEventFormComponent implements OnInit {
 
         this.submitting = true;
 
-        this.eventService.create(communityEvent).subscribe(x => {
+        this.eventService.update(communityEvent).subscribe(x => {
             this.eventSubmitted = true;
-            
+
             setTimeout(() => {
                 this.router.navigate([...this.redirectLink, x.id]);
-            }, 2 * 1000);            
+            }, 2 * 1000);
         }, error => {
             this.submitting = false;
             console.log(error);

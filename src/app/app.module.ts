@@ -45,6 +45,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from "src/environments/environment";
 import { tokenGetter } from "./services/auth.service";
 import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
+import { ButtonModule } from 'primeng/button';
+import { EditEventPageComponent } from './pages/events/edit-event-page/edit-event-page.component';
 
 @NgModule({
     declarations: [
@@ -79,7 +81,8 @@ import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
         SignUpPageComponent,
         CreateEventPageComponent,
         ComingSoonComponent,
-        WhatsOnComponent
+        WhatsOnComponent,
+        EditEventPageComponent
     ],
     imports: [
         HttpClientModule,
@@ -98,7 +101,8 @@ import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
         GalleryModule,
-        CarouselModule
+        CarouselModule,
+        ButtonModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
