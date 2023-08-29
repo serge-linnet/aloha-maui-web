@@ -12,8 +12,7 @@
             <label class="label">Description</label>
             <app-validation-errors [control]="eventForm.get('description')"></app-validation-errors>
             <div class="control">
-                <st-editor formControlName="description" [config]="{ buttons: editorButtons }">
-                </st-editor>
+                <textarea formControlName="description" class="textarea"></textarea>
             </div>
         </div>
         <div class="field">
@@ -41,7 +40,7 @@
                 </span>
             </p>
             <div class="control">
-                <input class="input" type="number" formControlName="price">
+                <input class="input" type="number" min="0" formControlName="price">
             </div>
         </div>
         <div class="field">

@@ -47,6 +47,7 @@ import { tokenGetter } from "./services/auth.service";
 import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
 import { ButtonModule } from 'primeng/button';
 import { EditEventPageComponent } from './pages/events/edit-event-page/edit-event-page.component';
+import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-moment.component';
 
 @NgModule({
     declarations: [
@@ -82,7 +83,8 @@ import { EditEventPageComponent } from './pages/events/edit-event-page/edit-even
         CreateEventPageComponent,
         ComingSoonComponent,
         WhatsOnComponent,
-        EditEventPageComponent
+        EditEventPageComponent,
+        PledgeAMomentComponent
     ],
     imports: [
         HttpClientModule,

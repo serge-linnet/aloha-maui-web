@@ -16,6 +16,7 @@ import { CreateEventPageComponent } from "./pages/events/create-event-page/creat
 import { ComingSoonComponent } from "./pages/coming-soon/coming-soon.component";
 import { WhatsOnComponent } from "./pages/events/whats-on/whats-on.component";
 import { EditEventPageComponent } from "./pages/events/edit-event-page/edit-event-page.component";
+import { PledgeAMomentComponent } from "./pages/events/pledge-a-moment/pledge-a-moment.component";
 
 const ADMIN = "Admin";
 
@@ -35,6 +36,8 @@ const routes: Routes = [
     { path: "events/create", component: CreateEventPageComponent },
     { path: "events/:id", component: EventDetailsPageComponent },
     { path: "events/:id/edit", component: EditEventPageComponent },
+
+    { path: "events/pledge-a-moment", component: PledgeAMomentComponent },
     
     { path: "user/my-events", component: MyEventsComponent },
     { path: "user/my-events/:id", component: EventDetailsPageComponent },
