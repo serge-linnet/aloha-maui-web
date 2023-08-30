@@ -43,6 +43,18 @@ export class PledgeAMomentComponent implements OnInit {
         });
     }
 
+    get totalPeople() {
+        return this.totals.reduce((acc, curr) => acc + curr.people, 0);
+    }
+
+    get totalPledges() {
+        return this.totals.reduce((acc, curr) => acc + curr.pledges, 0);
+    }
+
+    get totalCountries() {
+        return this.totals.length;
+    }
+
     filterCountries(event: { query: string }) {
         let filtered: any[] = [];
         let query = event.query;

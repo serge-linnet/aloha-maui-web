@@ -106,6 +106,9 @@
 
 <app-section *ngIf="pledges.length > 0">
     <app-container size="medium">
+        <p class="title">
+            {{totalPledges}} people have pledged a moment from {{totalCountries}} countries
+        </p>
         <article class="card pledge" *ngFor="let pledge of pledges">
             <div class="card-content">
                 <div class="columns">
