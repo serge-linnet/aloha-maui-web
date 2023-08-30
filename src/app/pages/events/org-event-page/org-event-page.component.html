@@ -1,0 +1,110 @@
+<section class="hero">
+    <div class="hero-body">
+        <app-container size="medium">
+            <p class="title">Dress Up &amp; Donate - life is better at the beach!</p>
+            <p class="subtitle">Enjoy Freestyle Friday &amp; Beach Vibes all weekend</p>
+        </app-container>
+
+    </div>
+</section>
+
+<app-section>
+    <app-container size="medium">
+
+        <p class="content"><strong>Dress up &amp; <a routerLink="/donate">donate</a></strong>: Come to work, school,
+            college or a club meet-up
+            this weekend dressed up Hawaiian Island style &amp; feel tropical pacific island vibes all weekend!</p>
+        <p class="content">Grab your <strong>beach bag, board shorts &amp;/or bikinis</strong> &amp; get involved!</p>
+        <p class="content">Bust out your most colourful <strong>Hawaiian shirt &amp; enjoy tropical island vibes all
+                weekend</strong>!
+        </p>
+        <p class="content">The possibilities are endless to enjoy coming together &amp; inspiring each other to
+            <strong>ride the waves
+                of Aloha</strong>
+        </p>
+
+        <div class="content">
+            <p>Spice it up with:</p>
+            <ul>
+                <li>Spot prizes for best fancy dress – Hawaiian Island style, surf style, beach life!</li>
+                <li>Tempt your taste buds with a “Beach party bake off” or cake sale</li>
+                <li>Quench your thirst with lemonade stands or happy hour cocktails</li>
+                <li>Get your boogie on with Hawaiian Hula dancing</li>
+                <li>Limber up with limbo contests on the sand</li>
+                <li>Meet up for Beach BBQs or Sundowners @Sunset<br>
+                    &amp; enjoy any other beach vibes that you can imagine!!</li>
+            </ul>
+        </div>
+
+
+        <p class="content"><strong>Register your club, school, college or group participation and c</strong>ome together
+            to have fun
+            &amp; <strong><a routerLink="/donate">donate</a></strong> to the Maui community led disaster relief efforts.
+        </p>
+
+        <p-accordion>
+            <p-accordionTab>
+                <ng-template pTemplate="header">
+                    <p-button type="submit" label="Registration Form"></p-button>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <form [formGroup]="form" (submit)="submit()">
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <label class="label">Country</label>
+                                <p-autoComplete [suggestions]="filteredCountries" [forceSelection]="true"
+                                    [dropdown]="true" field="name" (completeMethod)="filterCountries($event)"
+                                    formControlName="country"></p-autoComplete>
+                            </div>
+                            <div class="control">
+                                <label class="label">City</label>
+                                <input type="text" pInputText formControlName="city" />
+                            </div>
+                            <div class="control">
+                                <label class="label">Organization Type</label>
+                                <p-dropdown [options]="orgTypes" formControlName="orgType"
+                                    placeholder="Select"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <label class="label">Group Name</label>
+                                <input type="text" pInputText formControlName="groupName" />
+                            </div>
+                            <div class="control">
+                                <label class="label">Number of participants</label>
+                                <p-inputNumber inputId="integeronly" [min]="1" [max]="100"
+                                    formControlName="numberOfPeople"></p-inputNumber>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <p-button type="submit" [loading]="loading" label="Submit"></p-button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </p-accordionTab>
+        </p-accordion>
+
+    </app-container>
+</app-section>
+
+<app-section *ngIf="orgEvents.length > 0">
+    <app-container size="medium">
+        <!-- <p class="title">
+            {{totalOrgEvents}} -- {{totalCountries}}
+        </p> -->
+        <article class="card event" *ngFor="let event of orgEvents">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">{{event.groupName}} from {{event.city}}, {{event.country}}</div>
+                    <div class="column">{{event.orgType}}</div>
+                    <div class="column">{{event.numberOfPeople}} {{event.numberOfPeople == 1 ? 'participant' : 'participants'}}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </app-container>
+</app-section>

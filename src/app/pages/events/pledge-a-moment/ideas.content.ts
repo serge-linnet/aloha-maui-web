@@ -12,7 +12,7 @@ export const IDEAS = [
     {
         image: "assets/images/pledge-a-moment/people filming with a drone-pana.png",
         lines: [
-            "Breakfast with Mom &amp;/or Dad",
+            "Breakfast with Mom / Dad",
             "Breakfast with friends / family",
             "Meet up with friends / family",
             "Family Get together",
@@ -36,7 +36,7 @@ export const IDEAS = [
             "Social Gathering",
             "Enjoy live music together",
             "Dance like no-one is watching",
-            "Yoga, Meditation, &amp; Wellbeing"
+            "Yoga, Meditation, & Well-being"
         ]
     },
     {

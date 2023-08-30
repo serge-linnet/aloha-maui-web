@@ -2,7 +2,7 @@
     <div class="hero-body">
         <app-container size="medium">
             <p class="title">Pledge a Moment &amp; pass it forward</p>
-            <p class="subtitle">In aid of Maui Island Community Disaster Relief Effords</p>
+            <p class="subtitle">In aid of the Maui Island Community-led Disaster Relief Efforts</p>
         </app-container>
 
     </div>
@@ -10,24 +10,23 @@
 
 <app-section>
     <app-container size="medium">
-        <p class="content">Are you making plans to meet up with friends or catch up with family
-            <strong>online</strong> or <strong>in person</strong> anytime over the weekend 8th to 10th September 2023?
+        <p class="content">
+            Are you making plans to meet up with friends or catch up with family <b>online</b> or <b>in person</b>
+            anytime over the weekend 8th to 10th September 2023?
         </p>
         <p class="content is-medium">
-            <strong>Pledge a Moment</strong> to send a <strong>wave of Aloha &amp; support</strong> to our Maui Island
-            friends &amp; family
-        </p>
-        <p class="content"><strong>Pass it forward</strong> to encourage your friends &amp; family to join us on this
-            <strong>party wave of aloha</strong> as it makes its way across the oceans to Maui Island, Hawaii.
+            <b>Pledge a Moment</b> to send a <b>wave of aloha & support</b> to our Maui Island friends, family (Ohana),
+            & community
+            that has been devastated by the Maui wildfires on 08 August, 2023. <b>Pass it forward</b> to encourage your
+            friends
+            & family to join us on this <b>wave of aloha</b> as it makes its way across the oceans to Maui Island,
+            Hawaii.
         </p>
         <p class="content">
-            Come together to <a routerLink="/donate"><strong>donate</strong></a>
-            to the Maui community led disaster relief efforts
+            Come together to <a routerLink="/donate"><b>donate</b></a> directly to the Maui Community-led Disaster
+            Relief efforts. We invite you to also Participate &/or support any of the weekend <a
+                routerLink="/events"><b>community events</b></a>
         </p>
-        <p class="content"><strong>Participate &amp;/or support</strong> any of the <a
-                routerLink="/events"><strong>registered community events</strong></a>.
-        </p>
-
         <p class="title is-4">Pledge a Moment Ideas:</p>
         <p-carousel [value]="ideas" [numVisible]="1" [circular]="true" autoPlayInterval="1000">
             <ng-template let-item pTemplate="item">
@@ -47,14 +46,9 @@
         </p-carousel>
 
         <p class="content">
-            Register your participation and support to <em><strong>Pledge a Moment &amp; pass it
-                    forward</strong></em>
+            Register your participation and support to <b>Pledge a Moment &amp; Pass It Forward</b> Come together to
+            have fun & <a routerLink="/donate"><b>donate</b></a> directly to the Maui Community-led Disaster Relief Efforts.
         </p>
-        <p class="content">
-            Come together to have fun &amp; <a href="donate"><b>donate</b></a> to the Maui community led disaster relief
-            efforts.
-        </p>
-
 
         <p-accordion>
             <p-accordionTab>
@@ -85,10 +79,10 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Activity (pick from the list, or type your own)</label>
+                            <label class="label">Activity</label>
                             <p-autoComplete [suggestions]="filteredSuggestions" [dropdown]="true"
-                                (completeMethod)="filterSuggestions($event)" formControlName="activity"
-                                [size]="100"></p-autoComplete>
+                                [forceSelection]="true" (completeMethod)="filterSuggestions($event)"
+                                formControlName="activity" [size]="100"></p-autoComplete>
                         </div>
 
                         <div class="field">
@@ -113,7 +107,8 @@
             <div class="card-content">
                 <div class="columns">
                     <div class="column">{{pledge.name}} from {{pledge.city}}, {{pledge.country}}</div>
-                    <div class="column">{{pledge.numberOfPeople}} {{pledge.numberOfPeople == 1 ? 'person' : 'people'}}</div>
+                    <div class="column">{{pledge.numberOfPeople}} {{pledge.numberOfPeople == 1 ? 'person' : 'people'}}
+                    </div>
                     <div class="column">{{pledge.activity}}</div>
                 </div>
             </div>

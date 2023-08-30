@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
     templateUrl: './pledge-a-moment.component.html',
     styleUrls: ['./pledge-a-moment.component.scss']
 })
-export class PledgeAMomentComponent implements OnInit {
+export class PledgeMomentComponentPage implements OnInit {
     ideas = IDEAS;
     countries = COUNTRIES;
     filteredCountries: { name: string, code: string }[] = [];

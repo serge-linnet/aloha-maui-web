@@ -46,11 +46,13 @@ import { tokenGetter } from "./services/auth.service";
 import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
 import { ButtonModule } from 'primeng/button';
 import { EditEventPageComponent } from './pages/events/edit-event-page/edit-event-page.component';
-import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-moment.component';
+import { PledgeMomentComponentPage } from './pages/events/pledge-a-moment/pledge-a-moment.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { AccordionModule } from 'primeng/accordion';
+import { OrgEventPageComponent } from './pages/events/org-event-page/org-event-page.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
@@ -86,7 +88,8 @@ import { AccordionModule } from 'primeng/accordion';
         ComingSoonComponent,
         WhatsOnComponent,
         EditEventPageComponent,
-        PledgeAMomentComponent,
+        PledgeMomentComponentPage,
+        OrgEventPageComponent,
     ],
     imports: [
         HttpClientModule,
@@ -110,7 +113,8 @@ import { AccordionModule } from 'primeng/accordion';
         AutoCompleteModule,
         InputTextModule,
         InputNumberModule,
-        AccordionModule
+        AccordionModule,
+        DropdownModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

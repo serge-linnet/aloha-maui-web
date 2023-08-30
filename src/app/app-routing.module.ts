@@ -16,7 +16,8 @@ import { CreateEventPageComponent } from "./pages/events/create-event-page/creat
 import { ComingSoonComponent } from "./pages/coming-soon/coming-soon.component";
 import { WhatsOnComponent } from "./pages/events/whats-on/whats-on.component";
 import { EditEventPageComponent } from "./pages/events/edit-event-page/edit-event-page.component";
-import { PledgeAMomentComponent } from "./pages/events/pledge-a-moment/pledge-a-moment.component";
+import { PledgeMomentComponentPage } from "./pages/events/pledge-a-moment/pledge-a-moment.component";
+import { OrgEventPageComponent } from "./pages/events/org-event-page/org-event-page.component";
 
 const ADMIN = "Admin";
 
@@ -36,7 +37,8 @@ const routes: Routes = [
     { path: "events/create", component: CreateEventPageComponent },
 
 
-    { path: "events/pledge-a-moment", component: PledgeAMomentComponent },
+    { path: "events/pledge-a-moment", component: PledgeMomentComponentPage },
+    { path: "events/dress-up-and-donate", component: OrgEventPageComponent },
 
     { path: "events/:id", component: EventDetailsPageComponent },
     { path: "events/:id/edit", component: EditEventPageComponent },

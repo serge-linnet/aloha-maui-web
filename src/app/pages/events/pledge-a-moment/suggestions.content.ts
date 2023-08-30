@@ -33,6 +33,6 @@ export const SUGGESTIONS = [
     "Tennis",
     "Walk",
     "Wine Tasting",
-    "Yoga, Meditation, & Wellbeing",
+    "Yoga, Meditation, & Well-being",
 ]
 
