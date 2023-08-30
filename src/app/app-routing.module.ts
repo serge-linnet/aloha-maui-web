@@ -22,7 +22,7 @@ import { OrgEventPageComponent } from "./pages/events/org-event-page/org-event-p
 const ADMIN = "Admin";
 
 const routes: Routes = [
-    { path: "", component: ComingSoonComponent },
+    { path: "", component: HomeComponent },
     { path: "donate", component: DonationsComponent },
     { path: "get-involved", component: GetInvolvedComponent },
     { path: "news-and-media", component: NewsMediaComponent },
