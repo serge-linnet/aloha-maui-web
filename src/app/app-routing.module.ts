@@ -34,10 +34,13 @@ const routes: Routes = [
     { path: "events/participate/:id", component: EventDetailsPageComponent },
     { path: "events/organize", component: SubmitEventComponent },
     { path: "events/create", component: CreateEventPageComponent },
+
+
+    { path: "events/pledge-a-moment", component: PledgeAMomentComponent },
+
     { path: "events/:id", component: EventDetailsPageComponent },
     { path: "events/:id/edit", component: EditEventPageComponent },
 
-    { path: "events/pledge-a-moment", component: PledgeAMomentComponent },
     
     { path: "user/my-events", component: MyEventsComponent },
     { path: "user/my-events/:id", component: EventDetailsPageComponent },

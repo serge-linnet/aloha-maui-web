@@ -1,0 +1,40 @@
+.is-small>img {
+    max-height: 300px;
+}
+
+.idea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    &__image {
+        display: flex;
+        align-items: center;
+        max-width: 300px;
+        max-height: 200px;
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.pledge {
+    &+& {
+        margin-top: 3rem;
+    }
+}
+
+// .pledge-card {
+//     display: flex;
+//     flex-direction: row;
+//     gap: 2rem;
+//     &__content {
+//         & + & {
+//             border-left: 1px solid #777;
+//             padding-left: 2rem;
+//         }
+//     }
+// }

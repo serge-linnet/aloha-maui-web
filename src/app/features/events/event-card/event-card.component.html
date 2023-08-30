@@ -1,32 +1,35 @@
-<div class="card mb-3">
-    <div class="card-content event-card">
-        <div class="content">
-            <div class="level" *ngIf="showStatus">
-                <p>
-                    Status: <span class="tag is-medium" [ngClass]="getStatusClass(event.status!)"> {{
-                        getStatus(event.status!)}}</span>
-                </p>
-            </div>
-
-            <div class="event-card__sections">
-                <div class="event-card__thumbnail">
-                    <img [src]="event.assets?.thumbnail" />
+<a [routerLink]="routerLink">
+    <div class="card mb-3">
+        <div class="card-content event-card">
+            <div class="content">
+                <div class="level" *ngIf="showStatus">
+                    <p>
+                        Status: <span class="tag is-medium" [ngClass]="getStatusClass(event.status!)"> {{
+                            getStatus(event.status!)}}</span>
+                    </p>
                 </div>
-                <div class="event-card__about-section">
-                    <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
-                    <p *ngIf="event.place">{{address}}</p>
-                    <p *ngIf="!event.place">Online Event</p>
 
-                    <p class="title is-4"><a [routerLink]="routerLink">{{ event.title }}</a></p>
-                    <p>{{ descriptionText }}</p>
+                <div class="event-card__sections">
+                    <div class="event-card__thumbnail">
+                        <img [src]="event.assets?.thumbnail" />
+                    </div>
+                    <div class="event-card__about-section">
+                        <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
+                        <p *ngIf="event.place">{{address}}</p>
+                        <p *ngIf="!event.place">Online Event</p>
+
+                        <p class="title is-4">{{ event.title }}</p>
+                        <p>{{ descriptionText }}</p>
 
 
-                    <div class="block" *ngIf="event.price">
-                        Recommended donation
-                        <span class="tag is-primary is-medium">{{curencySymbol}}{{ event.price | number:'.0-2' }}</span>
+                        <div class="block" *ngIf="event.price">
+                            Recommended donation
+                            <span class="tag is-primary is-medium">{{curencySymbol}}{{ event.price | number:'.0-2'
+                                }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</a>

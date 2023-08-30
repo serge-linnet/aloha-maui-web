@@ -23,7 +23,6 @@ import { ManageEventsComponent } from "./pages/admin/manage-events/manage-events
 import { ManageEventDetailsComponent } from "./pages/admin/manage-event-details/manage-event-details.component";
 import { AuthInterceptor } from "./auth.interceptor";
 import { NewsMediaComponent } from "./pages/news-media/news-media.component";
-import { NewsCardComponent } from "./features/news/news-card/news-card.component";
 import { MyEventsComponent } from "./pages/my-events/my-events.component";
 import { ValidationErrorsComponent } from "./shared/validation-errors/validation-errors.component";
 import { ToastrModule } from "ngx-toastr";
@@ -48,6 +47,10 @@ import { WhatsOnComponent } from './pages/events/whats-on/whats-on.component';
 import { ButtonModule } from 'primeng/button';
 import { EditEventPageComponent } from './pages/events/edit-event-page/edit-event-page.component';
 import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-moment.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
     declarations: [
@@ -68,7 +71,6 @@ import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-
         ManageEventsComponent,
         ManageEventDetailsComponent,
         NewsMediaComponent,
-        NewsCardComponent,
         MyEventsComponent,
         ValidationErrorsComponent,
         EventFullDetailsComponent,
@@ -84,7 +86,7 @@ import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-
         ComingSoonComponent,
         WhatsOnComponent,
         EditEventPageComponent,
-        PledgeAMomentComponent
+        PledgeAMomentComponent,
     ],
     imports: [
         HttpClientModule,
@@ -104,7 +106,11 @@ import { PledgeAMomentComponent } from './pages/events/pledge-a-moment/pledge-a-
         ToastrModule.forRoot(),
         GalleryModule,
         CarouselModule,
-        ButtonModule
+        ButtonModule,
+        AutoCompleteModule,
+        InputTextModule,
+        InputNumberModule,
+        AccordionModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

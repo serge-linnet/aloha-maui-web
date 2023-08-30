@@ -1,0 +1,119 @@
+<section class="hero">
+    <div class="hero-body">
+        <app-container size="medium">
+            <p class="title">Pledge a Moment &amp; pass it forward</p>
+            <p class="subtitle">In aid of Maui Island Community Disaster Relief Effords</p>
+        </app-container>
+
+    </div>
+</section>
+
+<app-section>
+    <app-container size="medium">
+        <p class="content">Are you making plans to meet up with friends or catch up with family
+            <strong>online</strong> or <strong>in person</strong> anytime over the weekend 8th to 10th September 2023?
+        </p>
+        <p class="content is-medium">
+            <strong>Pledge a Moment</strong> to send a <strong>wave of Aloha &amp; support</strong> to our Maui Island
+            friends &amp; family
+        </p>
+        <p class="content"><strong>Pass it forward</strong> to encourage your friends &amp; family to join us on this
+            <strong>party wave of aloha</strong> as it makes its way across the oceans to Maui Island, Hawaii.
+        </p>
+        <p class="content">
+            Come together to <a routerLink="/donate"><strong>donate</strong></a>
+            to the Maui community led disaster relief efforts
+        </p>
+        <p class="content"><strong>Participate &amp;/or support</strong> any of the <a
+                routerLink="/events"><strong>registered community events</strong></a>.
+        </p>
+
+        <p class="title is-4">Pledge a Moment Ideas:</p>
+        <p-carousel [value]="ideas" [numVisible]="1" [circular]="true" autoPlayInterval="1000">
+            <ng-template let-item pTemplate="item">
+                <div class="idea">
+                    <div class="idea__image">
+                        <figure class="image is-small">
+                            <img [src]="item.image" [alt]="item.title">
+                        </figure>
+                    </div>
+                    <div class="idea__items">
+                        <ul>
+                            <li *ngFor="let line of item.lines">{{line}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+
+        <p class="content">
+            Register your participation and support to <em><strong>Pledge a Moment &amp; pass it
+                    forward</strong></em>
+        </p>
+        <p class="content">
+            Come together to have fun &amp; <a href="donate"><b>donate</b></a> to the Maui community led disaster relief
+            efforts.
+        </p>
+
+
+        <p-accordion>
+            <p-accordionTab>
+                <ng-template pTemplate="header">
+                    <p-button type="submit" label="Registration Form"></p-button>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <form [formGroup]="form" (submit)="submit()">
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <label class="label">Country</label>
+                                <p-autoComplete [suggestions]="filteredCountries" [forceSelection]="true"
+                                    [dropdown]="true" field="name" (completeMethod)="filterCountries($event)"
+                                    formControlName="country"></p-autoComplete>
+                            </div>
+                            <div class="control">
+                                <label class="label">City</label>
+                                <input type="text" pInputText formControlName="city" />
+                            </div>
+                            <div class="control">
+                                <label class="label">Your Name</label>
+                                <input type="text" pInputText formControlName="name" />
+                            </div>
+                            <div class="control">
+                                <label class="label">Number of participants</label>
+                                <p-inputNumber inputId="integeronly" [min]="1" [max]="100" [size]="10"
+                                    formControlName="numberOfPeople"></p-inputNumber>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Activity (pick from the list, or type your own)</label>
+                            <p-autoComplete [suggestions]="filteredSuggestions" [dropdown]="true"
+                                (completeMethod)="filterSuggestions($event)" formControlName="activity"
+                                [size]="100"></p-autoComplete>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <p-button type="submit" [loading]="loading" label="Submit"></p-button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </p-accordionTab>
+        </p-accordion>
+
+    </app-container>
+</app-section>
+
+<app-section *ngIf="pledges.length > 0">
+    <app-container size="medium">
+        <article class="card pledge" *ngFor="let pledge of pledges">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">{{pledge.name}} from {{pledge.city}}, {{pledge.country}}</div>
+                    <div class="column">{{pledge.numberOfPeople}} {{pledge.numberOfPeople == 1 ? 'person' : 'people'}}</div>
+                    <div class="column">{{pledge.activity}}</div>
+                </div>
+            </div>
+        </article>
+    </app-container>
+</app-section>
