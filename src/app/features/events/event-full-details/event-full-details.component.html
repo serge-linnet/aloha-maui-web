@@ -32,10 +32,9 @@
     <app-container size="medium">
         <p class="title">Donation</p>
         <div class="notification is-info">
-            Organizer expects participants to donate at least {{ event.currency }} {{ event.price | number:'.0-2' }}.
-            Proof of donation is required to participate in this event.
-            Please visit our <a target="_blank" routerLink="/donate">donations page</a> for the list of recommended
-            charities.
+            Suggested donation for this event is {{ event.currency }} {{ event.price | number:'.0-2' }}. Please visit
+            our <a target="_blank" routerLink="/donate">Dontae page</a> or contact event organiser for how to
+            register and donate for this event.
         </div>
         <p class="content is-medium">Recommended donation <b>{{ curencySymbol }}{{ event.price | number:'.0-2' }}</b>
         </p>
@@ -109,8 +108,9 @@
                 <div class="block" *ngIf="event.contacts?.instagram || event.contacts?.facebook">
                     <p class="title is-5">Social</p>
                     <p class="subtitle">
-                        
-                        <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i class="fa-brands fa-instagram has-gap"></i> {{
+
+                        <a target="_blank" *ngIf="event.contacts?.instagram" [href]="event.contacts?.instagram"><i
+                                class="fa-brands fa-instagram has-gap"></i> {{
                             event.contacts?.instagram}}</a><br>
                         <a target="_blank" *ngIf="event.contacts?.facebook" [href]="event.contacts?.facebook"><i
                                 class="fa-brands fa-facebook has-gap"></i> {{event.contacts?.facebook }}</a>
