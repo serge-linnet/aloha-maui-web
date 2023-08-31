@@ -1,45 +1,45 @@
 <section class="hero">
     <div class="hero-body">
-        <app-container size="medium">
-            <p class="title">Dress Up &amp; Donate - life is better at the beach!</p>
-            <p class="subtitle">Enjoy Freestyle Friday &amp; Beach Vibes all weekend</p>
-        </app-container>
-
+        <figure class="hero-img-container">
+            <img [src]="'assets/images/dress-up-hero.jpg'" class="hero-img" alt="Dress Up - Image">
+        </figure>
+        <div class="content">
+            <p class="title has-text-centered">Dress Up &amp; Donate - life is better at the beach!</p>
+            <p class="subtitle has-text-centered">Enjoy Freestyle Friday &amp; Beach Vibes all weekend</p>
+        </div>
     </div>
 </section>
 
 <app-section>
     <app-container size="medium">
-
-        <p class="content"><strong>Dress up &amp; <a routerLink="/donate">donate</a></strong>: Come to work, school,
-            college or a club meet-up
-            this weekend dressed up Hawaiian Island style &amp; feel tropical pacific island vibes all weekend!</p>
-        <p class="content">Grab your <strong>beach bag, board shorts &amp;/or bikinis</strong> &amp; get involved!</p>
-        <p class="content">Bust out your most colourful <strong>Hawaiian shirt &amp; enjoy tropical island vibes all
-                weekend</strong>!
+        <p class="content">
+            The possibilities are endless to enjoy coming together & inspiring each other to <b>ride the waves of
+                Aloha!</b>
         </p>
-        <p class="content">The possibilities are endless to enjoy coming together &amp; inspiring each other to
-            <strong>ride the waves
-                of Aloha</strong>
-        </p>
-
         <div class="content">
-            <p>Spice it up with:</p>
+            <p>
+                Spice it up to enjoy any other fun beach vibes that you can imagine!
+            </p>
             <ul>
-                <li>Spot prizes for best fancy dress – Hawaiian Island style, surf style, beach life!</li>
+                <li>Spot prizes for best fancy dress - Hawaiian Island style, surf style, beach life!</li>
                 <li>Tempt your taste buds with a “Beach party bake off” or cake sale</li>
                 <li>Quench your thirst with lemonade stands or happy hour cocktails</li>
                 <li>Get your boogie on with Hawaiian Hula dancing</li>
                 <li>Limber up with limbo contests on the sand</li>
-                <li>Meet up for Beach BBQs or Sundowners @Sunset<br>
-                    &amp; enjoy any other beach vibes that you can imagine!!</li>
+                <li>Meet up for Beach BBQs or Sundowners @Sunset</li>
             </ul>
         </div>
 
+        <p class="content">
+            <b>Register your club, school, college or group participation</b> and come together to have fun & <a
+                routerLink="/donate">donate</a> to the
+            Maui Community-led Disaster Relief efforts.
+        </p>
 
-        <p class="content"><strong>Register your club, school, college or group participation and c</strong>ome together
-            to have fun
-            &amp; <strong><a routerLink="/donate">donate</a></strong> to the Maui community led disaster relief efforts.
+        <p class="content">
+            Come together with friends near & far as we all send our {{totalOrgEvents}} waves of aloha & support from
+            each of our {{totalCountries}} countries
+            to Maui Island, Hawaii.
         </p>
 
         <p-accordion>
@@ -93,18 +93,13 @@
 
 <app-section *ngIf="orgEvents.length > 0">
     <app-container size="medium">
-        <!-- <p class="title">
-            {{totalOrgEvents}} -- {{totalCountries}}
-        </p>
-        <p class="title">
-            {{totalOrgEvents}} people have pledged a moment from {{totalCountries}} countries
-        </p> -->
         <article class="card event" *ngFor="let event of orgEvents">
             <div class="card-content">
                 <div class="columns">
                     <div class="column">{{event.groupName}} from {{event.city}}, {{event.country}}</div>
                     <div class="column">{{event.orgType}}</div>
-                    <div class="column">{{event.numberOfPeople}} {{event.numberOfPeople == 1 ? 'participant' : 'participants'}}
+                    <div class="column">{{event.numberOfPeople}} {{event.numberOfPeople == 1 ? 'participant' :
+                        'participants'}}
                     </div>
                 </div>
             </div>
