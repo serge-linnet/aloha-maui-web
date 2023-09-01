@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
+import { CONTACTS } from "src/app/static/contacts";
 
 @Component({
     selector: "app-navigation",
@@ -11,8 +12,8 @@ import { AuthService } from "src/app/services/auth.service";
     }
 })
 export class NavigationComponent implements OnInit {
-
     public isMenuActive = false;
+    public contacts = CONTACTS;
 
     constructor(private authService: AuthService, private router: Router, private eref: ElementRef) {
     }

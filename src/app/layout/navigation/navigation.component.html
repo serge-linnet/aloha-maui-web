@@ -25,19 +25,19 @@
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item" routerLink="/about">
-                        <a href="https://instagram.com/helphawaii_maui8.08" target="_blank" class="mr-5">
+                        <a [href]="contacts.instagram" target="_blank" class="mr-5">
                             <span class="icon">
                                 <i class="fab fa-instagram fa-xl"></i>
                             </span>
                         </a>
 
-                        <a href="https://www.facebook.com/HelpHawaii.org" target="_blank" class="mr-5">
+                        <a [href]="contacts.facebook" target="_blank" class="mr-5">
                             <span class="icon">
                                 <i class="fab fa-facebook-square fa-xl"></i>
                             </span>
                         </a>
 
-                        <a href="mailto:info@helphawaii.org" target="_blank">
+                        <a [href]="'mailto:$' + contacts.email" target="_blank">
                             <span class="icon">
                                 <i class="fa-solid fa-envelope fa-xl"></i>
                             </span>
