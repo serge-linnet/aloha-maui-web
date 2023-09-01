@@ -1,55 +1,75 @@
 <div class="has-shadow">
     <app-container>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" routerLink="/">
-                <img [src]="'assets/images/logo.png'" class="logo">
-            </a>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" routerLink="/">
+                    <img [src]="'assets/images/logo.png'" class="logo">
+                </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar"
-                [ngClass]="isMenuActive ? 'is-active' : ''" (click)="toggleMenu()">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbar" class="navbar-menu" [ngClass]="isMenuActive ? 'is-active' : ''">
-            <div class="navbar-start">
-                <a class="navbar-item" routerLink="/">Home</a>
-                <a class="navbar-item" routerLink="/news-and-media">News & Media</a>
-                <a class="navbar-item" routerLink="/donate">Donate</a>
-                <a class="navbar-item" routerLink="/events">Get Involved</a>
-                <a class="navbar-item" routerLink="/events/participate">What's On</a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar"
+                    [ngClass]="isMenuActive ? 'is-active' : ''" (click)="toggleMenu()">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
-            <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated; else signIn">
-                    <a class="navbar-link">
-                        <i class="fa-solid fa-user-astronaut"></i>
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" routerLink="admin/manage-events" *ngIf="isAdmin">
-                            Manage Events
+
+            <div id="navbar" class="navbar-menu" [ngClass]="isMenuActive ? 'is-active' : ''">
+                <div class="navbar-start">
+                    <a class="navbar-item" routerLink="/">Home</a>
+                    <a class="navbar-item" routerLink="/news-and-media">News & Media</a>
+                    <a class="navbar-item" routerLink="/donate">Donate</a>
+                    <a class="navbar-item" routerLink="/events">Get Involved</a>
+                    <a class="navbar-item" routerLink="/events/participate">What's On</a>
+
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item" routerLink="/about">
+                        <a href="https://instagram.com/helphawaii_maui8.08" target="_blank" class="mr-5">
+                            <span class="icon">
+                                <i class="fab fa-instagram fa-xl"></i>
+                            </span>
                         </a>
-                        <a class="navbar-item" routerLink="user/my-events">
-                            My Events
+
+                        <a href="https://www.facebook.com/HelpHawaii.org" target="_blank" class="mr-5">
+                            <span class="icon">
+                                <i class="fab fa-facebook-square fa-xl"></i>
+                            </span>
                         </a>
-                        <a class="navbar-item" (click)="signOut()">
-                            Sign Out
+
+                        <a href="mailto:info@helphawaii.org" target="_blank">
+                            <span class="icon">
+                                <i class="fa-solid fa-envelope fa-xl"></i>
+                            </span>
                         </a>
                     </div>
-                </div>
-                <ng-template #signIn>
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary is-outlined" routerLink="/sign-in">
-                                Sign In
+                    <div class="navbar-item has-dropdown is-hoverable" *ngIf="isAuthenticated; else signIn">
+                        <a class="navbar-link">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" routerLink="admin/manage-events" *ngIf="isAdmin">
+                                Manage Events
+                            </a>
+                            <a class="navbar-item" routerLink="user/my-events">
+                                My Events
+                            </a>
+                            <a class="navbar-item" (click)="signOut()">
+                                Sign Out
                             </a>
                         </div>
                     </div>
-                </ng-template>
+                    <ng-template #signIn>
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-primary is-outlined" routerLink="/sign-in">
+                                    Sign In
+                                </a>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
             </div>
-        </div>
-    </nav>
-</app-container>
+        </nav>
+    </app-container>
 </div>

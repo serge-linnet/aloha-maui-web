@@ -53,6 +53,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { AccordionModule } from 'primeng/accordion';
 import { OrgEventPageComponent } from './pages/events/org-event-page/org-event-page.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -90,6 +91,7 @@ import { DropdownModule } from 'primeng/dropdown';
         EditEventPageComponent,
         PledgeMomentComponentPage,
         OrgEventPageComponent,
+        FooterComponent,
     ],
     imports: [
         HttpClientModule,
