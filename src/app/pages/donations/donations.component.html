@@ -6,7 +6,8 @@
 
 <app-section>
     <app-container size="medium">
-        <p class="content is-medium">Event organisers & event participants can use the links below to make their donations directly to the
+        <p class="content is-medium">Event organisers & event participants can use the links below to make their
+            donations directly to the
             non-profits and community
             relief efforts that are providing disaster relief, support and funding to those communities on Maui that are
             directly impacted by the wild fires.</p>
@@ -29,7 +30,36 @@
 </app-section>
 <app-section>
     <app-container size="medium">
-        <div class="level">
+        <div class="columns">
+            <div class="column">
+                <app-charity-card imageUrl="assets/images/charities/PFM_Logo_Horiz_ColorBG-100.jpeg"
+                    charityUrl="https://www.eifoundation.org/peoples-fund-of-maui/"
+                    description="People's Fund of Maui is providing direct financial assistance to Maui community members experiencing devastating losses from the Maui wildfires in Lahaina & Kula. Adults who lost their primary residence in the fires are eligible to receive $1,200 per month. Public donations will sustain on-going relief efforts. The People’s Fund of Maui will distribute funds each month for as long as possible.">
+                </app-charity-card>
+            </div>
+            <div class="column">
+                <app-charity-card imageUrl="assets/images/charities/RBHLogoMaui2.jpeg"
+                    charityUrl="https://www.gofundme.com/f/34mpt1wmfc"
+                    description="Ricci Builders Hawaii has launched a sustainable initiative to Support Local Maui Families & Rebuild Together. They are building long-term homes for residents affected by the Maui wildfires in Lahaina, Kula, and West Maui, and they are committed to training local workers to do so.  These same local workers have lost their homes, their jobs, some have lost family & friends, yet they are here every day, showing up to Rebuild Maui Together.">
+                </app-charity-card>
+            </div>
+            <div class="column">
+                <app-charity-card imageUrl="assets/images/charities/OHV-Logo-1024x626.png"
+                    charityUrl="https://ohanahopevillage.com/"
+                    description="Helping Those Displaced by the Maui Wildfires.  Over 11,000 people have been displaced during the Maui Wildfires with over 2,000 buildings destroyed. Family Life Center in partnership with multiple organizations across the community are working to construct a midterm housing solution, ‘Ohana Hope Village.">
+                </app-charity-card>
+            </div>
+        </div>
+    </app-container>
+    <app-container size="medium">
+        <div class="columns">
+            <div class="column">
+                <app-charity-card imageUrl="assets/images/charities/chefhui_logo_blue.png"
+                    charityUrl="https://www.chefhui.com/maui-relief"
+                    description="CHEF HUI MAUI FOOD HUB In the wake of the Maui wildfires, we are feeding communities directly impacted by the devastation across the island. Currently under the Chef Hui Maui Food Hub, our team is feeding between 8,000-10,000 meal those in shelters in partnership with the Salvation Army, The Red Cross, and affected residents in West Maui. ">
+                </app-charity-card>
+            </div>
+
             <div class="column">
                 <app-charity-card charityUrl="https://www.hawaiicommunityfoundation.org/maui-strong"
                     imageUrl="assets/images/charities/HCF-Logo-Centered-2Lines-NoTag-RGB.jpg" title="Maui Strong"
@@ -42,16 +72,17 @@
                     description="Maui Food Bank's mission is to help the hungry in Maui County by collecting and distributing food through community partnerships.">
                 </app-charity-card>
             </div>
+        </div>
+    </app-container>
+    <app-container size="medium">
+        <div class="columns">
             <div class="column">
                 <app-charity-card charityUrl="http://mauirapidresponse.org/maui-wildfire/donations/"
                     imageUrl="assets/images/charities/MRR_Maui_Rapid_Response.jpg" title="Maui Rapid Response"
                     description="Maui Mutual Aid Fund distributes funds directly to Maui residents affected by the fires.">
                 </app-charity-card>
             </div>
-        </div>
-    </app-container>
-    <app-container>
-        <div class="level">
+
             <div class="column">
                 <app-charity-card charityUrl="https://www.mauihumanesociety.org/"
                     imageUrl="assets/images/charities/MHS-Logo.png" title="Maui Humane Society"
@@ -64,6 +95,10 @@
                     description="Providing direct relief to families and non-profits. Responding to immediate needs via daily grant approvals to existing grassroots organizations that are local and focused on basic needs.">
                 </app-charity-card>
             </div>
+        </div>
+    </app-container>
+    <app-container size="medium">
+        <div class="columns">
             <div class="column">
                 <app-charity-card charityUrl="https://www.mauihub.org/donate"
                     imageUrl="assets/images/charities/Maui_Hub_Green.png" title="Maui Hub"
@@ -76,8 +111,44 @@
                     description="&#699;Āina Momona is one of many organizations mobilizing to provide support to the families impacted by the devastating wildfires that occurred on August 8, 2023.">
                 </app-charity-card>
             </div>
+            <div class="column"></div>
+        </div>
+    </app-container>
+</app-section>
+<app-section>
+    <app-container size="medium">
+        <p class="title is-4">Other ways to directly support the local families & communities impacted by the Maui
+            wildfires on 08 August, 2023: </p>
+
+        <div class="box">
+            <a href="https://www.instagram.com/lahaina_ohana_venmo">
+                <div class="level">
+                    <div class="level-item" class="item-left">
+                        Venmo mutual aid by Lahaina residents for Lahaina residents who lost their home or loved one(s).
+                    </div>
+                    <div class="level-item item-right">
+                        <a class="button is-primary" href="https://www.instagram.com/lahaina_ohana_venmo">Donate</a>
+                    </div>
+                </div>
+            </a>
         </div>
 
+        <div class="box">
+            <a href="https://www.gofundme.com/c/act/wildfire-relief/maui">
+                <div class="columns">
+                    <div class="column">
+                        The GoFundMe community is coming together to help people who are raising money to support
+                        community relief efforts. Donate to verified Maui wildfires relief fundraisers today to help
+                        people rebuild and recover. The GoFundMe Trust & Safety team will continue to update this page
+                        with more fundraisers as they are verified.
+                    </div>
+                    <div class="level-item item-right">
+                        <a class="button is-primary"
+                            href="https://www.gofundme.com/c/act/wildfire-relief/maui">Donate</a>
+                    </div>
+                </div>
+            </a>
 
+        </div>
     </app-container>
 </app-section>
