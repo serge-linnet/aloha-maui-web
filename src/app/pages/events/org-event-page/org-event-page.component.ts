@@ -34,15 +34,12 @@ export class OrgEventPageComponent implements OnInit {
         this.orgEventSerivce.findAll().subscribe(res => this.orgEvents = res);
         this.orgEventSerivce.findTotals().subscribe(totals => {
             this.totals = totals;
+            console.log(totals);
         });
     }
 
-    get totalPeople() {
-        return this.totals.reduce((acc, curr) => acc + curr.people, 0);
-    }
-
     get totalOrgEvents() {
-        return this.totals.reduce((acc, curr) => acc + curr.events, 0);
+        return this.totals.reduce((acc, curr) => acc + curr.pledges, 0);
     }
 
     get totalCountries() {

@@ -9,5 +9,5 @@ export class OrgEvent {
 export class OrgEventTotals {
     country!: string;
     people!: number;
-    events!: number;
+    pledges!: number;
 }
