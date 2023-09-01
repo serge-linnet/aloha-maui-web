@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Open+Sans&display=swap');
+
+$family-serif: "Open Sans", serif;
+$family-primary: $family-serif;
+$family-title: "Bitter", serif;
+
+.title {
+    font-family: $family-title, $family-primary
+}

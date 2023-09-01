@@ -1,8 +1,40 @@
+@import "../../../styles/typography.scss";
+
 .has-bg-image {
-    background: url("/assets/images/home-hero-alt.jpg") center center;
+    background: url("/assets/images/home-hero.jpg") center center;
     background-size: cover;
 }
 
 .has-backdrop {
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(1px);
+}
+
+.has-text-shadow {
+    text-shadow: 1px 1px 3px rgba(0, 26, 55, 1);
+}
+
+.home-banner {
+    &__top {
+        padding: 1rem 0 4rem 0;
+    }
+
+    &__middle {padding: 0 0 12rem 0;}
+
+    &__bottom {padding: 0 0 1rem 0;}
+
+    &__title {
+        font-family: $family-title;
+
+        &--is-1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    }
+
+    &__subtitle {
+        &--is-1 {
+            font-size: 1.5rem;
+        }
+    }
+
 }
