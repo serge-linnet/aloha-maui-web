@@ -27,15 +27,13 @@ export class MapComponent {
 
     constructor() { }
 
-    ngAfterContentInit() {
-
+    ngOnInit() {
         // @ts-ignore
         mapboxgl.accessToken = environment.mapBoxToken;
 
         this.map = new mapboxgl.Map({
             container: 'map',
-            style: this.style,
-            zoom: 7
+            style: this.style
         });
 
         this.map.on('load', () => {
@@ -89,28 +87,12 @@ export class MapComponent {
         this.eventMarkers.forEach(em => {
             bounds.extend(em.marker.getLngLat());
         });
+       
+        this.map.resize();
 
         this.map.fitBounds(bounds, {
-            padding: 10
+            padding: 50,
+            center: bounds.getCenter()
         });
-    }
-
-    getEventPopup(event: CommunityEvent): string {
-        return `
-    <div class="card mb-3">
-        <div class="card-content event-card">
-            <div class="content">
-                <div class="event-card__sections">
-                    <div class="event-card__thumbnail">
-                        <img src="${event.assets?.thumbnail}" />
-                    </div>
-                    <div class="event-card__about-section">
-                        <p class="title is-4">${event.title}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        `
     }
 }
