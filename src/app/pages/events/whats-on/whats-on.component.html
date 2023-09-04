@@ -1,5 +1,12 @@
 <app-section>
-    <app-container size="medium">
-        <app-event-list [events]="(events$ | async) ?? []" [link]="['/events']"></app-event-list>
+    <app-container>
+        <div class="columns events-container">
+            <div class="column event-list">
+                <app-event-list [events]="(events$ | async) ?? []" [link]="['/events']"></app-event-list>
+            </div>
+            <div class="column is-two-fifths">
+                <app-map [events]="(events$ | async) ?? []"></app-map>
+            </div>
+        </div>
     </app-container>
 </app-section>

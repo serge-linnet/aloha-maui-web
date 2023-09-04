@@ -54,6 +54,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { OrgEventPageComponent } from './pages/events/org-event-page/org-event-page.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { FooterComponent } from './layout/footer/footer.component';
+import { MapComponent } from './shared/map/map.component';
 
 @NgModule({
     declarations: [
@@ -92,6 +93,7 @@ import { FooterComponent } from './layout/footer/footer.component';
         PledgeMomentComponentPage,
         OrgEventPageComponent,
         FooterComponent,
+        MapComponent,
     ],
     imports: [
         HttpClientModule,

@@ -16,7 +16,7 @@
                     <div class="event-card__about-section">
                         <p class="is-uppercase has-text-weight-light">{{event.startsAt | date:'EEEE, MMMM d'}}</p>
                         <p *ngIf="event.place">{{address}}</p>
-                        <p *ngIf="!event.place">Online Event</p>
+                        <p *ngIf="!event.place"><i class="fa-solid fa-globe"></i> Online Event</p>
 
                         <p class="title is-4">{{ event.title }}</p>
                         <p>{{ descriptionText }}</p>
