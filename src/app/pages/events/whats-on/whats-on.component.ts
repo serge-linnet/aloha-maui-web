@@ -11,11 +11,16 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class WhatsOnComponent implements OnInit {
     
+    selectedEvent?: CommunityEvent;
     events$!: Observable<CommunityEvent[]>
 
     constructor(private eventService: EventService, private router: Router, private ngZone: NgZone) { }
 
     ngOnInit() {
         this.events$ = this.eventService.findEvents();
+    }
+
+    eventSelected(event: CommunityEvent) {
+        this.selectedEvent = event;
     }
 }

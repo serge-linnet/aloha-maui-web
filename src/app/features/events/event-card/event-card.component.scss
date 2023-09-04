@@ -22,3 +22,8 @@
         flex: 1;
     }
 }
+
+.is-selected {
+    box-shadow: 0 0 0 0.25rem hsl(204, 86%, 53%);
+    background: hsl(206, 70%, 96%);
+}

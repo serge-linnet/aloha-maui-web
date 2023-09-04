@@ -2,10 +2,10 @@
     <app-container>
         <div class="columns events-container">
             <div class="column event-list">
-                <app-event-list [events]="(events$ | async) ?? []" [link]="['/events']"></app-event-list>
+                <app-event-list [events]="(events$ | async) ?? []" [link]="['/events']" [selectedEvent]="selectedEvent"></app-event-list>
             </div>
             <div class="column is-two-fifths">
-                <app-map [events]="(events$ | async) ?? []"></app-map>
+                <app-map [events]="(events$ | async) ?? []" (eventSelected)="eventSelected($event)"></app-map>
             </div>
         </div>
     </app-container>

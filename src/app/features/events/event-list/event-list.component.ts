@@ -11,6 +11,7 @@ export class EventListComponent {
     @Input() showStatus = false;
     @Input() link: string[] = [];
     @Input() redirectLink: string[] = []
+    @Input() selectedEvent?: CommunityEvent;
 
     getStatus(status: number) {
         return status === EVENT_STATUS_PENDING ? "Pending" : "Approved";
@@ -18,5 +19,9 @@ export class EventListComponent {
     
     getStatusClass(status: number) {
         return status === EVENT_STATUS_PENDING ? "is-warning" : "is-primary";
+    }
+
+    isSelected(event: CommunityEvent) {
+        return this.selectedEvent?.id === event.id;
     }
 }

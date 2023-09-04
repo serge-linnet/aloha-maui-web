@@ -1,5 +1,5 @@
 <a [routerLink]="routerLink">
-    <div class="card mb-3">
+    <div class="card mb-3" [ngClass]="isSelected ? 'is-selected' : ''">
         <div class="card-content event-card">
             <div class="content">
                 <div class="level" *ngIf="showStatus">

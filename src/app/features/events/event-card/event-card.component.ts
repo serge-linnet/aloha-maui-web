@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, ElementRef, Input, SimpleChange } from "@angular/core";
 import { CommunityEvent, EVENT_STATUS_PENDING } from "src/app/models/event.model";
 import { COUNTRIES } from "src/app/static/countries";
 import { CURRENCIES } from "src/app/static/currencies";
@@ -11,8 +11,12 @@ import { CURRENCIES } from "src/app/static/currencies";
 export class EventCardComponent {
     @Input() event!: CommunityEvent;
     @Input() showStatus = false;
-
+    @Input() isSelected = false;
     @Input() link: string[] = []
+
+    constructor(private element: ElementRef ) {
+        
+    }
 
     getStatus(status: number) {
         return status === EVENT_STATUS_PENDING ? "Pending" : "Approved";
@@ -63,6 +67,12 @@ export class EventCardComponent {
             return [...this.link, this.event.id]
         } else {
             return ["/events", this.event.id]
+        }
+    }
+
+    ngOnChanges() {        
+        if (this.isSelected) {
+            this.element.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     }
 }

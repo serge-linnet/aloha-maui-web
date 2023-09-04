@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { CommunityEvent } from 'src/app/models/event.model';
 import { environment } from 'src/environments/environment';
@@ -14,9 +14,11 @@ type EventMarker = {
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
     @Input()
     events: CommunityEvent[] = [];
+
+    @Output() eventSelected: EventEmitter<CommunityEvent> = new EventEmitter<CommunityEvent>();
 
     eventMarkers: EventMarker[] = [];
 
@@ -25,7 +27,7 @@ export class MapComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    ngAfterContentInit() {
 
         // @ts-ignore
         mapboxgl.accessToken = environment.mapBoxToken;
@@ -67,7 +69,7 @@ export class MapComponent implements OnInit {
                             em.marker.getElement().classList.remove('map-marker--selected');
                         }
                     });
-
+                    this.eventSelected.emit(eventMarker.event);
                 });
 
                 eventMarker.marker = marker;
