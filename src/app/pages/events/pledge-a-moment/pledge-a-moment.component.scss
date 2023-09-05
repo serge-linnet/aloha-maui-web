@@ -1,3 +1,5 @@
+@import "../../../../../node_modules/bulma/bulma.sass";
+
 .is-small>img {
     max-height: 300px;
 }
@@ -24,5 +26,11 @@
 .pledge {
     &+& {
         margin-top: 3rem;
+    }
+}
+
+@media(max-width: $tablet) {
+    .field.is-grouped {
+        flex-wrap: wrap;
     }
 }

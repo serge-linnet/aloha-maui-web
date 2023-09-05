@@ -1,7 +1,7 @@
 @import "../../../../../node_modules/bulma/bulma.sass";
 
 .events-container {
-    max-height: 90vh;
+    max-height: 85vh;
 }
 
 .event-list {
@@ -20,5 +20,4 @@
     .event-list {
         overflow-y: initial;
     }
-    
 }
