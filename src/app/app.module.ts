@@ -12,7 +12,7 @@ import { EventsPageComponent } from "./pages/events/events-page/events-page.comp
 import { SectionComponent } from "./shared/section/section.component";
 import { ContainerComponent } from "./shared/container/container.component";
 import { NavigationComponent } from "./layout/navigation/navigation.component";
-import { SubmitEventComponent } from "./pages/submit-event-page/submit-event.component";
+import { SubmitEventComponent } from "./pages/events/submit-event-page/submit-event.component";
 import { NgxSimpleTextEditorModule } from "ngx-simple-text-editor";
 import { AddressAutocompleteComponent } from "./shared/address-autocomplete/address-autocomplete.component";
 import { SubmitEventFormComponent } from "./features/events/submit-event-form/submit-event-form.component";
