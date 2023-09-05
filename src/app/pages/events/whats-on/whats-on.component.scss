@@ -1,7 +1,24 @@
+@import "../../../../../node_modules/bulma/bulma.sass";
+
 .events-container {
     max-height: 90vh;
 }
 
 .event-list {
     overflow-y: scroll;
+}
+
+@media(max-width: $tablet) {
+    .map-container {
+        height: 30vh;
+    }
+
+    .events-container {
+        max-height: initial;
+    }
+
+    .event-list {
+        overflow-y: initial;
+    }
+    
 }

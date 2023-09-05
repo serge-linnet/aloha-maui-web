@@ -39,5 +39,12 @@ html, body {
     font-size: 2.5rem;
 }
 
+@media(max-width: $tablet) {
+    .columns.is-reversed-mobile {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+}
+
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 @import "../node_modules/bulma/sass/utilities/functions.sass";
