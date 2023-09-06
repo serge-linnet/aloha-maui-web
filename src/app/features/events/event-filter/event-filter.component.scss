@@ -1,0 +1,18 @@
+.filter {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 2rem;
+
+    &-control {
+        border: 0;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+
+        &--is-selected {
+            color: white;
+            border-radius: 3rem;
+            background-color: blue;
+
+        }
+    }
+}

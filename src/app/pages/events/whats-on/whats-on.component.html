@@ -1,12 +1,13 @@
 <app-section>
     <app-container>
-        <app-event-filter></app-event-filter>
+        <app-event-filter (filterChanged)="filterChanged($event)"></app-event-filter>
         <div class="columns events-container is-reversed-mobile">
             <div class="column event-list">
-                <app-event-list [events]="(events$ | async) ?? []" [link]="['/events']" [selectedEvent]="selectedEvent"></app-event-list>
+                <app-event-list [events]="events" [link]="['/events']"
+                    [selectedEvent]="selectedEvent"></app-event-list>
             </div>
             <div class="column is-two-fifths map-container">
-                <app-map [events]="(events$ | async) ?? []" (eventSelected)="eventSelected($event)"></app-map>
+                <app-map [events]="events" (eventSelected)="eventSelected($event)"></app-map>
             </div>
         </div>
     </app-container>

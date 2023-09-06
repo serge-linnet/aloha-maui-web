@@ -14,8 +14,20 @@ export class EventService {
 
     }
 
-    findEvents(): Observable<CommunityEvent[]> {
-        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events`, { params: { query: "" } });
+    findEvents(filter?: any): Observable<CommunityEvent[]> {
+        let params: any = {};
+        for (let key in filter) {
+            const value = filter[key];
+            if (value) {
+                if (key === "type") {
+                    params.isOffline = value === "ONLINE" ? false : true;
+                } else {
+                    params[key] = value;
+                }
+            }
+        }
+
+        return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events`, { params: params });
     }
 
     findPendingEvents(filter: ManageCommunityEventsFilter): Observable<CommunityEvent[]> {
@@ -41,6 +53,11 @@ export class EventService {
     findMyEvents(): Observable<CommunityEvent[]> {
         return this.http.get<CommunityEvent[]>(`${environment.apiUrl}/events/my`);
     }
+
+    findAllEventCountries(): Observable<string[]> {
+        return this.http.get<string[]>(`${environment.apiUrl}/events/countries`);
+    }
+
 
     changeStatus(id: string, status: number): Observable<CommunityEvent> {
         return this.http.put<CommunityEvent>(`${environment.apiUrl}/events/${id}/status`, { status }, { withCredentials: true });

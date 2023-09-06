@@ -55,6 +55,8 @@ import { OrgEventPageComponent } from './pages/events/org-event-page/org-event-p
 import { DropdownModule } from 'primeng/dropdown';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MapComponent } from './shared/map/map.component';
+import { EventFilterComponent } from './features/events/event-filter/event-filter.component';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
     declarations: [
@@ -94,6 +96,7 @@ import { MapComponent } from './shared/map/map.component';
         OrgEventPageComponent,
         FooterComponent,
         MapComponent,
+        EventFilterComponent,
     ],
     imports: [
         HttpClientModule,
@@ -118,7 +121,8 @@ import { MapComponent } from './shared/map/map.component';
         InputTextModule,
         InputNumberModule,
         AccordionModule,
-        DropdownModule
+        DropdownModule,
+        MenuModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

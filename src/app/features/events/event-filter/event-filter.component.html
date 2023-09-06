@@ -1,0 +1,11 @@
+<div class="filter">
+    <p-menu [model]="countries" [popup]="true" appendTo="body" #menuCountries></p-menu>
+    <p-button [styleClass]="getFilterButtonClass(filter.country?.value)" (click)="menuCountries.toggle($event)"
+        [label]="filter.country?.label ?? 'Any Country'"></p-button>
+
+    <p-menu [model]="types" [popup]="true" appendTo="body" #menuTypes></p-menu>
+    <p-button [styleClass]="getFilterButtonClass(filter.type?.value)" (click)="menuTypes.toggle($event)"
+        [label]="filter.type?.label ?? 'Any Type'"></p-button>
+
+    <p-button styleClass="p-button-text" label="Reset filters" (click)="reset()"></p-button>
+</div>

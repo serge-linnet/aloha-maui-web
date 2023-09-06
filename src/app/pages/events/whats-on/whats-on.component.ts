@@ -10,17 +10,24 @@ import { EventService } from 'src/app/services/event.service';
     styleUrls: ['./whats-on.component.scss']
 })
 export class WhatsOnComponent implements OnInit {
-    
     selectedEvent?: CommunityEvent;
-    events$!: Observable<CommunityEvent[]>
+    events: CommunityEvent[] = []
 
     constructor(private eventService: EventService, private router: Router, private ngZone: NgZone) { }
 
     ngOnInit() {
-        this.events$ = this.eventService.findEvents();
+        this.eventService.findEvents().subscribe((events) => {
+            this.events = events;
+        });
     }
 
     eventSelected(event: CommunityEvent) {
         this.selectedEvent = event;
+    }
+
+    filterChanged(filter: any) {
+        this.eventService.findEvents(filter).subscribe((events) => {
+            this.events = events;
+        });
     }
 }

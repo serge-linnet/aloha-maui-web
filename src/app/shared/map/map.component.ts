@@ -46,7 +46,11 @@ export class MapComponent {
             return;
         }
 
-        this.map?.setCenter([this.events[0].place!.longitude!, this.events[0].place!.latitude!]);
+        this.eventMarkers.forEach(em => {
+            em.marker.remove();
+        });
+
+        //this.map?.setCenter([this.events[0].place!.longitude!, this.events[0].place!.latitude!]);
         this.eventMarkers = this.events
             .filter(event => event.place?.longitude && event.place?.latitude)
             .map(event => {
