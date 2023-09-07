@@ -27,7 +27,7 @@ export class MapComponent {
 
     constructor() { }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         // @ts-ignore
         mapboxgl.accessToken = environment.mapBoxToken;
 
@@ -39,6 +39,8 @@ export class MapComponent {
         this.map.on('load', () => {
             this.map!.resize();
         });
+
+        this.rednerMarkers();
     }
 
     ngOnChanges() {
@@ -46,6 +48,10 @@ export class MapComponent {
             return;
         }
 
+        this.rednerMarkers()      
+    }
+
+    private rednerMarkers() {
         this.eventMarkers.forEach(em => {
             em.marker.remove();
         });
@@ -92,11 +98,11 @@ export class MapComponent {
             bounds.extend(em.marker.getLngLat());
         });
        
-        this.map.resize();
+        this.map?.resize();
 
-        this.map.fitBounds(bounds, {
+        this.map?.fitBounds(bounds, {
             padding: 50,
             center: bounds.getCenter()
         });
-    }
+    };
 }

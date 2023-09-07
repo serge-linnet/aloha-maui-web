@@ -1,0 +1,11 @@
+.skeleton-card {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+
+.skeleton-card-content {
+    flex: 1;
+    width: auto;
+}

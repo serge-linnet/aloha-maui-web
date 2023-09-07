@@ -56,7 +56,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MapComponent } from './shared/map/map.component';
 import { EventFilterComponent } from './features/events/event-filter/event-filter.component';
+import { EventListLoadingComponent } from './features/events/event-list-loading/event-list-loading.component';
+import { EventListEmptyComponent } from './features/events/event-list-empty/event-list-empty.component';
 import { MenuModule } from 'primeng/menu';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
     declarations: [
@@ -97,6 +100,8 @@ import { MenuModule } from 'primeng/menu';
         FooterComponent,
         MapComponent,
         EventFilterComponent,
+        EventListLoadingComponent,
+        EventListEmptyComponent
     ],
     imports: [
         HttpClientModule,
@@ -122,7 +127,8 @@ import { MenuModule } from 'primeng/menu';
         InputNumberModule,
         AccordionModule,
         DropdownModule,
-        MenuModule
+        MenuModule,
+        SkeletonModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

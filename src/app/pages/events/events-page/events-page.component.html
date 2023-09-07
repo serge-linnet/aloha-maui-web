@@ -7,7 +7,8 @@
             <div class="level pt-6">
                 <div class="level-item">
                     <div class="buttons">
-                        <a routerLink="/events/participate" class="button is-uppercase is-primary is-medium is-wide">Participate</a>
+                        <a routerLink="/events/participate"
+                            class="button is-uppercase is-primary is-medium is-wide">Participate</a>
                         <a routerLink="organize" class="button is-link is-uppercase is-medium is-wide">Organize</a>
                     </div>
                 </div>
@@ -29,7 +30,7 @@
                         <div class="card-content">
                             <div class="content has-text-centered">
                                 <button class="button is-link">Submit community event</button>
-                            </div>                            
+                            </div>
                             <p class="title is-6">Submit a Community Event</p>
                             <p class="text">Create, sponsor, join, attend &/or participate in a community led
                                 fundraising event.
@@ -50,7 +51,7 @@
                         <div class="card-content">
                             <div class="content has-text-centered">
                                 <button class="button is-link">Pledge a moment</button>
-                            </div>  
+                            </div>
                             <p class="title is-6">Pledge a Moment & Pass it Forward</p>
                             <p class="text">
                                 Make plans to meet up with friends or catch up with family online or in person anytime
@@ -72,7 +73,7 @@
                         <div class="card-content">
                             <div class="content has-text-centered">
                                 <button class="button is-link">Dress up & Donate</button>
-                            </div> 
+                            </div>
                             <p class="title is-6">Beach Life is Best! Dress up & Donate</p>
                             <p class="text">
                                 Enjoy Freestyle Friday & Beach Vibes all weekend!
@@ -93,6 +94,8 @@
 <app-section>
     <app-container size="medium">
         <p class="title">What's On</p>
-        <app-event-list [events]="(events$ | async) ?? []"></app-event-list>
+        <app-event-filter (filterChanged)="filterChanged($event)"></app-event-filter>
+        <app-event-list-loading *ngIf="isLoading"></app-event-list-loading>
+        <app-event-list [events]="events" *ngIf="!isLoading && events.length > 0"></app-event-list>
     </app-container>
 </app-section>

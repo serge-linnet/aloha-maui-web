@@ -12,12 +12,16 @@ import { EventService } from 'src/app/services/event.service';
 export class WhatsOnComponent implements OnInit {
     selectedEvent?: CommunityEvent;
     events: CommunityEvent[] = []
+    isLoading: boolean = false;
 
     constructor(private eventService: EventService, private router: Router, private ngZone: NgZone) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.eventService.findEvents().subscribe((events) => {
             this.events = events;
+        }, (error) => { }, () => {
+            this.isLoading = false;
         });
     }
 
@@ -26,8 +30,11 @@ export class WhatsOnComponent implements OnInit {
     }
 
     filterChanged(filter: any) {
+        this.isLoading = true;
         this.eventService.findEvents(filter).subscribe((events) => {
             this.events = events;
+        }, (error) => { }, () => {
+            this.isLoading = false;
         });
     }
 }
