@@ -8,6 +8,9 @@ import { ActivatedRoute, UrlSegment } from "@angular/router";
     styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
+
+    underContruction = true
+
     constructor(private route: ActivatedRoute, private meta: Meta) {
 
     }
